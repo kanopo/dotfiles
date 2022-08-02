@@ -1,0 +1,2 @@
+default_border pixel 2
+client.focused "#ff9900" "#ff9900" "#ff9900" "#ff9900"

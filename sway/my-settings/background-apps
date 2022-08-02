@@ -1,0 +1,6 @@
+exec {
+	dropbox
+	keepassxc
+	blueman-applet
+	nm-applet --indicator
+}
