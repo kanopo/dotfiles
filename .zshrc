@@ -23,3 +23,6 @@ alias conservation-off="echo 0 | sudo tee /sys/bus/platform/drivers/ideapad_acpi
 alias orphans="sudo pacman -Qtdq | sudo pacman -Rns -"
 alias v="nvim"
 export GPG_TTY=$(tty)
+
+# pytorch
+export PATH="$HOME/.local/bin:$PATH"
