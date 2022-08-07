@@ -27,7 +27,7 @@ bindsym $mod+escape exec swaylock -i ~/Pictures/wallpapers/p65d4ou6se591.png
 ### Idle configuration
 
 
- exec swayidle -w \
+ exec swayidle -i ~/Pictures/wallpapers/p65d4ou6se591.png -w \
           timeout 300 'swaylock -f -c 000000' \
           timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -c 000000'
