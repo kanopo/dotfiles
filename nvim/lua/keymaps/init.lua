@@ -9,4 +9,11 @@ keymap('n', '<c-q>', ':q<CR>', {})            -- ctrl + s to save doc
 keymap('i', '<c-q>', '<Esc>:q<CR>a', {})      -- ctrl + s in interactive mode to save and continue editing
 
 -- keymaps for telescope plugin
+
 keymap('n', '<c-f>', ':Telescope find_files<CR>', {})
+keymap('n', '<c-g>', ':Telescope live_grep<CR>', {})
+
+
+-- nvim-tree settings
+
+
