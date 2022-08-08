@@ -49,5 +49,5 @@ yay -S btrfs-progs timeshift timeshift-autosnap grub-btrfs
 
 ## other things without categories
 ```
-yay -S python-pip btop topgrade yt-dlp mpv
+yay -S python-pip btop topgrade yt-dlp mpv wl-clipboard
 ```
