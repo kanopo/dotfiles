@@ -6,7 +6,6 @@ require('core/colors')
 
 
 require('plugins/nvim-tree')
-require('plugins/nvim-cmp')
 
 
 
