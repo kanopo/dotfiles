@@ -1,7 +1,7 @@
 [user]
 	name = dmotrio
 	email = dmitri.ollari@protonmail.com
-	signingkey = BB1963319F8AFEF24518EC59AEDDAA56CC5AC361 
+	signingkey = 8C8476AE3F2F8DCB011457D7A6E301DD84924720 
 [commit]
 	gpgsign = true
 [gpg]
