@@ -24,5 +24,8 @@ alias orphans="sudo pacman -Qtdq | sudo pacman -Rns -"
 alias v="nvim"
 export GPG_TTY=$(tty)
 
+alias scrivania-on=""
+alias scrivania-off=""
+
 # pytorch
 export PATH="$HOME/.local/bin:$PATH"
