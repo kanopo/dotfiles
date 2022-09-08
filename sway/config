@@ -13,21 +13,23 @@ set $term foot
 set $menu wofi --show=drun --lines=5 --prompt=""
 
 
-bindsym $mod+f exec nautilus
+#bindsym $mod+f exec nautilus
 
+# clipamn
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 
 # Wallpaper
-#output * bg ~/Pictures/wallpapers/tropic_island_night.png  fill
-exec_always swaybg -i Pictures/wallpapers/tropic_island_night.png
+exec_always swaybg -i ~/Pictures/wallpapers/tropic_island_evening.png
 
 # Lockscreen
 
-bindsym $mod+escape exec swaylock -i ~/Pictures/wallpapers/p65d4ou6se591.png
+#bindsym $mod+escape exec swaylock -i ~/Pictures/wallpapers/tropic_island_evening.png
 
+bindsym $mod+escape exec wlogout
 ### Idle configuration
 
 
- exec swayidle -i ~/Pictures/wallpapers/p65d4ou6se591.png -w \
+ exec swayidle -i ~/Pictures/wallpapers/tropic_island_evening.png -w \
           timeout 300 'swaylock -f -c 000000' \
           timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -c 000000'
@@ -141,7 +143,7 @@ bindsym $mod+escape exec swaylock -i ~/Pictures/wallpapers/p65d4ou6se591.png
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    #bindsym $mod+f fullscreen
+    bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle

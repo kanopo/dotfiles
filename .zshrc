@@ -24,8 +24,8 @@ alias orphans="sudo pacman -Qtdq | sudo pacman -Rns -"
 alias v="nvim"
 export GPG_TTY=$(tty)
 
-alias scrivania-on="wget -q 'http://192.168.1.129/?=on'"
-alias scrivania-off="wget -q 'http://192.168.1.129/?=off'"
+alias scrivania-on="wget -O /dev/null -q 'http://192.168.1.129/?=on'"
+alias scrivania-off="wget -O /dev/null -q 'http://192.168.1.129/?=off'"
 
 # pytorch
 export PATH="$HOME/.local/bin:$PATH"

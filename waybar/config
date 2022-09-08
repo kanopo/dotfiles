@@ -23,7 +23,7 @@
         // informational
         //"sway/language",
         //"custom/github",
-        //"custom/clipboard",
+       // "custom/clipboard",
         //"custom/zeit",
         "cpu",
         "memory",
@@ -31,7 +31,7 @@
         //"temperature",
 
         // connecting
-        //"network",
+        "network",
         //"bluetooth",
 
         // media
@@ -79,7 +79,7 @@
             "warning": 70,
             "critical": 90
         },
-        "on-click": "swaymsg exec \\$term_float htop"
+        "on-click": "swaymsg exec $term_float btop"
     },
 
     "memory": {
@@ -89,7 +89,7 @@
             "warning": 70,
             "critical": 90
         },
-        "on-click": "swaymsg exec \\$term_float htop"
+        "on-click": "swaymsg exec $term_float btop"
     },
 
     "network": {
@@ -98,7 +98,7 @@
         "format-ethernet": "",
         "format-disconnected": "睊",
         "tooltip-format": "{ifname} ({essid}): {ipaddr}",
-        "on-click": "swaymsg exec $term nmtui"
+        "on-click": "swaymsg exec $term_float nmtui"
     },
 
     "sway/mode": {
@@ -152,20 +152,6 @@
         "spacing": 5
     },
 
-    "custom/pacman": {
-        "format": " {}",
-        "interval": 3600,
-        "exec-if": "[ $(pamac checkupdates -q | wc -l) -gt 0 ]",
-        "exec": "pamac checkupdates -q | wc -l",
-        "on-click": "pamac-manager --updates; pkill -RTMIN+4 waybar",
-        "signal": 4
-    },
-
-    "custom/menu": {
-        "format": "",
-        "on-click": "swaymsg exec \\$menu",
-        "tooltip": false
-    },
 
     "bluetooth": {
         "format": "",

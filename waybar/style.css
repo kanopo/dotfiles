@@ -89,7 +89,7 @@ window#waybar {
  * Module styles
  * -------------------------------------------------------------------------- */
 
-#custom-scratchpad, #custom-menu, #workspaces button.focused, #clock  {
+#custom-scratchpad, #custom-menu, #workspaces button.focused  {
     color: @background_color;
     background-color: #ff9900;
 }
