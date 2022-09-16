@@ -18,6 +18,7 @@ set $menu wofi --show=drun --lines=5 --prompt=""
 # clipamn
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 
+exec_always libinput-gestures-setup autostart start
 # Wallpaper
 exec_always swaybg -i ~/Pictures/wallpapers/tropic_island_evening.png
 

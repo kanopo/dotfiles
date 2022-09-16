@@ -25,17 +25,17 @@
         //"custom/github",
        // "custom/clipboard",
         //"custom/zeit",
+        "custom/playerctl",
         "cpu",
         "memory",
         "battery",
         //"temperature",
 
         // connecting
-        "network",
+        //"network",
         //"bluetooth",
 
         // media
-        "custom/playerctl",
         "idle_inhibitor",
         "pulseaudio",
         "backlight",
