@@ -27,13 +27,3 @@ export GPG_TTY=$(tty)
 alias scrivania-on="wget -O /dev/null -q 'http://192.168.1.129/?=on'"
 alias scrivania-off="wget -O /dev/null -q 'http://192.168.1.129/?=off'"
 
-# pytorch
-export PATH="$HOME/.local/bin:$PATH"
-
-# pnpm
-export PNPM_HOME="/home/me/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-
-
-export PATH="/home/me/anaconda3/bin:$PATH"

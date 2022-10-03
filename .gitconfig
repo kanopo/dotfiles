@@ -1,7 +1,7 @@
 [user]
 	name = kanopo
 	email = dmitri.ollari@protonmail.com
-	signingkey = BB7BD62AC08DB4B587318927AD93295C98E3C7AF 
+	signingkey = 49853EB1ACB2B2522ACA6E16630BD32EBBD7FCBA 
 [commit]
 	gpgsign = true
 [gpg]
