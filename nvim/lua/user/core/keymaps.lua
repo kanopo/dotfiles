@@ -1,7 +1,4 @@
-
-
 vim.g.mapleader = " "
-
 
 local nmap = function(keys, func, desc)
     vim.keymap.set('n', keys, func, { desc = desc, silent = true })
@@ -25,3 +22,7 @@ nmap('<leader>r', ':so %<CR>', '[R]eload nvim configurations')
 nmap('<leader>w', ':bdelete<CR>', 'Close buffer tab')
 nmap('<C-l>', ':BufferLineCycleNext<CR>', 'Go to next buffer tab')
 nmap('<C-h>', ':BufferLineCyclePrev<CR>', 'Go to previous buffer tab')
+
+
+-- format file
+nmap('<C-f>', ':lua vim.lsp.buf.format()<CR>')
