@@ -1,13 +1,13 @@
 
 
-local gruvbox_ok, gruvbox = pcall(require, "gruvbox")
+local status_ok, _ = pcall(require, 'gruvbox')
 
-if not gruvbox_ok then
-    print("Missing gruvbox theme")
+if not status_ok then
+    print('Gruvbox theme not loaded')
     return
 end
 
-gruvbox.setup({
+require("gruvbox").setup({
   undercurl = true,
   underline = true,
   bold = true,
@@ -25,4 +25,4 @@ gruvbox.setup({
   transparent_mode = false,
 })
 
-vim.cmd("colorscheme gruvbox")
+vim.cmd([[colorscheme gruvbox]])

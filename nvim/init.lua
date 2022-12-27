@@ -1,20 +1,8 @@
--- startup packer(pachage manager)
-require 'user.packer'
 
--- colorscheme
-require 'user.plugins.impatient'
-require 'user.plugins.colorscheme'
-require 'user.plugins.lualine'
-require 'user.plugins.nvim-tree'
-require 'user.plugins.telescope'
-require 'user.plugins.nvim-cmp'
-require 'user.plugins.lsp'
-require 'user.plugins.treesitter'
-require 'user.plugins.alpha'
-require 'user.plugins.bufferline'
-require 'user.plugins.gitsigns'
+require('kanopo.plugins.packer')
 
--- user options
-require 'user.core.options'
+require('kanopo.plugins.gruvbox')
+require('kanopo.plugins.tree-sitter')
+require('kanopo.plugins.cmp')
 
-require 'user.core.keymaps'
+require('kanopo.core.options')
