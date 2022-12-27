@@ -55,3 +55,4 @@ lspconfig.pyright.setup({
 lspconfig.ltex.setup({
     on_attach = on_attach
 })
+
