@@ -1,5 +1,4 @@
 
-
 local opt = vim.opt
 
 
@@ -42,5 +41,14 @@ opt.completeopt = 'menuone'
 
 -- mouse enbaled in all modes
 opt.mouse = 'a'
+
+
+-- clipboard
+opt.clipboard = 'unnamedplus'
+
+
+
+
+
 
 

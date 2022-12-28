@@ -11,9 +11,16 @@ treesitter.setup({
     ensure_installed = {
         'lua',
         'python',
+        'markdown',
     },
 
+    auto_install = true,
+
     highlight = {
+        enable = true
+    },
+
+    autopairs = {
         enable = true
     }
 })
