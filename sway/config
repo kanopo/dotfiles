@@ -174,12 +174,12 @@ bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
 # borders
-default_border pixel 2
+default_border none
 
 # gaps
 smart_gaps on
-gaps outer 2
-gaps inner 2
+gaps outer 3
+gaps inner 3
 
 # brightness keys laptop
 
