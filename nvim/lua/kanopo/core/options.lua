@@ -6,8 +6,8 @@ vim.g.mapleader = ' '
 
 opt.expandtab = true
 opt.smarttab = true
-opt.shiftwidth = 4
-opt.tabstop = 4
+opt.shiftwidth = 2
+opt.tabstop = 2
 
 -- search
 
@@ -46,9 +46,10 @@ opt.mouse = 'a'
 -- clipboard
 opt.clipboard = 'unnamedplus'
 
+-- leave space for icons LSP
 
 
 
-
+opt.signcolumn = 'yes'
 
 
