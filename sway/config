@@ -4,7 +4,7 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu wofi --show run --allow-images
 output * bg ~/Pictures/wallpapers/bloom-dark-colorful-by-dpcdpc11-1920×1080.jpg fill
 
 
@@ -12,20 +12,12 @@ output * bg ~/Pictures/wallpapers/bloom-dark-colorful-by-dpcdpc11-1920×1080.jpg
 #
 # Basics:
 #
-    # Start a terminal
     bindsym $mod+Return exec $term
 
-    # Kill focused window
     bindsym $mod+Shift+q kill
 
-    # Start your launcher
     bindsym $mod+d exec $menu
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
     floating_modifier $mod normal
 
     # Reload the configuration file
@@ -159,6 +151,11 @@ bar swaybar_command waybar
 input '1:1:AT_Translated_Set_2_keyboard' {
     xkb_layout it
 }
+
+input '1452:591:NuPhy_Halo65' {
+    xkb_layout en_US
+}
+
 
 # mouse config 
 input '1739:52656:MSFT0021:00_06CB:CDB0_Touchpad' {
