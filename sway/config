@@ -163,6 +163,7 @@ input '1739:52656:MSFT0021:00_06CB:CDB0_Touchpad' {
     natural_scroll enabled
     dwt enabled
     accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+    pointer_accel 0.5 # mouse sesnitivity
 }
 
 # set cloding lid to lock laptop
@@ -193,6 +194,9 @@ exec swayidle -w \
           timeout 300 'swaylock -f -c 000000' \
           timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -c 000000'
+
+
+exec_always keepassxc
 
 
 include /etc/sway/config.d/*
