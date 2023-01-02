@@ -191,9 +191,11 @@ bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ 
 bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
+          timeout 300 'swaylock -e -f -i ~/Pictures/wallpapers/bloom-dark-colorful-by-dpcdpc11-1920×1080.jpg' \
           timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -c 000000'
+          before-sleep 'swaylock -e -f -i ~/Pictures/wallpapers/bloom-dark-colorful-by-dpcdpc11-1920×1080.jpg'
+
+bindsym $mod+Escape exec swaylock -e -f -i "~/Pictures/wallpapers/bloom-dark-colorful-by-dpcdpc11-1920×1080.jpg"
 
 
 exec_always keepassxc
