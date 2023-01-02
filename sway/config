@@ -197,8 +197,11 @@ exec swayidle -w \
 
 bindsym $mod+Escape exec swaylock -e -f -i "~/Pictures/wallpapers/bloom-dark-colorful-by-dpcdpc11-1920×1080.jpg"
 
+bindsym Print exec grim
+bindsym Shift+Print exec grim -g "$(slurp)"
 
-exec_always keepassxc
+exec keepassxc
+exec mako
 
 
 include /etc/sway/config.d/*
