@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "swaylock -e -f -i ~/Pictures/wallpapers/bloom-dark-colorful-by-dpcdpc11-1920×1080.jpg",
+    "action" : "swaylock -e -f -i ~/Pictures/wallpapers/evening-sky.png",
     "text" : "Lock",
     "keybind" : "l"
 }
