@@ -26,7 +26,6 @@ opt.splitright = true
 -- wrapping
 opt.wrap = false
 opt.breakindent = true
-opt.scrolloff = 10
 
 
 -- encoding
@@ -52,4 +51,18 @@ opt.clipboard = 'unnamedplus'
 
 opt.signcolumn = 'yes'
 
+opt.showtabline = 2
 
+
+-- from neovim from scratch by lunar vim
+
+opt.backup = false                          -- creates a backup file
+opt.conceallevel = 0                        -- so that `` is visible in markdown files
+
+opt.showmode = false                        -- we don't need to see things like -- INSERT -- anymore
+opt.smartindent = true                      -- make indenting smarter again
+opt.undofile = true                         -- enable persistent undofile
+opt.updatetime = 300                        -- faster completion (4000ms default)
+
+opt.scrolloff = 8                           -- is one of my fav
+opt.sidescrolloff = 8
