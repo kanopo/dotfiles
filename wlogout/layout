@@ -1,0 +1,18 @@
+{
+    "label" : "lock",
+    "action" : "swaylock -e -f -i ~/Pictures/wallpapers/bloom-dark-colorful-by-dpcdpc11-1920×1080.jpg",
+    "text" : "Lock",
+    "keybind" : "l"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "Shutdown",
+    "keybind" : "s"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot",
+    "keybind" : "r"
+}

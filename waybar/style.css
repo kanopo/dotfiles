@@ -34,7 +34,7 @@ window#waybar {
 
 #clock {
     background-color: @orange_b;
-    color: @white_b;
+    color: @background;
 }
 
 #battery {
