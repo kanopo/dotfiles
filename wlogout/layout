@@ -1,0 +1,18 @@
+{
+    "label" : "lock",
+    "action" : "swaylock -e -f -i ~/Pictures/wallpapers/evening-sky.png",
+    "text" : "Lock",
+    "keybind" : "l"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "Shutdown",
+    "keybind" : "s"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot",
+    "keybind" : "r"
+}

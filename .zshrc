@@ -18,6 +18,8 @@ alias orphans="sudo pacman -Qtdq | sudo pacman -Rns -"
 alias v="nvim"
 export GPG_TTY=$(tty)
 
+alias rec='wf-recorder --audio -g "$(slurp)"'
+
 alias scrivania-on="wget -O /dev/null -q 'http://192.168.1.129/?=on'"
 alias scrivania-off="wget -O /dev/null -q 'http://192.168.1.129/?=off'"
 
