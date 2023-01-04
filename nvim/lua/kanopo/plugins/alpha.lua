@@ -73,7 +73,7 @@ local panda = {
 	"    .@@@@@@@@@/.*   .                           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@(",
 }
 
-dashboard.section.header.val = bloody
+dashboard.section.header.val = panda
 -- Set menu
 dashboard.section.buttons.val = {
 	dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),

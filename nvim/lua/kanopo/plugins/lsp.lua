@@ -18,6 +18,15 @@ end
 local servers = {
 	"sumneko_lua",
 	"pyright",
+	"ltex",
+  "marksman",
+  "tailwindcss",
+  "tsserver",
+  "astro",
+  "cssls",
+  "dockerls",
+  "jdtls",
+  "rust_analyzer"
 }
 
 local on_attach = function(_, bufnr)
