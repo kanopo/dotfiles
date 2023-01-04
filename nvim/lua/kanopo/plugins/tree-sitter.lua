@@ -1,26 +1,24 @@
-
-
-local status_ok, treesitter = pcall(require, 'nvim-treesitter.configs')
+local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
 
 if not status_ok then
-    print('Treesitter not loaded')
-    return
+  print("ERROR treesitter")
+	return
 end
 
 treesitter.setup({
-    ensure_installed = {
-        'lua',
-        'python',
-        'markdown',
-    },
+	ensure_installed = {
+		"lua",
+		"python",
+		"markdown",
+	},
 
-    auto_install = true,
+	auto_install = true,
 
-    highlight = {
-        enable = true
-    },
+	highlight = {
+		enable = true,
+	},
 
-    autopairs = {
-        enable = true
-    }
+	autopairs = {
+		enable = true,
+	},
 })

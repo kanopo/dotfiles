@@ -3,12 +3,15 @@ local mason_lspconfig_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
 
 if not mason_ok then
+	print("ERROR mason")
 	return
 end
 if not mason_lspconfig_ok then
+	print("ERROR mason_lspconfig")
 	return
 end
 if not lspconfig_ok then
+	print("ERROR lspconfig")
 	return
 end
 
