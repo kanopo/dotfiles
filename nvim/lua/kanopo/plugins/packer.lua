@@ -1,5 +1,4 @@
 local fn = vim.fn
-
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -59,26 +58,35 @@ return packer.startup(function(use)
 
 
   use {
-    'VonHeikemen/lsp-zero.nvim',
-    requires = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
-
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua' },
-
-      -- Snippets
-      { 'L3MON4D3/LuaSnip' },
-      { 'rafamadriz/friendly-snippets' },
-    }
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
   }
+
+  -- snippet engine
+  use 'L3MON4D3/LuaSnip'
+
+  -- snipepts
+  use 'rafamadriz/friendly-snippets'
+
+  -- api about luasnip engine for cmp
+  use 'saadparwaiz1/cmp_luasnip'
+
+  -- bridge gap betwean nvim lsp and cmp
+  use 'hrsh7th/cmp-nvim-lsp'
+
+  -- source about buffer for cmp
+  use 'hrsh7th/cmp-buffer'
+
+  -- source about paths for cmp
+  use 'hrsh7th/cmp-path'
+
+  --nvim cmp
+  use 'hrsh7th/nvim-cmp'
+
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+
+
 
   -- markdown preview
   use { "ellisonleao/glow.nvim" }
