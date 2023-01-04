@@ -16,5 +16,6 @@ nmap("<C-Right>", ":vertical resize -2<CR>", "Resize right")
 
 nmap("<S-h>", ":bprevious<CR>", "Go previous buffer(tab)")
 nmap("<S-l>", ":bnext<CR>", "Go nect buffer(tab)")
+nmap("<S-w>", ":bdelete<CR>", "Close buffer(tab)")
 
 nmap("<leader>ff", ":Telescope find_files<CR>", "Telescope [F]ind [F]iles")

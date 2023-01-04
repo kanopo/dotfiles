@@ -20,6 +20,7 @@ bufferline.setup({
 		diagnostics = "nvim_lsp",
 		show_buffer_icons = true,
 		show_buffer_close_icons = false,
+    always_show_bufferline = false,
 		show_close_icon = false,
 		persist_buffer_sort = true,
 		enforce_regular_tabs = true,

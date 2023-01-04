@@ -42,6 +42,8 @@ return packer.startup(function(use)
 
 	use("ellisonleao/gruvbox.nvim") -- gruvbox theme
 
+	use("goolord/alpha-nvim")
+
 	use("kyazdani42/nvim-web-devicons") --> enable icons
 
 	use("nvim-lualine/lualine.nvim") --> a statusline written in luause("nvim-lualine/lualine.nvim") --> a statusline written in lua
