@@ -4,7 +4,7 @@ if not status_ok then
 	return
 end
 
-local gruvbox = require("lualine.themes.gruvbox")
+local _ = require("lualine.themes.gruvbox")
 
 lualine.setup({
 	options = {

@@ -57,3 +57,10 @@ opt.updatetime = 300 -- faster completion (4000ms default)
 
 opt.scrolloff = 8 -- is one of my fav
 opt.sidescrolloff = 8
+
+
+opt.cursorline = true -- highlight line current
+
+opt.hlsearch = false
+
+

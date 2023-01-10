@@ -73,10 +73,12 @@ local panda = {
 	"    .@@@@@@@@@/.*   .                           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@(",
 }
 
-dashboard.section.header.val = panda
+
+
+dashboard.section.header.val = bloody
 -- Set menu
 dashboard.section.buttons.val = {
-	dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
+	dashboard.button("n", "  > New file", ":ene <BAR> startinsert <CR>"),
 	dashboard.button("f", "  > Find file", ":cd $HOME/Documents| Telescope find_files<CR>"),
 	dashboard.button("d", "  > Documents", ":Telescope oldfiles<CR>"),
 	dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
