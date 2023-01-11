@@ -1,8 +1,10 @@
-local status_ok, _ = pcall(require, "gruvbox")
 
-if not status_ok then
-	print("Gruvbox theme not loaded")
-	return
+
+local gruvbox_ok, gruvbox = pcall(require, 'gruvbox')
+
+if not gruvbox_ok then
+  print('Gruvbox error')
+  return
 end
 
 require("gruvbox").setup({

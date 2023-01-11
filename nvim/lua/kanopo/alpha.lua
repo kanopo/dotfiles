@@ -75,7 +75,7 @@ local panda = {
 
 
 
-dashboard.section.header.val = bloody
+dashboard.section.header.val = panda
 -- Set menu
 dashboard.section.buttons.val = {
 	dashboard.button("n", "  > New file", ":ene <BAR> startinsert <CR>"),
@@ -86,3 +86,4 @@ dashboard.section.buttons.val = {
 }
 
 alpha.setup(dashboard.opts)
+
