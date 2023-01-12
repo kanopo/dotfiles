@@ -1,10 +1,9 @@
 -- completion is used to manage code suggestion format
 
-vim.opt.completeopt = { 'menuone', 'noselect', 'noinsert', 'preview' }
+vim.opt.completeopt = { "menuone", "noselect", "noinsert", "preview" }
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
 
-
-local cmp_ok, cmp = pcall(require, 'cmp')
+local cmp_ok, cmp = pcall(require, "cmp")
 
 if not cmp_ok then
 	print("Cmp error")
@@ -18,6 +17,18 @@ if not luasnip_ok then
 	return
 end
 
+local lspkind_ok, lspkind = pcall(require, "lspkind")
+if not lspkind_ok then
+	print("lsp kind error")
+	return
+end
+
+local cmp_autopairs_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not cmp_autopairs_ok then
+	print("cmp autopairs error")
+	return
+end
+
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
@@ -25,22 +36,28 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
+
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
 cmp.setup({
 	-- configurations
 	-- sources
 	sources = {
-		{ name = 'nvim_lsp', keyword_length = 3 },
-		{ name = 'nvim_lsp_signature_help' },
-		{ name = 'nvim_lua', keywork_length = 2 },
-		{ name = 'buffer', keywork_length = 2 },
-		{ name = 'vsnip', keywork_length = 2 },
-		{ name = 'path' },
+		{ name = "nvim_lsp", keyword_length = 3 },
+		{ name = "nvim_lsp_signature_help" },
+		{ name = "nvim_lua", keywork_length = 2 },
+		{ name = "buffer", keywork_length = 2 },
+		{ name = "luasnip", keywork_length = 2 },
+		{ name = "path" },
 	},
 
 	-- mappings for cmp usage
 	mapping = {
 		-- CTRL+SPACE bring up the cmp popup
-		['<C-Space>'] = cmp.mapping.complete(),
+		["<C-Space>"] = cmp.mapping.complete(),
 		-- moving with tab and shift tab
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -76,11 +93,10 @@ cmp.setup({
 			c = cmp.mapping.close(),
 		}),
 		-- The ENTER key select the cmp suggestion
-		['<CR>'] = cmp.mapping.confirm({
+		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = true,
 		}),
-
 	},
 
 	-- window is for styling the cmp bubble
@@ -90,17 +106,22 @@ cmp.setup({
 	},
 
 	formatting = {
-		fields = { 'menu', 'abbr', 'kind' },
-		format = function(entry, item)
-			local menu_icon = {
-				nvim_lsp = 'LSP',
-				vsnip = 'SNIP',
-				buffer = 'BUFF',
-				PATH = 'PATH',
-			}
-			item.menu = menu_icon[entry.source.name]
-			return item
-		end,
+		fields = { "menu", "abbr", "kind" },
+		format = lspkind.cmp_format({
+			mode = "symbol",
+			maxwidth = 25,
+			ellipsis_char = "...",
+			before = function(entry, item)
+				local menu_icon = {
+					nvim_lsp = "LSP",
+					luasnip = "SNIP",
+					buffer = "BUFF",
+					PATH = "PATH",
+				}
+				item.menu = menu_icon[entry.source.name]
+				return item
+			end,
+		}),
 	},
 
 	-- declaration to use snippets
@@ -109,5 +130,4 @@ cmp.setup({
 			luasnip.lsp_expand(args.body)
 		end,
 	},
-
 })

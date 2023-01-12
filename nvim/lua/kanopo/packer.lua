@@ -55,6 +55,8 @@ return require("packer").startup(function(use)
 	-- snippet engine
 	use("L3MON4D3/LuaSnip")
 
+	use("onsails/lspkind.nvim")
+
 	-- snipepts
 	use("rafamadriz/friendly-snippets")
 
@@ -127,6 +129,15 @@ return require("packer").startup(function(use)
 	-- speed up loading on boot
 	use("lewis6991/impatient.nvim")
 
+	-- used to preview markdown files in the browser
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
 	if packer_bootstrap then
 		require("packer").sync()
 	end

@@ -13,6 +13,10 @@ treesitter.setup({
 		"rust",
 		"help",
 		"typescript",
+    "css",
+    "html",
+    "json",
+    "java"
 	},
 
 	sync_install = false,

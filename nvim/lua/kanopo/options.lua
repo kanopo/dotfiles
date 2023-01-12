@@ -58,7 +58,7 @@ opt.conceallevel = 0 -- so that `` is visible in markdown files
 
 
 
---opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
+opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
 opt.smartindent = true -- make indenting smarter again
 opt.undofile = true -- enable persistent undofile
 opt.updatetime = 300 -- faster completion (4000ms default)
@@ -71,3 +71,6 @@ opt.sidescrolloff = 8
 opt.cursorline = true -- highlight line current
 
 opt.hlsearch = false
+
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
