@@ -1,4 +1,4 @@
-    8  git clone https://aur.archlinux.org/yay-bin.git
+    8  `git clone https://aur.archlinux.org/yay-bin.git
     9  cd yay-bin/
    12  rm -dfR yay-bin/
    15  yay -S ly
@@ -34,3 +34,4 @@
   185  yay -S swaybg
   189  history | grep yay
   190  history | grep yay > required_package_sway.md
+`
