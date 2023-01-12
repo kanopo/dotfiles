@@ -210,6 +210,12 @@ bindgesture swipe:left workspace next
 
 include /etc/sway/config.d/*
 
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'adw-gtk3-dark'
+}
+
 # auto start programs
 exec keepassxc
 exec mako

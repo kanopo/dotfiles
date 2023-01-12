@@ -40,6 +40,7 @@ window#waybar {
 #battery {
     background-color: @white_b;
     color: @background;
+    margin-right: 10px;
 }
 
 #battery.charging {
