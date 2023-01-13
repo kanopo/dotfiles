@@ -20,7 +20,7 @@ window#waybar {
 }
 
 #workspaces button.focused {
-    background: @blue;
+    background: @orange_b;
 }
 
 #mode, #clock, #battery {
@@ -32,16 +32,17 @@ window#waybar {
     background: @red;
 }
 
-#clock {
-    background-color: @orange_b;
-    color: @background;
-}
+/* #clock { */
+/*     background-color: @orange_b; */
+/*     color: @background; */
+/* } */
 
-#battery {
-    background-color: @white_b;
-    color: @background;
-    margin-right: 10px;
-}
+
+/* #battery { */
+/*     background-color: @white_b; */
+/*     color: @background; */
+/*     margin-right: 10px; */
+/* } */
 
 #battery.charging {
     color: @background;
