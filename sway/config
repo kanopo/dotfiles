@@ -220,4 +220,6 @@ exec_always {
 exec keepassxc
 exec mako
 exec blueman-applet
+exec_always --no-startup-id workstyle &> /tmp/workstyle.log
+
 
