@@ -7,6 +7,19 @@ local dashboard = require("alpha.themes.dashboard")
 
 local bloody = {
 	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
+	[[                                                     ]],
 	[[  ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓ ]],
 	[[  ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒ ]],
 	[[ ▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░ ]],
@@ -75,7 +88,7 @@ local panda = {
 
 
 
-dashboard.section.header.val = panda
+dashboard.section.header.val = bloody
 -- Set menu
 dashboard.section.buttons.val = {
 	dashboard.button("n", "  > New file", ":ene <BAR> startinsert <CR>"),

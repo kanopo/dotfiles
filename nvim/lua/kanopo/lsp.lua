@@ -69,7 +69,6 @@ local on_attach = function(_, bufnr)
 	nmap("<leader>f", function()
 		vim.lsp.buf.format({ async = true })
 	end, "[F]ormat")
-
 end
 
 lspconfig.sumneko_lua.setup({
@@ -110,3 +109,16 @@ lspconfig.pyright.setup({
 		},
 	},
 })
+
+local rust_ok, rust_tools = pcall(require, 'rust-tools')
+
+if not rust_ok then
+  print("Rust error")
+  return
+end
+
+
+rust_tools.setup({
+
+})
+

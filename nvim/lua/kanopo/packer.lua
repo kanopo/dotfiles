@@ -138,6 +138,8 @@ return require("packer").startup(function(use)
 		end,
 		ft = { "markdown" },
 	})
+
+	use("simrat39/rust-tools.nvim")
 	if packer_bootstrap then
 		require("packer").sync()
 	end
