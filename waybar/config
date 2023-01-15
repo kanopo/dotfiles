@@ -1,6 +1,5 @@
 {
     "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 20, // Waybar height
     // "width": 1280, // Waybar width
     // Choose the order of the modules
@@ -22,8 +21,9 @@
         "spacing": 10
     },
     "clock": {
-        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%H:%M:%S | %d-%m-%Y}",
+        "max-lenght": 50,
+        "interval": 1 
     },
     "cpu": {
         "format": "{usage}% "
@@ -62,7 +62,7 @@
         "format-wifi": "{essid} ",
         "format-ethernet": "{ifname} ",
         "format-disconnected": "Disconnected ⚠",
-        "on-click": "nmtui"
+
     },
   "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
