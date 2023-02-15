@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: mononoki Nerd Font Mono;
+    font-family: Source Code Pro;
     font-size: 13px;
     min-height: 0;
 }
@@ -9,7 +9,7 @@
 @import "gruvbox.css";
 
 window#waybar {
-    background: rgba(40, 40, 40, 1);
+    background: @background;
     color: @white_b;
 }
 
@@ -21,6 +21,7 @@ window#waybar {
 
 #workspaces button.focused {
     background: @orange_b;
+    color: @black 
 }
 
 #mode, #clock, #battery {
@@ -31,18 +32,6 @@ window#waybar {
 #mode {
     background: @red;
 }
-
-/* #clock { */
-/*     background-color: @orange_b; */
-/*     color: @background; */
-/* } */
-
-
-/* #battery { */
-/*     background-color: @white_b; */
-/*     color: @background; */
-/*     margin-right: 10px; */
-/* } */
 
 #battery.charging {
     color: @background;
@@ -64,10 +53,5 @@ window#waybar {
 #battery.warning:not(.charging) {
     background: @red;
     color: @white_b;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
+  }
 
