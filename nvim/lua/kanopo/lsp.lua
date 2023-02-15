@@ -110,15 +110,17 @@ lspconfig.pyright.setup({
 	},
 })
 
-local rust_ok, rust_tools = pcall(require, 'rust-tools')
+lspconfig.jdtls.setup({})
+
+local rust_ok, rust_tools = pcall(require, "rust-tools")
 
 if not rust_ok then
-  print("Rust error")
-  return
+	print("Rust error")
+	return
 end
 
-
 rust_tools.setup({
-
+	server = {
+		on_attach = on_attach,
+	},
 })
-

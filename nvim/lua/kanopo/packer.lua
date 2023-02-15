@@ -44,6 +44,9 @@ return require("packer").startup(function(use)
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
 
+  -- java 
+  use{"mfussenegger/nvim-jdtls", ft = {"java"}}
+
 	-- CMP related stuff
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
