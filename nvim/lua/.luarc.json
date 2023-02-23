@@ -14,6 +14,7 @@
         "/usr/share/nvim/runtime",
         "/usr/lib/nvim",
         "/usr/share/vim/vimfiles",
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
     ]
 }
