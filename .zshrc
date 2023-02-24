@@ -1,8 +1,32 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# used for gpg sign for git
+
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=5000
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+autoload -U compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# vim keybindings
+bindkey -v
+
+# used for version control
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%b '
+
+setopt PROMPT_SUBST
+PROMPT='%F{blue}%n@%m%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
+
 export GPG_TTY=$TTY
+
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
@@ -13,18 +37,9 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
-# pnpm
-export PNPM_HOME="/home/me/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-
-# aliases
 alias ll="ls -l --color"
 alias l="ls --color"
 alias la="ls -la --color"
@@ -36,12 +51,18 @@ alias rec='wf-recorder --audio -g "$(slurp)"'
 alias scrivania-on="wget -O /dev/null -q 'http://192.168.1.129/?=on'"
 alias scrivania-off="wget -O /dev/null -q 'http://192.168.1.129/?=off'"
 alias latex-recursive="latexmk -pvc -pdf"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/me/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/me/.miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/me/.miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/me/.miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
-
-# plugins
-source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
-source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
