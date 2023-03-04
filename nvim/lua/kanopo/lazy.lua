@@ -21,6 +21,14 @@ plugins = {
 			vim.cmd([[colorscheme gruvbox]])
 		end,
 	},
+  {
+    "nvim-lualine/lualine.nvim",
+    lazy = false,
+    priority = 1000,
+    dependencies = {
+      "kyazdani42/nvim-web-devicons",
+    },
+  },
 }
 opts = {}
 require("lazy").setup(plugins, otps)
