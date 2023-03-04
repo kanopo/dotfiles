@@ -1,2 +1,1 @@
-
 require("kanopo.init")

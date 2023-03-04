@@ -35,3 +35,16 @@ opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
 opt.updatetime = 300 -- faster completion (4000ms default)
 opt.undofile = true -- enable persistent undofile
 opt.cursorline = true -- highlight line current
+
+opt.backup = false -- creates a backup file
+opt.conceallevel = 0 -- makrdown make visible ``
+opt.pumheight = 10 -- pop up menu height
+opt.swapfile = false
+
+opt.splitright = true
+opt.splitbelow = true
+
+opt.timeoutlen = 300                                            -- time to wait for a mapped sequence to complete (in milliseconds)
+opt.signcolumn = "yes"
+opt.wrap = false
+
