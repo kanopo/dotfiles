@@ -19,3 +19,5 @@ nmap("C-h", ":TmuxNavigateLeft<CR>", "Move left in the split View")
 nmap("C-j", ":TmuxNavigateDown<CR>", "Move down in the split View")
 nmap("C-k", ":TmuxNavigateUp<CR>", "Move up in the split View")
 nmap("C-l", ":TmuxNavigateRight<CR>", "Move right in the split View")
+
+nmap("<leader>e", ":NvimTreeToggle<CR>", "Toggle file explorer")

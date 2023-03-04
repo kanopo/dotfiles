@@ -1,5 +1,10 @@
 local opt = vim.opt
 
+-- Disable default neovim file explorer
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+
 vim.g.mapleader = " "
 
 -- Tab related indentation

@@ -110,6 +110,14 @@ local plugins = {
 	{
 		"christoomey/vim-tmux-navigator",
 	},
+
+	{
+		"nvim-tree/nvim-tree.lua",
+	},
+
+  {
+    "stevearc/dressing.nvim"
+  }
 }
 local opts = {}
 require("lazy").setup(plugins, opts)
