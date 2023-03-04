@@ -13,6 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 plugins = {
+  -- Theme
 	{
 		"ellisonleao/gruvbox.nvim",
 		lazy = false,
@@ -21,6 +22,8 @@ plugins = {
 			vim.cmd([[colorscheme gruvbox]])
 		end,
 	},
+
+  -- Bar at hte bottom of the screen
   {
     "nvim-lualine/lualine.nvim",
     lazy = false,
@@ -28,6 +31,19 @@ plugins = {
     dependencies = {
       "kyazdani42/nvim-web-devicons",
     },
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.1",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    }
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate"
   },
 }
 opts = {}
