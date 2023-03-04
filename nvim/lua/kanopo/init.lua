@@ -1,0 +1,2 @@
+
+require("kanopo.lazy")
