@@ -65,7 +65,7 @@ local on_attach = function(_, bufnr)
   end, "[F]ormat")
 end
 
-local lua_settings = require("kanopo.plugins_setup.lsp.lua_ls").settings
+local lua_settings = require("kanopo.plugins.lsp.lua_ls").settings
 
 lspconfig.lua_ls.setup({
   on_attach = on_attach,
@@ -73,7 +73,7 @@ lspconfig.lua_ls.setup({
 })
 
 
-local python_settings = require("kanopo.plugins_setup.lsp.pyright").settings
+local python_settings = require("kanopo.plugins.lsp.pyright").settings
 lspconfig.pyright.setup({
   on_attach = on_attach,
   settings = python_settings,

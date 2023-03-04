@@ -1,0 +1,10 @@
+
+require("kanopo.plugins.lualine")
+require("kanopo.plugins.nvim-tree")
+require("kanopo.plugins.treesitter")
+require("kanopo.plugins.which-key")
+require("kanopo.plugins.lsp")
+require("kanopo.plugins.cmp")
+require("kanopo.plugins.null-ls")
+require("kanopo.plugins.alpha")
+require("kanopo.plugins.dressing")
