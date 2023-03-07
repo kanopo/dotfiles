@@ -221,6 +221,8 @@ exec_always {
 
 # auto start programs
 exec keepassxc
+exec dropbox
+exec gammastep
 exec mako
 exec blueman-applet
 exec nm-applet --indicator

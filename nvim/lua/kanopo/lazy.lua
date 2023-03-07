@@ -42,6 +42,7 @@ local plugins = {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = "BufReadPre",
 		build = ":TSUpdate",
 	},
 
@@ -149,6 +150,16 @@ local plugins = {
 				},
 			})
 		end,
+	},
+
+	{
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		fs = "norg",
+		dependencies = {
+
+			"folke/zen-mode.nvim",
+		},
 	},
 }
 local opts = {}

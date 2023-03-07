@@ -14,8 +14,6 @@ setopt hist_find_no_dups
 autoload -U compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-# vim keybindings
-bindkey -v
 
 # used for version control
 autoload -Uz vcs_info

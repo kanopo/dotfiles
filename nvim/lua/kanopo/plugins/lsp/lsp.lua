@@ -24,7 +24,7 @@ mason.setup({})
 mason_lspconfig.setup({
   ensure_installed = {
     "lua_ls",
-    "pyright",
+    "jedi_language_server",
   },
   automatic_installation = true,
 })
@@ -73,10 +73,8 @@ lspconfig.lua_ls.setup({
 })
 
 
-local python_settings = require("kanopo.plugins.lsp.pyright").settings
-lspconfig.pyright.setup({
+lspconfig.jedi_language_server.setup({
   on_attach = on_attach,
-  settings = python_settings,
 })
 
 

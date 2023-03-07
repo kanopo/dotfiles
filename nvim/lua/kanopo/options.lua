@@ -48,3 +48,4 @@ opt.timeoutlen = 300                                            -- time to wait 
 opt.signcolumn = "yes"
 opt.wrap = false
 
+opt.foldlevel = 99

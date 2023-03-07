@@ -9,11 +9,18 @@ treesitter.setup({
 		"python",
     "markdown",
     "json",
-    "help"
+    "help",
+    "org",
 	},
 	sync_install = false,
 	auto_install = true,
 	highlight = {
 		enable = true,
+    disable = {
+      "org",
+    },
+    additional_vim_regex_highlighting = {
+      "org",
+    }
 	},
 })
