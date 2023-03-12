@@ -1,13 +1,12 @@
 
-local dressing_ok, dressing = pcall(require, "dressing")
-
-if not dressing_ok then
-  print("Dressing error")
-  return
-end
-
-dressing.setup({
-  input = {
-    enabled = true
-  }
-})
+return {
+  "stevearc/dressing.nvim",
+  opts = {
+    input = {
+      enabled = true
+    },
+  },
+  config = function ()
+    require("dressing").setup({opts})
+  end
+}
