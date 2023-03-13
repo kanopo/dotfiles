@@ -23,7 +23,7 @@ end
 
 return {
   "hrsh7th/nvim-cmp",
-  event = {"BufReadPost", "BufNewFile"},
+  event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
@@ -60,6 +60,7 @@ return {
         {
           name = "path"
         },
+        { name = "neorg" },
       },
       mapping = {
         -- used to bring up the completion
