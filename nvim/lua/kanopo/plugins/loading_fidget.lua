@@ -1,12 +1,11 @@
 return {
   "j-hui/fidget.nvim",
   event = "VeryLazy",
-  opts = {
-    text = {
-      spinner = "moon",
-    },
-  },
   config = function()
-    require("fidget").setup({opts})
+    require("fidget").setup({
+      text = {
+        spinner = "moon",
+      },
+    })
   end,
 }

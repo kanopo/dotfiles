@@ -49,3 +49,4 @@ opt.signcolumn = "yes"
 opt.wrap = false
 
 opt.foldlevel = 99
+opt.conceallevel = 2 -- used for cool locking text

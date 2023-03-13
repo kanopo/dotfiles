@@ -14,9 +14,8 @@ return {
   keys = {
     {"<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer"},
   },
-  opts = {},
   config = function()
-    require("nvim-tree").setup({opts})
+    require("nvim-tree").setup({})
   end,
 
 }
