@@ -33,6 +33,7 @@ return {
     "jose-elias-alvarez/null-ls.nvim",
     "onsails/lspkind.nvim",
     "windwp/nvim-autopairs",
+    'saadparwaiz1/cmp_luasnip',
   },
   config = function()
     local cmp = require("cmp")

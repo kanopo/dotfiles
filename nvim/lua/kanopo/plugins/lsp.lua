@@ -1,4 +1,3 @@
-
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
@@ -37,7 +36,7 @@ end
 
 return {
   "williamboman/mason.nvim",
-  event = {"BufReadPost", "BufNewFile"},
+  event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
@@ -52,6 +51,18 @@ return {
       ensure_installed = {
         "lua_ls",
         "pyright",
+        "tsserver",
+        "html",
+        "tailwindcss",
+        "cssls",
+        "astro",
+        "bashls",
+        "dockerls",
+        "docker_compose_language_service",
+        "jsonls",
+        "texlab",
+        "rust_analyzer",
+
       },
       automatic_installation = true,
     })
@@ -83,6 +94,40 @@ return {
 
 
     lspconfig.pyright.setup({
+      on_attach = on_attach
+    })
+
+    lspconfig.tsserver.setup({
+      on_attach = on_attach
+    })
+    lspconfig.html.setup({
+      on_attach = on_attach
+    })
+    lspconfig.tailwindcss.setup({
+      on_attach = on_attach
+    })
+    lspconfig.cssls.setup({
+      on_attach = on_attach
+    })
+    lspconfig.astro.setup({
+      on_attach = on_attach
+    })
+    lspconfig.bashls.setup({
+      on_attach = on_attach
+    })
+    lspconfig.dockerls.setup({
+      on_attach = on_attach
+    })
+    lspconfig.docker_compose_language_service.setup({
+      on_attach = on_attach
+    })
+    lspconfig.jsonls.setup({
+      on_attach = on_attach
+    })
+    lspconfig.texlab.setup({
+      on_attach = on_attach
+    })
+    lspconfig.rust_analyzer.setup({
       on_attach = on_attach
     })
   end,
