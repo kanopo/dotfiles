@@ -32,4 +32,5 @@ require("lazy").setup({
   { import = 'kanopo.plugins.bufferline' },
   { import = 'kanopo.plugins.better_comments' },
   { import = 'kanopo.plugins.alpha' },
+  { import = 'kanopo.plugins.icons' },
 })

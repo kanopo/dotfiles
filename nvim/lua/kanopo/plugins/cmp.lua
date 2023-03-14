@@ -34,6 +34,7 @@ return {
     "onsails/lspkind.nvim",
     "windwp/nvim-autopairs",
     'saadparwaiz1/cmp_luasnip',
+    "hrsh7th/cmp-nvim-lsp-signature-help",
   },
   config = function()
     local cmp = require("cmp")
@@ -49,6 +50,7 @@ return {
 
     cmp.setup({
       sources = {
+        { name = "nvim_lsp_signature_help" },
         {
           name = "nvim_lsp"
         },

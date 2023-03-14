@@ -1,3 +1,6 @@
-require("kanopo.init")
+require("kanopo.options")
+require("kanopo.keymaps")
+require("kanopo.lazy")
 
---vim.api.nvim_set_option('background', 'light')
+vim.o.background = "dark"
+require("kanopo.autocmds")

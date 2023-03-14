@@ -12,6 +12,7 @@ end
 
 
 nmap("<leader>", "<Nop>", "Better experience")
+vmap("<leader>", "<Nop>", "Better experience")
 
 -- TODO:
 -- telescope ha un sacco di feature mega fighe, controllare bene che ne vorrei avere qualcuna!!!
@@ -51,3 +52,5 @@ vmap("p", '"_dP', "")
 -- Better indent
 vmap("<", "<gv", "")
 vmap(">", ">gv", "")
+
+nmap("<leader>l", "<cmd>:Lazy<cr>", "Open Lazy")
