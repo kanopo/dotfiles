@@ -26,9 +26,9 @@ PROMPT='%F{blue}%n@%m%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
 export GPG_TTY=$TTY
 
 
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   exec tmux
+# fi
 
 # zsh setting for case insensitive matching
 autoload -Uz compinit

@@ -1,0 +1,33 @@
+# for selected files
+[selection]
+fg = "light_yellow"
+bold = true
+
+# for executable files
+[executable]
+fg = "light_green"
+bold = true
+
+# default theme
+[regular]
+fg = "white"
+
+# for directories
+[directory]
+fg = "light_blue"
+bold = true
+
+# for symlinks
+[link]
+fg = "cyan"
+bold = true
+
+# for invalid symlinks
+[link_invalid]
+fg = "red"
+bold = true
+
+# for sockets
+[socket]
+fg = "light_magenta"
+bold = true

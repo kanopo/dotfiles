@@ -40,17 +40,20 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
+    "jose-elias-alvarez/null-ls.nvim",
   },
   config = function()
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
     local lspconfig = require("lspconfig")
+    require("null-ls").setup({})
+
 
     mason.setup({})
     mason_lspconfig.setup({
       ensure_installed = {
         "lua_ls",
-        "pyright",
+        "jedi_language_server",
         "tsserver",
         "html",
         "tailwindcss",
@@ -93,7 +96,7 @@ return {
     })
 
 
-    lspconfig.pyright.setup({
+    lspconfig.jedi_language_server.setup({
       on_attach = on_attach
     })
 
@@ -131,4 +134,5 @@ return {
       on_attach = on_attach
     })
   end,
+
 }
