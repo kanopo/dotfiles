@@ -1,69 +1,77 @@
--- 	-- lsp plugins and completion
--- 	{
--- 		"hrsh7th/nvim-cmp",
--- 		event = "InsertEnter",
--- 		dependencies = {
--- 			"williamboman/mason-lspconfig.nvim",
--- 			"neovim/nvim-lspconfig",
--- 			"williamboman/mason.nvim",
--- 			"hrsh7th/cmp-nvim-lsp",
--- 			"jose-elias-alvarez/null-ls.nvim",
--- 			"rafamadriz/friendly-snippets",
--- 			"onsails/lspkind.nvim",
--- 			"L3MON4D3/LuaSnip",
--- 			"hrsh7th/cmp-path",
--- 			"hrsh7th/cmp-buffer",
--- 		},
--- 	},
-
 local check_backspace = function()
-  local col = vim.fn.col(".") - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+  local col = vim.fn.col('.') - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
-return {
+local M = {}
+-- write a function to sum tree numbers
+M = {
   "hrsh7th/nvim-cmp",
-  event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-buffer",
     "L3MON4D3/LuaSnip",
-    "rafamadriz/friendly-snippets",
-    "jose-elias-alvarez/null-ls.nvim",
-    "onsails/lspkind.nvim",
+    "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/cmp-path",
+    "zbirenbaum/copilot.lua",
+    "zbirenbaum/copilot-cmp",
     "windwp/nvim-autopairs",
-    'saadparwaiz1/cmp_luasnip',
-    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "onsails/lspkind-nvim",
+
   },
   config = function()
-    local cmp = require("cmp")
-    local luasnip = require("luasnip")
-    local lspkind = require("lspkind")
+    -- nvim-cmp setup
+    local cmp = require 'cmp'
+    local luasnip = require 'luasnip'
+    local lspkind = require('lspkind')
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
     require("luasnip/loaders/from_vscode").lazy_load()
+    require("copilot_cmp").setup({
+      suggestion = {
+        enabled = false,
+      },
+      panel = {
+        enabled = false
+      },
+    })
 
-    cmp.event:on(
-      'confirm_done',
-      cmp_autopairs.on_confirm_done()
-    )
+    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
-    cmp.setup({
+
+    cmp.setup {
+      snippet = {
+        expand = function(args)
+          luasnip.lsp_expand(args.body)
+        end,
+      },
+      formatting = {
+        fields = {
+          "abbr",
+          "kind",
+          "menu",
+        },
+        format = lspkind.cmp_format({
+          mode = "symbol",
+          maxwidth = 25,
+          ellipsis_char = "...",
+          before = function(entry, item)
+            local menu_icon = {
+              nvim_lsp = "LSP",
+              luasnip = "SNIP",
+              buffer = "BUFF",
+              path = "PATH",
+              copilot = "COP",
+            }
+            item.menu = menu_icon[entry.source.name]
+            return item
+          end,
+        })
+      },
       sources = {
-        { name = "nvim_lsp_signature_help" },
-        {
-          name = "nvim_lsp"
-        },
-        {
-          name = "luasnip"
-        },
-        {
-          name = "buffer"
-        },
-        {
-          name = "path"
-        },
-        { name = "neorg" },
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'buffer' },
+        { name = 'path' },
+        { name = 'copilot' },
       },
       mapping = {
         -- used to bring up the completion
@@ -112,33 +120,8 @@ return {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       },
-      formatting = {
-        fields = {
-          "abbr",
-          "kind",
-          "menu",
-        },
-        format = lspkind.cmp_format({
-          mode = "symbol",
-          maxwidth = 25,
-          ellipsis_char = "...",
-          before = function(entry, item)
-            local menu_icon = {
-              nvim_lsp = "LSP",
-              luasnip = "SNIP",
-              buffer = "BUFF",
-              PATH = "PATH",
-            }
-            item.menu = menu_icon[entry.source.name]
-            return item
-          end,
-        })
-      },
-      snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end
-      },
-    })
+    }
   end,
 }
+
+return M

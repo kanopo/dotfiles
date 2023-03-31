@@ -1,24 +1,36 @@
--- 	{
--- 		"nvim-telescope/telescope.nvim",
--- 		tag = "0.1.1",
--- 		dependencies = {
--- 			"nvim-lua/plenary.nvim",
--- 		},
--- 	},
+local M = {}
 
-return {
+M = {
   "nvim-telescope/telescope.nvim",
-  cmd = { "Telescope" },
-  keys = {
-    { "<leader>ff", "<cmd>Telescope find_files<cr>",   desc = "Telescope fine files" },
-    { "<leader>fb", "<cmd>Telescope git_branches<cr>", desc = "Find git branches" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      cond = function()
+        return vim.fn.executable("make") == 1
+      end
+    },
+  },
+  cmd = {
+    "Telescope",
   },
   tag = "0.1.1",
-  dependencies = {
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }, "nvim-lua/plenary.nvim",
-  },
-  --opts = {},
-  --config = function()
-  --  require("telescope").setup({opts})
-  --end,
+  config = function()
+    require("telescope").setup({
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
+        },
+      },
+    })
+    pcall(require("telescope").load_extension, "fzf")
+  end
 }
+
+
+return M

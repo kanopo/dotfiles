@@ -1,11 +1,12 @@
-return {
+local M = {}
+
+M = {
   "stevearc/dressing.nvim",
-  event = "VeryLazy",
-  config = function()
-    require("dressing").setup({
-      input = {
-        enabled = true
-      },
-    })
-  end
+  opts = {
+    input = {
+      enabled = true,
+    }
+  }
 }
+
+return M

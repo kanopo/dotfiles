@@ -1,4 +1,6 @@
-return {
+local M = {}
+
+M = {
   "akinsho/bufferline.nvim",
   event = "VeryLazy",
   config = function()
@@ -30,3 +32,5 @@ return {
     })
   end
 }
+
+return M

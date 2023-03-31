@@ -63,7 +63,10 @@ local buddha = {
   [[           ```-----....._____```---...___(____|_/__)___...---'''_____.....-----'''          ]],
 }
 
-return {
+
+local M = {}
+
+M = {
   "goolord/alpha-nvim",
   config = function()
     local alpha = require("alpha")
@@ -85,7 +88,7 @@ return {
 
         -- local now = os.date "%d-%m-%Y %H:%M:%S"
         local version = "   v" .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
-        local fortune = require "alpha.fortune"
+        -- local fortune = require "alpha.fortune"
         local plugins = "⚡Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
         local footer = "\t" .. version .. "\t" .. plugins .. "\n"
         dashboard.section.footer.val = footer
@@ -96,3 +99,5 @@ return {
     alpha.setup(dashboard.opts)
   end
 }
+
+return M

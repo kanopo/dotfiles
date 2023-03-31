@@ -1,59 +1,69 @@
-local opt = vim.opt
 
--- Disable default neovim file explorer
+local o = vim.opt
+-- Setting leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
-
--- Tab related indentation
-opt.smarttab = true
-opt.expandtab = true
-opt.tabstop = 2
-opt.shiftwidth = 2
-
-
--- search (devo usare :nohlsearch per cancellare l'highlight) TODO: aggiungere shorcut
-opt.hlsearch = true
-opt.incsearch = true
-opt.ignorecase = true
-opt.smartcase = true
 -- numbers
-opt.relativenumber = true
+o.relativenumber = true
 
--- colors
-opt.termguicolors = true
--- splitting
--- encoding
-opt.fileencoding = "utf-8"
+-- unified clipboard
+o.clipboard = "unnamedplus"
 
--- clipboard(unique system clipboard)
-opt.clipboard = "unnamedplus"
+-- highlight curso line
+o.cursorline = true
 
-opt.showmode = false  -- we don't need to see things like -- INSERT -- anymore
-opt.updatetime = 300  -- faster completion (4000ms default)
-opt.undofile = true   -- enable persistent undofile
-opt.cursorline = true -- highlight line current
+-- tab indentation
+o.tabstop = 2
+o.shiftwidth = 2
+o.smarttab = true
+o.expandtab = true
 
-opt.backup = false    -- creates a backup file
-opt.conceallevel = 0  -- makrdown make visible ``
-opt.pumheight = 10    -- pop up menu height
-opt.swapfile = false
 
-opt.splitright = true
-opt.splitbelow = true
+-- colors 
+o.termguicolors = true
 
-opt.timeoutlen = 300 -- time to wait for a mapped sequence to complete (in milliseconds)
-opt.signcolumn = "yes"
-opt.wrap = false
+o.hlsearch = false
+o.incsearch = true
 
-opt.foldlevel = 99
-opt.conceallevel = 2 -- used for cool locking text
+o.mouse = "a"
 
-opt.cmdheight = 0
-opt.pumblend = 10
-opt.pumheight = 10
-opt.scrolloff = 8
+o.breakindent = true
 
+o.smartcase = true
+o.ignorecase = true
+
+o.signcolumn = "yes"
+
+
+o.updatetime  = 250
+o.timeout = true
+o.timeoutlen = 300
+
+o.completeopt = 'menuone,noselect'
+
+-- highlight on search
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
+o.fileencoding = "utf-8"
+o.showmode = false
+
+o.undofile = true
+
+o.backup = false
+o.conceallevel = 0
+o.pumheight = 10
+o.swapfile = false
+o.splitbelow = true
+o.splitright = true
+o.wrap = false
+o.foldlevel  = 99

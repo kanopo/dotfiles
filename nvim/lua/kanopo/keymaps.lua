@@ -11,21 +11,23 @@ local imap = function(keys, func, desc)
 end
 
 
-nmap("<leader>", "<Nop>", "Better experience")
-vmap("<leader>", "<Nop>", "Better experience")
+-- Keymaps for better default experience
+nmap("<space>", "<nop>", "Better leader key")
+vmap("<space>", "<nop>", "Better leader key")
 
--- TODO:
--- telescope ha un sacco di feature mega fighe, controllare bene che ne vorrei avere qualcuna!!!
+-- Remap for dealing with word wrap
+-- nmap("k", "v:count == 0 ? 'gk' : 'k'<cr>", "Remap for word wrappign")
+-- nmap("k", "v:count == 0 ? 'gj' : 'j'<cr>", "Remap for word wrappign")
+
+nmap("<leader>e", ":NvimTreeFindFileToggle<cr>", "Toggle file explorer")
+nmap("<leader>f", ":lua vim.lsp.buf.format()<cr>", "Format file")
+nmap("<leader>t", ":Telescope find_files<cr>", "Telescope find file")
 
 nmap("C-h", ":TmuxNavigateLeft<CR>", "Move left in the split View")
 nmap("C-j", ":TmuxNavigateDown<CR>", "Move down in the split View")
 nmap("C-k", ":TmuxNavigateUp<CR>", "Move up in the split View")
 nmap("C-l", ":TmuxNavigateRight<CR>", "Move right in the split View")
 
-
--- WARN: AGGIUNGERE DESCRIZIONE ALLE FUNZIONI
-
--- Resize with arrows
 nmap("<C-Up>", ":resize -2<CR>", "")
 nmap("<C-Down>", ":resize +2<CR>", "")
 nmap("<C-Left>", ":vertical resize -2<CR>", "")
@@ -35,7 +37,6 @@ nmap("<C-Right>", ":vertical resize +2<CR>", "")
 nmap("<S-l>", ":bnext<CR>", "")
 nmap("<S-h>", ":bprevious<CR>", "")
 nmap("<S-w>", ":bdelete<CR>", "Close buffer(tab)")
-
 
 -- Move Lines
 nmap("<A-j>", ":m .+1<CR>==", "")
@@ -48,10 +49,6 @@ imap("<A-k>", "<Esc>:m .-2<CR>==gi", "")
 -- Paste over currently selected text without yanking it
 vmap("p", '"_dP', "")
 
-
 -- Better indent
 vmap("<", "<gv", "")
 vmap(">", ">gv", "")
-
-nmap("<leader>l", "<cmd>:Lazy<cr>", "Open Lazy")
-nmap("<leader>f", "<cmd>:Neoformat<cr>", "Format file")

@@ -1,6 +1,5 @@
-require("kanopo.options")
-require("kanopo.keymaps")
-require("kanopo.lazy")
 
-vim.o.background = "dark"
+require("kanopo.options")
 require("kanopo.autocmds")
+require("kanopo.lazy")
+require("kanopo.keymaps")
