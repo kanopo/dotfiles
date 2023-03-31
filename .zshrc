@@ -26,17 +26,17 @@ PROMPT='%F{blue}%n@%m%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
 export GPG_TTY=$TTY
 
 
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#   exec tmux
-# fi
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
 
 # zsh setting for case insensitive matching
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 alias ll="ls -l --color"
 alias l="ls --color"
@@ -49,26 +49,3 @@ alias rec='wf-recorder --audio -g "$(slurp)"'
 alias scrivania-on="wget -O /dev/null -q 'http://192.168.1.129/?=on'"
 alias scrivania-off="wget -O /dev/null -q 'http://192.168.1.129/?=off'"
 alias latex-recursive="latexmk -pvc -pdf"
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/me/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/me/.miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/me/.miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/me/.miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-# pnpm
-export PNPM_HOME="/home/me/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end

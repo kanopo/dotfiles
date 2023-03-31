@@ -29,9 +29,9 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, "[W]orkspace [L]ist Folders")
 
-  nmap("<leader>f", function()
-    vim.lsp.buf.format({ async = true })
-  end, "[F]ormat")
+  -- nmap("<leader>f", function()
+  --   vim.lsp.buf.format({ async = true })
+  -- end, "[F]ormat")
 end
 
 return {
@@ -41,12 +41,23 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     "jose-elias-alvarez/null-ls.nvim",
+    "jose-elias-alvarez/typescript.nvim",
+    "sbdchd/neoformat",
   },
   config = function()
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
     local lspconfig = require("lspconfig")
-    require("null-ls").setup({})
+    require("typescript").setup({
+      disable_commands = false, -- prevent the plugin from creating Vim commands
+      debug = false,            -- enable debug logging for commands
+      go_to_source_definition = {
+        fallback = true,        -- fall back to standard LSP definition on failure
+      },
+      server = {                -- pass options to lspconfig's setup method
+        on_attach = on_attach,
+      },
+    })
 
 
     mason.setup({})
@@ -54,7 +65,6 @@ return {
       ensure_installed = {
         "lua_ls",
         "jedi_language_server",
-        "tsserver",
         "html",
         "tailwindcss",
         "cssls",
@@ -100,9 +110,9 @@ return {
       on_attach = on_attach
     })
 
-    lspconfig.tsserver.setup({
-      on_attach = on_attach
-    })
+    -- lspconfig.tsserver.setup({
+    --   on_attach = on_attach
+    -- })
     lspconfig.html.setup({
       on_attach = on_attach
     })
@@ -133,6 +143,19 @@ return {
     lspconfig.rust_analyzer.setup({
       on_attach = on_attach
     })
-  end,
 
+    -- vim.cmd [[
+    --   augroup fmt
+    --   autocmd!
+    --   autocmd BufWritePre * undojoin | Neoformat
+    --   augroup END
+    -- ]]
+
+
+    require("null-ls").setup({
+      sources = {
+        require("typescript.extensions.null-ls.code-actions")
+      }
+    })
+  end,
 }

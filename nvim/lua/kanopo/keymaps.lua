@@ -54,3 +54,4 @@ vmap("<", "<gv", "")
 vmap(">", ">gv", "")
 
 nmap("<leader>l", "<cmd>:Lazy<cr>", "Open Lazy")
+nmap("<leader>f", "<cmd>:Neoformat<cr>", "Format file")

@@ -5,9 +5,10 @@ set $up k
 set $right l
 set $term alacritty
 set $menu wofi --show run --allow-images
+set $wallpaper ~/Pictures/wallpapers/gruv_wall.jpg
 
 
-output * bg ~/Pictures/wallpapers/patrick.jpg fill
+output * bg $wallpaper fill
 
 
 ### Key bindings
@@ -177,11 +178,11 @@ bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
 # borders
-default_border none
+default_border pixel
 
 # gaps
 smart_gaps on
-gaps outer 3
+gaps outer 5
 gaps inner 3
 
 # brightness keys laptop
@@ -196,9 +197,9 @@ bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ 
 bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 exec swayidle -w \
-          timeout 300 'swaylock -e -f -i ~/Pictures/wallpapers/patrick.jpg' \
+          timeout 300 'swaylock -e -f -i ' $wallpaper \
           timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -e -f -i ~/Pictures/wallpapers/patrick.jpg'
+          before-sleep 'swaylock -e -f -i ' $wallpaper
 
 bindsym $mod+Escape exec wlogout
 
@@ -236,5 +237,6 @@ exec mako
 exec blueman-applet
 exec nm-applet --indicator
 exec_always --no-startup-id workstyle &> /tmp/workstyle.log
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 
