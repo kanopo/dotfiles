@@ -21,7 +21,7 @@ vmap("<space>", "<nop>", "Better leader key")
 
 nmap("<leader>e", ":NvimTreeFindFileToggle<cr>", "Toggle file explorer")
 nmap("<leader>f", ":lua vim.lsp.buf.format()<cr>", "Format file")
-nmap("<leader>t", ":Telescope find_files<cr>", "Telescope find file")
+nmap("<leader>ff", ":Telescope find_files<cr>", "Telescope find file")
 
 nmap("C-h", ":TmuxNavigateLeft<CR>", "Move left in the split View")
 nmap("C-j", ":TmuxNavigateDown<CR>", "Move down in the split View")
@@ -52,3 +52,6 @@ vmap("p", '"_dP', "")
 -- Better indent
 vmap("<", "<gv", "")
 vmap(">", ">gv", "")
+
+nmap("<leader>a", ":lua require('harpoon.mark').add_file()<cr>", "Clear highlights")
+nmap("<leader>m", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", "Clear highlights")

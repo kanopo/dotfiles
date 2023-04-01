@@ -67,3 +67,8 @@ o.splitbelow = true
 o.splitright = true
 o.wrap = false
 o.foldlevel  = 99
+
+
+-- spellchecker
+o.spelllang = "en"
+o.spell = true
