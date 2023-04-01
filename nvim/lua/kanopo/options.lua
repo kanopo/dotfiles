@@ -66,9 +66,15 @@ o.swapfile = false
 o.splitbelow = true
 o.splitright = true
 o.wrap = false
-o.foldlevel  = 99
 
 
 -- spellchecker
 o.spelllang = "en"
 o.spell = true
+
+
+-- foldings
+o.foldcolumn  = "1"
+o.foldlevel  = 99
+o.foldlevelstart  = 99
+o.foldenable  = true

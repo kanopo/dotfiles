@@ -2,6 +2,9 @@ local M = {}
 
 M = {
   "akinsho/bufferline.nvim",
+  dependencies = {
+    "ellisonleao/gruvbox.nvim",
+  },
   event = "VeryLazy",
   config = function()
     require("bufferline").setup({

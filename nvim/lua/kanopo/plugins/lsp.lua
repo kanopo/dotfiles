@@ -42,6 +42,7 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  texlab = {},
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -56,10 +57,6 @@ M = {
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "folke/neodev.nvim",
-    {
-      "j-hui/fidget.nvim",
-      opts = {},
-    },
   },
   config = function()
     -- Setup neovim lua configuration

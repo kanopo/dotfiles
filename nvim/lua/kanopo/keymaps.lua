@@ -55,3 +55,6 @@ vmap(">", ">gv", "")
 
 nmap("<leader>a", ":lua require('harpoon.mark').add_file()<cr>", "Clear highlights")
 nmap("<leader>m", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", "Clear highlights")
+
+nmap("zo", ":lua require('ufo').openAllFolds()<cr>", "Open all folds")
+nmap("zc", ":lua require('ufo').closeAllFolds()<cr>", "Open all folds")
