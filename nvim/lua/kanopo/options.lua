@@ -78,3 +78,6 @@ o.foldcolumn  = "1"
 o.foldlevel  = 99
 o.foldlevelstart  = 99
 o.foldenable  = true
+
+
+o.cmdheight=0

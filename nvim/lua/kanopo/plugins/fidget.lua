@@ -1,7 +1,7 @@
 local M = {}
 
 M = {
-  "j-martin/fidget.nvim",
+  "j-hui/fidget.nvim",
   opts = {
   }
 }

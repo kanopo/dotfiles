@@ -1,0 +1,8 @@
+
+# borders
+default_border pixel
+
+# gaps
+smart_gaps on
+gaps outer 5
+gaps inner 3

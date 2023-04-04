@@ -58,3 +58,5 @@ nmap("<leader>m", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", "Clear h
 
 nmap("zo", ":lua require('ufo').openAllFolds()<cr>", "Open all folds")
 nmap("zc", ":lua require('ufo').closeAllFolds()<cr>", "Open all folds")
+
+vim.api.nvim_set_keymap('n', '<CR>', '<cmd>FineCmdline<CR>', {noremap = true})
