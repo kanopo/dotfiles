@@ -20,12 +20,12 @@ M = {
       ["core.norg.dirman"] = {
         config = {
           workspaces = {
-            personal = "~/Documents/notes/personal",
-            university = "~/Documents/notes/university",
-            work = "~/Documents/notes/work",
+            kanopo = "~/Documents/notes/kanopo",
+            enigma = "~/Documents/notes/enigma",
+            sf = "~/Documents/notes/soluzionifutura",
           },
           index = "index.norg", -- The name of the main (root) .norg file
-          default_workspace = "personal",
+          default_workspace = "kanopo",
         }
       },
       ["core.norg.concealer"] = {
@@ -38,6 +38,8 @@ M = {
           engine = "nvim-cmp",
         }
       },
+      ["core.integrations.treesitter"] = {},
+      ["core.export"] = {},
     },
     -- logger = {
     --   level = "trace"
@@ -46,4 +48,3 @@ M = {
 }
 
 return M
-

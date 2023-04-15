@@ -60,7 +60,7 @@ o.showmode = false
 o.undofile = true
 
 o.backup = false
-o.conceallevel = 0
+o.conceallevel = 2
 o.pumheight = 10
 o.swapfile = false
 o.splitbelow = true
@@ -69,8 +69,8 @@ o.wrap = false
 
 
 -- spellchecker
-o.spelllang = "en"
-o.spell = true
+-- o.spelllang = "en"
+-- o.spell = false
 
 
 -- foldings
@@ -81,3 +81,4 @@ o.foldenable  = true
 
 
 o.cmdheight=0
+o.colorcolumn="90"

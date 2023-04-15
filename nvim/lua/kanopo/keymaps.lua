@@ -2,6 +2,10 @@ local nmap = function(keys, func, desc)
   vim.api.nvim_set_keymap("n", keys, func, { desc = desc, silent = true })
 end
 
+local nnmap = function(keys, func, desc)
+  vim.api.nvim_set_keymap("n", keys, func, { desc = desc, silent = true, noremap = true })
+end
+
 local vmap = function(keys, func, desc)
   vim.api.nvim_set_keymap("v", keys, func, { desc = desc, silent = true })
 end
@@ -59,4 +63,4 @@ nmap("<leader>m", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", "Clear h
 nmap("zo", ":lua require('ufo').openAllFolds()<cr>", "Open all folds")
 nmap("zc", ":lua require('ufo').closeAllFolds()<cr>", "Open all folds")
 
-vim.api.nvim_set_keymap('n', '<CR>', '<cmd>FineCmdline<CR>', {noremap = true})
+nnmap(':', '<cmd>FineCmdline<CR>', "CMD popup")

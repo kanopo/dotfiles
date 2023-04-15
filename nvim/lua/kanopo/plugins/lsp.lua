@@ -43,6 +43,8 @@ local servers = {
     },
   },
   texlab = {},
+  terraformls = {},
+  tflint = {},
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -78,5 +80,14 @@ M = {
     })
   end,
 }
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+    underline = true,
+    signs = true,
+  }
+)
+
 
 return M

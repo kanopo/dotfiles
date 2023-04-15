@@ -25,14 +25,14 @@ M = {
     local lspkind = require('lspkind')
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
     require("luasnip/loaders/from_vscode").lazy_load()
-    require("copilot_cmp").setup({
-      suggestion = {
-        enabled = false,
-      },
-      panel = {
-        enabled = false
-      },
-    })
+    -- require("copilot_cmp").setup({
+    --   suggestion = {
+    --     enabled = false,
+    --   },
+    --   panel = {
+    --     enabled = false
+    --   },
+    -- })
 
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
