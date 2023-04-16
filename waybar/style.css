@@ -24,6 +24,12 @@ window#waybar {
     color: @black 
 }
 
+
+#workspaces button.active {
+    background: @orange_b;
+    color: @black 
+}
+
 #mode, #clock, #battery {
     padding: 0 10px;
     margin: 0 5px;
