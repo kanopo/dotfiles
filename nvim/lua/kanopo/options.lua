@@ -1,84 +1,85 @@
-
-local o = vim.opt
--- Setting leader key
-vim.g.mapleader = " "
+-- Global options
+vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+-- Disable builtin plugins
+vim.g.loaded_gzip = 1
+vim.g.loaded_tar = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_2html_plugin = 1
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_matchit = 1
+vim.g.loaded_matchparen = 1
 
--- numbers
-o.relativenumber = true
+
+-- relative line numbers
+vim.opt.relativenumber = true
 
 -- unified clipboard
-o.clipboard = "unnamedplus"
+vim.opt.clipboard = 'unnamedplus'
 
--- highlight curso line
-o.cursorline = true
-
--- tab indentation
-o.tabstop = 2
-o.shiftwidth = 2
-o.smarttab = true
-o.expandtab = true
-
-
--- colors 
-o.termguicolors = true
-
-o.hlsearch = false
-o.incsearch = true
-
-o.mouse = "a"
-
-o.breakindent = true
-
-o.smartcase = true
-o.ignorecase = true
-
-o.signcolumn = "yes"
+-- indentation
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+vim.opt.breakindent = true
+vim.opt.wrap = false
 
 
-o.updatetime  = 250
-o.timeout = true
-o.timeoutlen = 300
+-- colors
+vim.opt.termguicolors = true
 
-o.completeopt = 'menuone,noselect'
 
--- highlight on search
+-- search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+-- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
 })
 
-o.fileencoding = "utf-8"
-o.showmode = false
 
-o.undofile = true
+-- signs
+vim.opt.signcolumn = 'yes'
 
-o.backup = false
-o.conceallevel = 2
-o.pumheight = 10
-o.swapfile = false
-o.splitbelow = true
-o.splitright = true
-o.wrap = false
+-- speed up
+vim.opt.updatetime = 300
+vim.opt.timeoutlen = 500
+vim.opt.timeout = true
 
 
--- spellchecker
--- o.spelllang = "en"
--- o.spell = false
-
+-- undo
+vim.opt.undofile       = true
+vim.opt.backup         = false
+vim.opt.swapfile       = false
 
 -- foldings
-o.foldcolumn  = "1"
-o.foldlevel  = 99
-o.foldlevelstart  = 99
-o.foldenable  = true
+vim.opt.foldcolumn     = "1"
+vim.opt.foldlevel      = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable     = true
 
 
-o.cmdheight=0
-o.colorcolumn="90"
+
+
+-- rendering
+vim.opt.conceallevel = 2
+
+
+-- cmd height
+vim.opt.cmdheight = 0
+
+
+-- completion
+vim.o.completeopt = 'menuone,noselect'

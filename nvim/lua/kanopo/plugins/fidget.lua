@@ -1,9 +1,0 @@
-local M = {}
-
-M = {
-  "j-hui/fidget.nvim",
-  opts = {
-  }
-}
-
-return M

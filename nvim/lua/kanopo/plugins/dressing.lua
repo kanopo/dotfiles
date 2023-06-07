@@ -1,12 +1,8 @@
 local M = {}
 
 M = {
-  "stevearc/dressing.nvim",
-  opts = {
-    input = {
-      enabled = true,
-    }
-  }
+  'stevearc/dressing.nvim',
+  opts = {},
 }
 
 return M

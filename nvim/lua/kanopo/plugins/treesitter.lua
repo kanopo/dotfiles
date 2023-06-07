@@ -6,12 +6,10 @@ M = {
     "nvim-treesitter/nvim-treesitter-textobjects",
     "nvim-treesitter/nvim-treesitter-context",
   },
+  build = ":TSUpdate",
+
   config = function()
     require("nvim-treesitter.configs").setup({
-      ensure_installed = {
-        "help",
-        "lua",
-      },
       auto_install = true,
       highlight = {
         enable = true,
@@ -30,25 +28,9 @@ M = {
           node_decremental = "<c-s-space>"
         },
       },
-      textobjects = {
-        move = {
-          enable = true,
-          set_jumps = true,
-          goto_next_start = {
-            ["f]"] = "@function.outer",
-            ["c]"] = "@class.outer",
-          },
-          goto_previous_start = {
-            ["f["] = "@function.outer",
-            ["c["] = "@class.outer",
-          },
-        },
-      },
+
     })
-    require("nvim-treesitter.install").update({
-      with_sync = true
-    })
-  end,
+  end
 }
 
 return M

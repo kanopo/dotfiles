@@ -1,50 +1,34 @@
+
+
 local M = {}
 
 M = {
-  'nvim-neorg/neorg',
+  "nvim-neorg/neorg",
   build = ":Neorg sync-parsers",
-  ft = 'norg',
-  cmd = 'Neorg',
-  priority = 30,
-  opts = {
-    load = {
-      ["core.defaults"] = {},
-      ["core.itero"] = {},
-      ["core.norg.esupports.hop"] = {},
-      ["core.norg.esupports.indent"] = {},
-      ["core.norg.esupports.metagen"] = {},
-      ["core.norg.journal"] = {},
-      ["core.norg.qol.toc"] = {},
-      ["core.norg.qol.todo_items"] = {},
-      ["core.promo"] = {},
-      ["core.norg.dirman"] = {
-        config = {
-          workspaces = {
-            kanopo = "~/Documents/notes/kanopo",
-            enigma = "~/Documents/notes/enigma",
-            sf = "~/Documents/notes/soluzionifutura",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
+  config = function()
+    require("neorg").setup {
+      load = {
+        ["core.defaults"] = {},
+        ["core.concealer"] = {
+          config = {
+            icon_preset = "basic",
           },
-          index = "index.norg", -- The name of the main (root) .norg file
-          default_workspace = "kanopo",
-        }
-      },
-      ["core.norg.concealer"] = {
-        config = {
-          icon_preset = "basic",
+        },
+        ["core.dirman"] = {
+          config = {
+            workspaces = {
+              kanopo = "~/Documents/notes/kanopo",
+            },
+            index = "index.norg",
+            default_workspace = "kanopo",
+          },
         },
       },
-      ["core.norg.completion"] = {
-        config = {
-          engine = "nvim-cmp",
-        }
-      },
-      ["core.integrations.treesitter"] = {},
-      ["core.export"] = {},
-    },
-    -- logger = {
-    --   level = "trace"
-    -- }
-  },
+    }
+  end,
 }
 
 return M

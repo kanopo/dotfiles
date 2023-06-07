@@ -46,7 +46,9 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag 
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+
 #
 # Moving around:
 #
@@ -216,7 +218,7 @@ exec_always {
 
 
 # auto start programs
-exec org.keepassxc.KeePassXC
+exec keepassxc
 exec dropbox
 exec gammastep
 exec mako
@@ -224,6 +226,7 @@ exec blueman-applet
 exec nm-applet --indicator
 exec_always --no-startup-id workstyle &> /tmp/workstyle.log
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec xss-lock -- swaylock -e -f -i $wallpaper
 
 
