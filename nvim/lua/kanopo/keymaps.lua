@@ -1,10 +1,5 @@
-
 local nmap = function(keys, func, desc)
   vim.api.nvim_set_keymap("n", keys, func, { desc = desc, silent = true })
-end
-
-local nnmap = function(keys, func, desc)
-  vim.api.nvim_set_keymap("n", keys, func, { desc = desc, silent = true, noremap = true })
 end
 
 local vmap = function(keys, func, desc)
@@ -62,8 +57,12 @@ nmap("<C-Right>", ":vertical resize +2<CR>", "")
 
 
 
--- tmux
-nmap("C-h", ":TmuxNavigateLeft<CR>", "Move left in the split View")
-nmap("C-j", ":TmuxNavigateDown<CR>", "Move down in the split View")
-nmap("C-k", ":TmuxNavigateUp<CR>", "Move up in the split View")
-nmap("C-l", ":TmuxNavigateRight<CR>", "Move right in the split View")
+-- Better window navigation
+nmap("<C-h>", "<C-w>h", {})
+nmap("<C-j>", "<C-w>j", {})
+nmap("<C-k>", "<C-w>k", {})
+nmap("<C-l>", "<C-w>l", {})
+
+-- Navigate buffers
+nmap("<S-l>", ":bnext<CR>", {})
+nmap("<S-h>", ":bprevious<CR>", {})

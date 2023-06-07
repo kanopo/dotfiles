@@ -15,11 +15,15 @@ M = {
     -- COPILOT
     "zbirenbaum/copilot.lua",
     "zbirenbaum/copilot-cmp",
+
+    -- auto pairs
+    "windwp/nvim-autopairs",
   },
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local copilot = require("copilot")
+    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
     copilot.setup({})
 
 
@@ -37,6 +41,7 @@ M = {
     require("luasnip.loaders.from_vscode").lazy_load()
 
     luasnip.config.setup({})
+    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
     cmp.setup({
       snippet = {
