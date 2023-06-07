@@ -1,0 +1,8 @@
+local M = {}
+
+M = {
+  'stevearc/dressing.nvim',
+  opts = {},
+}
+
+return M

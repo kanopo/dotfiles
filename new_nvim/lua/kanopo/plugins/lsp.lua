@@ -1,7 +1,5 @@
 local M = {}
 
-
-
 local servers = {
   lua_ls = {},
 }
@@ -29,12 +27,20 @@ M = {
     'hrsh7th/cmp-nvim-lsp',
     "folke/neodev.nvim",
     "j-hui/fidget.nvim",
+    "kevinhwang91/nvim-ufo",
+    "kevinhwang91/promise-async",
 
   },
   config = function()
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = true,
+      lineFoldingOnly = true
+    }
+
 
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
@@ -60,6 +66,8 @@ M = {
         })
       end
     })
+
+    require("ufo").setup()
   end
 }
 

@@ -18,6 +18,7 @@ end
 
 
 local t = require('telescope.builtin')
+local ufo = require('ufo')
 
 -- Keymaps for better default experience
 nmap("<space>", "<nop>", "Better leader key")
@@ -29,3 +30,7 @@ vim.keymap.set("n", "<leader>ff", t.find_files, {})
 
 -- file explorer
 vim.keymap.set("n", "<leader>fe", ":NvimTreeFindFileToggle<CR>", { noremap = true, silent = true })
+
+-- foldings
+vim.keymap.set("n", "zo", ufo.openAllFolds, { noremap = true, silent = true })
+vim.keymap.set("n", "zc", ufo.closeAllFolds, { noremap = true, silent = true })
