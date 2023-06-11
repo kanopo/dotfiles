@@ -1,96 +1,128 @@
-local M = {}
+local check_backspace = function()
+  local col = vim.fn.col('.') - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
 
+
+local M = {}
+-- write a function to sum tree numbers
 M = {
   "hrsh7th/nvim-cmp",
   dependencies = {
-    'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
-
-    -- Adds LSP completion capabilities
-    'hrsh7th/cmp-nvim-lsp',
-
-    -- Adds a number of user-friendly snippets
-    'rafamadriz/friendly-snippets',
-
-    -- COPILOT
+    "hrsh7th/cmp-nvim-lsp",
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/cmp-path",
     "zbirenbaum/copilot.lua",
     "zbirenbaum/copilot-cmp",
-
-    -- auto pairs
     "windwp/nvim-autopairs",
+    "onsails/lspkind-nvim",
+
   },
   config = function()
-    local cmp = require("cmp")
-    local luasnip = require("luasnip")
-    local copilot = require("copilot")
+    -- nvim-cmp setup
+    local cmp = require 'cmp'
+    local luasnip = require 'luasnip'
+    local lspkind = require('lspkind')
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-    copilot.setup({})
-
-
-    -- copilot setup
+    require("luasnip/loaders/from_vscode").lazy_load()
     require("copilot_cmp").setup({
       suggestion = {
         enabled = false,
       },
-
       panel = {
         enabled = false
       },
     })
 
-    require("luasnip.loaders.from_vscode").lazy_load()
-
-    luasnip.config.setup({})
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
-    cmp.setup({
+
+    cmp.setup {
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
-        end
+        end,
+      },
+      formatting = {
+        fields = {
+          "abbr",
+          "kind",
+          "menu",
+        },
+        format = lspkind.cmp_format({
+          mode = "symbol",
+          maxwidth = 25,
+          ellipsis_char = "...",
+          before = function(entry, item)
+            local menu_icon = {
+              nvim_lsp = "LSP",
+              luasnip = "SNIP",
+              buffer = "BUFF",
+              path = "PATH",
+              copilot = "COP",
+            }
+            item.menu = menu_icon[entry.source.name]
+            return item
+          end,
+        })
+      },
+      sources = {
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'buffer' },
+        { name = 'path' },
+        { name = 'copilot' },
       },
       mapping = {
-        ['<C-Space>'] = cmp.mapping.complete({}),
-        ['<CR>'] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        }),
-        ['<Tab>'] = cmp.mapping(function(fallback)
+        -- used to bring up the completion
+        ["<C-Space>"] = cmp.mapping.complete(),
+        -- moving with tab and shift tab
+        ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
-          elseif luasnip.expand_or_locally_jumpable() then
+          elseif luasnip.expandable() then
+            luasnip.expand()
+          elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
+          elseif check_backspace() then
+            fallback()
           else
             fallback()
           end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
+        end, {
+          "i",
+          "s",
+        }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.locally_jumpable(-1) then
+          elseif luasnip.jumpable(-1) then
             luasnip.jump(-1)
           else
             fallback()
           end
-        end, { 'i', 's' }),
+        end, {
+          "i",
+          "s",
+        }),
         -- exit suggestions
         ["<C-c>"] = cmp.mapping({
           i = cmp.mapping.abort(),
           c = cmp.mapping.close(),
         }),
-
-      },
-      sources = {
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "copilot" },
+        -- The ENTER key select the cmp suggestion
+        ["<CR>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true,
+        }),
       },
       window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       },
-    })
-  end
+    }
+  end,
 }
 
 return M

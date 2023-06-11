@@ -1,16 +1,17 @@
 local M = {}
 
 M = {
-    "nvim-lualine/lualine.nvim",
-    dependencies = {
-        "kyazdani42/nvim-web-devicons",
+  "nvim-lualine/lualine.nvim",
+  dependencies = {
+    'nvim-tree/nvim-web-devicons'
+  },
+  event = "VeryLazy",
+  opts = {
+    options = {
+      icons_enabled = true,
+      theme = 'gruvbox_dark',
     },
-    opts = {
-        options = {
-            icons_enabled = false,
-            theme = "gruvbox",
-        },
-    }
+  },
 }
 
 return M

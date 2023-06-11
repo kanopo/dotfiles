@@ -1,9 +1,10 @@
-
 local M = {}
 
 M = {
   "windwp/nvim-autopairs",
-  opts = {},
+  config = function()
+    require('nvim-autopairs').setup()
+  end
 }
 
 return M

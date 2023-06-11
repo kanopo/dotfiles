@@ -1,4 +1,3 @@
-
 local M = {}
 
 M = {
@@ -32,4 +31,6 @@ M = {
     pcall(require("telescope").load_extension, "fzf")
   end
 }
+
+
 return M

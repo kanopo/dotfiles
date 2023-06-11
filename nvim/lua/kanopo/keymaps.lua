@@ -1,68 +1,46 @@
-local nmap = function(keys, func, desc)
-  vim.api.nvim_set_keymap("n", keys, func, { desc = desc, silent = true })
-end
+-- vim.api.nvim_set_keymap()
 
-local vmap = function(keys, func, desc)
-  vim.api.nvim_set_keymap("v", keys, func, { desc = desc, silent = true })
-end
-
-local imap = function(keys, func, desc)
-  vim.api.nvim_set_keymap("i", keys, func, { desc = desc, silent = true })
-end
+-- NORMAL
+-- Better navigation
+vim.api.nvim_set_keymap("n", "<space>", "<nop>", { noremap = true, silent = true, desc = "" })
+vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true, desc = "" })
+vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true, desc = "" })
+vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "" })
+vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "" })
 
 
+-- Telescope
+local t = require("telescope.builtin")
 
-local t = require('telescope.builtin')
-local ufo = require('ufo')
+-- vim.api.nvim_set_keymap("n", "<leader>ff", t.find_files, {})
+vim.keymap.set("n", "<leader>ff", t.find_files, { desc = "[F]ind [F]iles" })
+vim.keymap.set("n", "<leader>lg", t.live_grep, { desc = "[L]ive [G]rep" })
+vim.keymap.set("n", "<leader>fb", t.buffers, { desc = "[F]ind [B]uffers" })
 
--- Keymaps for better default experience
-nmap("<space>", "<nop>", "Better leader key")
-vmap("<space>", "<nop>", "Better leader key")
-
---nmap("<space>ff", t.find_files, "Find files with telescope")
-vim.keymap.set("n", "<leader>ff", t.find_files, {})
-
-
--- file explorer
-vim.keymap.set("n", "<leader>fe", ":NvimTreeFindFileToggle<CR>", { noremap = true, silent = true })
-
--- foldings
+-- UFO
+local ufo = require("ufo")
 vim.keymap.set("n", "zo", ufo.openAllFolds, { noremap = true, silent = true })
 vim.keymap.set("n", "zc", ufo.closeAllFolds, { noremap = true, silent = true })
 
--- Move Lines
-nmap("<A-j>", ":m .+1<CR>==", "")
-vmap("<A-j>", ":m '>+1<CR>gv=gv", "")
-imap("<A-j>", "<Esc>:m .+1<CR>==gi", "")
-nmap("<A-k>", ":m .-2<CR>==", "")
-vmap("<A-k>", ":m '<-2<CR>gv=gv", "")
-imap("<A-k>", "<Esc>:m .-2<CR>==gi", "")
-
--- Paste over currently selected text without yanking it
-vmap("p", '"_dP', "")
+-- Bufferline navigation
+vim.api.nvim_set_keymap("n", "<s-h>", ":bnext<CR>", { noremap = true, silent = true, desc = "" })
+vim.api.nvim_set_keymap("n", "<s-l>", ":bprevious<CR>", { noremap = true, silent = true, desc = "" })
+vim.api.nvim_set_keymap("n", "<s-w>", ":bdelete<CR>", { noremap = true, silent = true, desc = "" })
 
 
-
--- Better indent
-vmap("<", "<gv", "")
-vmap(">", ">gv", "")
+-- nvim-tree
+vim.api.nvim_set_keymap("n", "<leader>fe", ":NvimTreeFindFileToggle<CR>", { noremap = true, silent = true, desc = "" })
 
 
+-- VISUAL
+vim.api.nvim_set_keymap("v", "<space>", "<nop>", { noremap = true, silent = true, desc = "" })
+-- Indent
+vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true, desc = "" })
+vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true, desc = "" })
 
--- resize windows
-nmap("<C-Up>", ":resize -2<CR>", "")
-nmap("<C-Down>", ":resize +2<CR>", "")
-nmap("<C-Left>", ":vertical resize -2<CR>", "")
-nmap("<C-Right>", ":vertical resize +2<CR>", "")
+-- Move row
+vim.api.nvim_set_keymap("v", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "" })
+vim.api.nvim_set_keymap("v", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "" })
 
-
-
--- Better window navigation
-nmap("<C-h>", "<C-w>h", {})
-nmap("<C-j>", "<C-w>j", {})
-nmap("<C-k>", "<C-w>k", {})
-nmap("<C-l>", "<C-w>l", {})
-
--- Navigate buffers
-nmap("<S-l>", ":bnext<CR>", {})
-nmap("<S-h>", ":bprevious<CR>", {})
+-- paste without copy highlighted text
+vim.api.nvim_set_keymap("v", "p", "_dP", { noremap = true, silent = true, desc = "" })
