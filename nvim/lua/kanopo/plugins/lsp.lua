@@ -9,6 +9,7 @@ local on_attach = function(_, bufnr)
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<leader>k', vim.lsp.buf.hover, '[K]ind')
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -25,6 +26,8 @@ local servers = {
   },
   texlab = {},
   tsserver = {},
+  tailwindcss = {},
+  rust_analyzer = {},
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

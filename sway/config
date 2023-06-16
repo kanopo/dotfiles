@@ -172,7 +172,7 @@ input '1:1:AT_Translated_Set_2_keyboard' {
 }
 
 input '1452:591:NuPhy_Halo65' {
-    xkb_layout en_US
+    xkb_layout us
 }
 
 
@@ -213,11 +213,13 @@ include /etc/sway/config.d/*
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'adw-gtk3-dark'
+    gsettings set $gnome-schema gtk-theme 'adw-gtk3'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 }
 
 
 # auto start programs
+exec wlsunset -l 44.8 -L 10.3 -t 5000
 exec keepassxc
 exec dropbox
 exec gammastep
@@ -228,6 +230,6 @@ exec_always --no-startup-id workstyle &> /tmp/workstyle.log
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec xss-lock -- swaylock -e -f -i $wallpaper
-
+exec wl-paste -t text --watch clipman store --no-persist
 
 

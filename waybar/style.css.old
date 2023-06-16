@@ -1,0 +1,63 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: JetBrains Mono, monospace;
+    font-size: 13px;
+    min-height: 0;
+}
+
+@import "gruvbox.css";
+
+window#waybar {
+    background: @background;
+    color: @white_b;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: @white_b;
+}
+
+#workspaces button.focused {
+    background: @orange_b;
+    color: @black 
+}
+
+
+#workspaces button.active {
+    background: @orange_b;
+    color: @black 
+}
+
+#mode, #clock, #battery {
+    padding: 0 10px;
+    margin: 0 5px;
+}
+
+#mode {
+    background: @red;
+}
+
+#battery.charging {
+    color: @background;
+    background-color: @green;
+}
+
+@keyframes blink {
+    to {
+        background-color: @white_b;
+        color: @background;
+    }
+}
+
+#idle_inhibitor, #pulseaudio, #custom-openvpn, #network, #cpu, #memory, #temperature, #backlight, #battery, #clock, #tray {
+     padding: 0 6px;
+     margin: 0 3px;
+}
+
+#battery.warning:not(.charging) {
+    background: @red;
+    color: @white_b;
+  }
+

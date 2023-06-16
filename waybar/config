@@ -1,14 +1,41 @@
 {
-    "layer": "top", // Waybar at top layer
-    "height": 20, // Waybar height
-    // "width": 1280, // Waybar width
-    // Choose the order of the modules
-    "modules-left": ["wlr/workspaces" ,"sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "clock", "tray"],
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+	"layer": "top",	
+	"position": "top",
+    "height": 27,
+
+
+    "modules-left": ["wlr/workspaces", "sway/workspaces", "custom/scratch", "sway/mode", "sway/window"],
+    "modules-center": [],
+    "modules-right": ["idle_inhibitor", "temperature", "backlight", "pulseaudio", "battery", "clock", "tray"],
+
+
+    "wlr/workspaces": {
+     "format": "{icon}",
+     "on-scroll-up": "hyprctl dispatch workspace e+1",
+     "on-scroll-down": "hyprctl dispatch workspace e-1"
     },
+
+
+	"sway/window": {
+    	"format": "{}",
+    	"max-length": 150
+},
+
+
+	"custom/scratch": {
+   		"interval": 3,
+   		"exec": "swaymsg -t get_tree | jq 'recurse(.nodes[]) | first(select(.name==\"__i3_scratch\")) | .floating_nodes | length | select(. >= 0)'",
+   		"format": "^{}", 
+   		"on-click": "swaymsg 'scratchpad show'",
+   		"on-click-right": "swaymsg 'move scratchpad'"
+},
+
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 15
+},
+
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -16,26 +43,40 @@
             "deactivated": "◌"
         }
     },
-    "wlr/workspaces": {
-     "format": "{icon}",
-     "on-scroll-up": "hyprctl dispatch workspace e+1",
-     "on-scroll-down": "hyprctl dispatch workspace e-1"
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
-    },
+
+
     "clock": {
         "format": "{:%H:%M:%S | %d-%m-%Y}",
         "max-lenght": 50,
         "interval": 1 
     },
-    "cpu": {
-        "format": "{usage}% "
-    },
-    "memory": {
-        "format": "{}% "
-    },
+
+    
+    "battery": {
+        "bat": "BAT1",
+        "states": {
+              "full": 99,
+              "good": 98,
+              "normal": 98,
+              "warning": 20,
+              "critical": 20
+},
+
+        "format": "{icon}   {capacity}%",
+        "format-good": "{icon}   {capacity}%", 
+        "format-full": "   {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 30
+},
+
+
+    "network": {
+        "format-wifi": "   WiFi-On",
+        "format-disconnected": "睊   Disconnected",
+        "interval": 60
+},
+
+
     "temperature": {
         // "thermal-zone": 2,
         "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
@@ -43,50 +84,23 @@
         "format-critical": "{temperatureC}°C ",
         "format": "{temperatureC}°C "
     },
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", ""]
-    },
-  "battery": {
-    "bat": "BAT1",
-    "interval": 60,
-    "states": {
-        "warning": 30,
-        "critical": 15
-    },
-    "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]},
-    "network": {
-        // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ",
-        "format-ethernet": "{ifname} ",
-        "format-disconnected": "Disconnected ⚠",
 
-    },
-  "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+
+    "pulseaudio": {
+      "format": "OUT:{volume}% IN:{format_source}",
+      "format-bluetooth": "  {volume}%  ",
+      "format-muted":"OUT: Mute IN: {format_source}",
+        "format-source": "{volume}%",
+        "format-source-muted": "Mute",
+        "interval": 60,
+
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
+        "default": [""]
+},
+            
+        "on-click": "pavucontrol",
+
+
 }
 
+}
