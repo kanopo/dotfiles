@@ -222,7 +222,6 @@ exec_always {
 exec wlsunset -l 44.8 -L 10.3 -t 5000
 exec keepassxc
 exec dropbox
-exec gammastep
 exec mako
 exec blueman-applet
 exec nm-applet --indicator

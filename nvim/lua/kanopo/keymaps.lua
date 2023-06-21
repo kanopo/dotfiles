@@ -43,4 +43,4 @@ vim.api.nvim_set_keymap("v", "<A-j>", ":m .+1<CR>==", { noremap = true, silent =
 vim.api.nvim_set_keymap("v", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "" })
 
 -- paste without copy highlighted text
-vim.api.nvim_set_keymap("v", "p", "_dP", { noremap = true, silent = true, desc = "" })
+-- vim.api.nvim_set_keymap("v", "p", "_dP", { noremap = true, silent = true, desc = "" })

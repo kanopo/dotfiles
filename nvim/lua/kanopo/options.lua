@@ -1,4 +1,6 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 
 
 vim.opt.backup = false
@@ -38,9 +40,9 @@ vim.opt.guifont = "monospace:h17"
 
 vim.opt.shortmess:append "c"
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
-vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+-- vim.cmd "set whichwrap+=<,>,[,],h,l"
+-- vim.cmd [[set iskeyword+=-]]
+-- vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
 -- highlight on search
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -55,8 +57,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 
 -- foldings
-vim.opt.foldcolumn  = "1"
-vim.opt.foldlevel  = 99
-vim.opt.foldlevelstart  = 99
-vim.opt.foldenable  = true
-
+vim.opt.foldcolumn     = "1"
+vim.opt.foldlevel      = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable     = true
