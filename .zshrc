@@ -23,7 +23,7 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-history-substring-search"
-plug "zap-zsh/exa"
+# plug "zap-zsh/exa"
 plug "romkatv/powerlevel10k"
 plug "zsh-users/zsh-syntax-highlighting"
 
@@ -36,5 +36,10 @@ compinit
 
 
 
-export DENO_INSTALL="/home/me/.deno"
-  export PATH="$DENO_INSTALL/bin:$PATH"
+# Jump to first letter of previous word
+bindkey '^[[1;5D' backward-word
+
+# Jump to first letter of next word or end of line
+bindkey '^[[1;5C' forward-word
+# Delete the following word
+bindkey '^[[3;5~' kill-word

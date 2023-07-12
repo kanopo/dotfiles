@@ -24,7 +24,10 @@ local servers = {
       telemetry = { enable = false },
     },
   },
-  texlab = {},
+
+  -- texlab = {
+  --   -- use custom path for texlab bin
+  -- },
   tsserver = {},
   tailwindcss = {},
   rust_analyzer = {},
