@@ -27,8 +27,8 @@ output * bg $wallpaper fill
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
 
-bindsym $mod+p       exec grimshot --notify copy screen
-bindsym $mod+Shift+p exec grimshot --notify copy area
+# bindsym $mod+p       exec grimshot --notify copy screen
+# bindsym $mod+Shift+p exec grimshot --notify copy area
 
 bindsym $mod+Escape exec wlogout
 
