@@ -45,11 +45,12 @@
     },
 
 
-    "clock": {
-        "format": "{:%H:%M:%S | %d-%m-%Y}",
-        "max-lenght": 50,
-        "interval": 1 
-    },
+     "clock": {
+         "interval": 60,
+         "format": "{:%H:%M}",
+         "max-length": 25,
+         "timezone": "Europe/Rome",
+     },
 
     
     "battery": {

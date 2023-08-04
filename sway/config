@@ -229,8 +229,9 @@ exec_always {
 
 # auto start programs
 exec wlsunset -l 44.8 -L 10.3 -t 5000
-exec keepassxc
 exec dropbox
+
+exec flatpak run org.keepassxc.KeePassXC
 exec mako
 exec blueman-applet
 exec nm-applet --indicator

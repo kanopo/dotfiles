@@ -5,29 +5,26 @@ env:
 
 window:
   opacity: 0.95
-shell: 
-  program: /bin/zsh 
-  args:
-    - -l
-    - -c
-    - "tmux"
+# shell: 
+#   program: /bin/zsh 
+#   args:
+#     - -l
+#     - -c
+#     - "tmux"
 font:
   normal:
     family: "JetBrainsMono Nerd Font"
-    # style: Regular
-  #
-  # bold:
-  #   family: monospace
-  #   style: Bold
-  #
-  # italic:
-  #   family: monospace
-  #   style: Italic
-  #
-  # bold_italic:
-  #   family: monospace
-  #   style: Bold Italic
-  #
+    style: Regular
+  bold:
+    family: "JetBrainsMono Nerd Font"
+    style: Bold
+  italic:
+    family: "JetBrainsMono Nerd Font"
+    style: Italic
+  bold_italic:
+    family: "JetBrainsMono Nerd Font"
+    style: Bold Italic
+
   size: 12
 cursor:
   shape: Block
