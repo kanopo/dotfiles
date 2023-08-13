@@ -3,10 +3,16 @@
 -- NORMAL
 -- Better navigation
 vim.api.nvim_set_keymap("n", "<space>", "<nop>", { noremap = true, silent = true, desc = "" })
-vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true, desc = "" })
-vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true, desc = "" })
-vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "" })
-vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "" })
+
+-- vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true, desc = "" })
+-- vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true, desc = "" })
+-- vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "" })
+-- vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "" })
+
+vim.keymap.set("n", "<C-h>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true, desc = "" })
+vim.keymap.set("n", "<C-j>", ":TmuxNavigateDown<CR>", { noremap = true, silent = true, desc = "" })
+vim.keymap.set("n", "<C-k>", ":TmuxNavigateUp<CR>", { noremap = true, silent = true, desc = "" })
+vim.keymap.set("n", "<C-l>", ":TmuxNavigateRight<CR>", { noremap = true, silent = true, desc = "" })
 
 
 -- Telescope
@@ -23,8 +29,8 @@ vim.keymap.set("n", "zo", ufo.openAllFolds, { noremap = true, silent = true })
 vim.keymap.set("n", "zc", ufo.closeAllFolds, { noremap = true, silent = true })
 
 -- Bufferline navigation
-vim.api.nvim_set_keymap("n", "<s-h>", ":bnext<CR>", { noremap = true, silent = true, desc = "" })
-vim.api.nvim_set_keymap("n", "<s-l>", ":bprevious<CR>", { noremap = true, silent = true, desc = "" })
+vim.api.nvim_set_keymap("n", "<s-l>", ":bnext<CR>", { noremap = true, silent = true, desc = "" })
+vim.api.nvim_set_keymap("n", "<s-h>", ":bprevious<CR>", { noremap = true, silent = true, desc = "" })
 vim.api.nvim_set_keymap("n", "<s-w>", ":bdelete<CR>", { noremap = true, silent = true, desc = "" })
 
 
@@ -43,4 +49,4 @@ vim.api.nvim_set_keymap("v", "<A-j>", ":m .+1<CR>==", { noremap = true, silent =
 vim.api.nvim_set_keymap("v", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "" })
 
 -- paste without copy highlighted text
--- vim.api.nvim_set_keymap("v", "p", "_dP", { noremap = true, silent = true, desc = "" })
+vim.api.nvim_set_keymap("v", "p", "_dP", { noremap = true, silent = true, desc = "" })
