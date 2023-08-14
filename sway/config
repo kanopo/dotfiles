@@ -26,9 +26,6 @@ output * bg $wallpaper fill
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
 
-# bindsym $mod+p       exec grimshot --notify copy screen
-# bindsym $mod+Shift+p exec grimshot --notify copy area
-#
 bindsym $mod+Escape exec wlogout
 
 
@@ -37,6 +34,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec $menu 
+bindsym $mod+n exec nautilus
 
 
 floating_modifier $mod normal
