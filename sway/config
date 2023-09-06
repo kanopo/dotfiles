@@ -20,7 +20,7 @@ set $gruvbox_purple #b16286
 set $gruvbox_aqua #689d6a
 set $gruvbox_orange #d65d0e
 
-output * bg $wallpaper fill
+#output * bg $wallpaper fill
 
 
 bindgesture swipe:right workspace prev
