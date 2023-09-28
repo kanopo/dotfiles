@@ -14,6 +14,11 @@ window:
 #     - -l
 #     - -c
 #     - "tmux"
+#
+# shell:
+#   program: /usr/bin/toolbox
+#   args:
+#     - enter
 font:
   normal:
     family: "JetBrainsMono Nerd Font"
