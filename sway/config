@@ -1,303 +1,103 @@
+
 set $mod Mod4
+
+
 set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
-set $menu wofi --show
-set $wallpaper ~/Pictures/wallpapers/gruv_wall.jpg
 
-# Gruvbox color scheme
-set $gruvbox_bg_dark #282828
-set $gruvbox_bg_light #504945
-set $gruvbox_fg_dark #ebdbb2
-set $gruvbox_fg_light #d5c4a1
-set $gruvbox_red #cc241d
-set $gruvbox_green #98971a
-set $gruvbox_yellow #d79921
-set $gruvbox_blue #458588
-set $gruvbox_purple #b16286
-set $gruvbox_aqua #689d6a
-set $gruvbox_orange #d65d0e
-
+set $wallpaper /usr/share/backgrounds/default.png
 output * bg $wallpaper fill
 
 
-bindgesture swipe:right workspace prev
-bindgesture swipe:left workspace next
+set $term alacritty
 
-bindsym $mod+Escape exec wlogout
+set $menu wofi --show drun --show-icons
 
 
 bindsym $mod+Return exec $term
-
 bindsym $mod+Shift+q kill
-
-bindsym $mod+d exec $menu 
-bindsym $mod+n exec nautilus
-
-
+bindsym $mod+d exec $menu
 floating_modifier $mod normal
-
-# Reload the configuration file
 bindsym $mod+Shift+c reload
 
-    # Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#TODO: add the open suse implementation
+# bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
+# MOVING AROUND
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-#
-# Moving around:
-#
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+# MOVING WINDOWS
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
-#
-# Workspaces:
-#
-    # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+# CHANGING WORKSPACES
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
-    # Switch the current container between different layout styles
-    #/* bindsym $mod+s layout stacking */
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+# MOVING WINDOWS TO WORKSPACES
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+# SPLIT
+bindsym $mod+b splith
+bindsym $mod+v splitv
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+# LAYOUT
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
     bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
     bindsym Right resize grow width 10px
-
-    # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
-# borders
-default_border pixel
-
-# gaps
-smart_gaps on
-gaps outer 5
-gaps inner 3
-
-# the oder is : border, bg, text, indicator
-# Focused window border colors
-client.focused $gruvbox_bg_dark $gruvbox_blue $gruvbox_fg_dark $gruvbox_blue
-
-# Unfocused window border colors
-client.unfocused $gruvbox_bg_dark $gruvbox_bg_dark $gruvbox_fg_light $gruvbox_bg_light
-
-# Urgent window border colors
-client.urgent $gruvbox_bg_dark $gruvbox_red $gruvbox_fg_dark $gruvbox_red
-
-input '1:1:AT_Translated_Set_2_keyboard' {
-    xkb_layout it
-}
-
-input '1452:591:NuPhy_Halo65' {
-    xkb_layout us
-}
 
 
-# mouse config 
-input '1739:52656:MSFT0021:00_06CB:CDB0_Touchpad' {
-    tap enabled
-    natural_scroll enabled
-    dwt enabled
-    }
-
-input type:pointer {
-    accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
-    pointer_accel 0.5 # mouse sesnitivity
-}
-
-# set cloding lid to lock laptop
-set $laptop 'eDP-1'
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
-
-
-
-bar swaybar_command waybar
-
-
-exec swayidle -w \
-          timeout 300 'swaylock -e -f -i ' $wallpaper \
-          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -e -f -i ' $wallpaper
-
-
-
-# set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
-# exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
-
-include /etc/sway/config.d/*
-
-set $gnome-schema org.gnome.desktop.interface
-
-exec_always {
-    gsettings set $gnome-schema gtk-theme 'adw-gtk3'
-    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-}
-
-
-# auto start programs
-exec wlsunset -l 44.8 -L 10.3 -t 5000
-exec dropbox
-exec solaar --window=hide
-# exec flatpak run com.dropbox.Client
-exec flatpak run org.keepassxc.KeePassXC
-exec mako
-exec blueman-applet
-exec nm-applet --indicator
-exec_always --no-startup-id workstyle &> /tmp/workstyle.log
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
-exec xss-lock -- swaylock -e -f -i $wallpaper
-exec wl-paste -t text --watch clipman store --no-persist
-
-# Display PulseAudio volume control application (both GTK and Qt varieties)
-# as a floating window.
-
-for_window [app_id="pavucontrol"] {
-    floating enable
-    move position center
-}
-
-for_window [app_id="pavucontrol-qt"] {
-    floating enable
-    move position center
-}
-
-# Brightness
-set $brightness_notification_cmd  command -v notify-send >/dev/null && \
-        VALUE=$(light) && VALUE=${VALUE%%.*} && \
-        notify-send -e -h string:x-canonical-private-synchronous:brightness \
-            -h "int:value:$VALUE" -t 800 "Brightness: ${VALUE}%"
-
-bindsym XF86MonBrightnessDown exec 'STEP="$brightness_step" && brightnessctl set 5%- && $brightness_notification_cmd'
-bindsym XF86MonBrightnessUp exec 'STEP="$brightness_step" && brightnessctl set +5% && $brightness_notification_cmd'
-
-
-# Screenshot
-set $screenshots_dir  ${XDG_SCREENSHOTS_DIR:-${XDG_PICTURES_DIR:-$HOME/Pictures}}
-set $screenshot_notification_cmd  command -v notify-send >/dev/null && \
-        notify-send -t 800 "Screenshot saved " "$screenshots_dir"
-
-
-
-bindsym {
-    # Capture the currently active output
-    Print       exec grimshot save output && $screenshot_notification_cmd
-    # Capture the currently active window
-    Shift+Print   exec grimshot save active && $screenshot_notification_cmd
-    # Select and capture a custom rectangular area
-    Ctrl+Print  exec grimshot save area && $screenshot_notification_cmd
-}
-
-# if the keyboard hasn't the print key i use this
-bindsym {
-    # Capture the currently active output
-    $mod+p       exec grimshot save output && $screenshot_notification_cmd
-    # Capture the currently active window
-    $mod+Shift+p   exec grimshot save active && $screenshot_notification_cmd
-    # Select and capture a custom rectangular area
-    $mod+Ctrl+p  exec grimshot save area && $screenshot_notification_cmd
-}
-
-
-
-# Audio
-set $audio_notification_cmd command -v notify-send >/dev/null && \
-        VALUE=$(pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}') && \
-        notify-send -e -h string:x-canonical-private-synchronous:audio \
-            -h "int:value:$VALUE" -t 800 "Volume: ${VALUE}%"
-
-bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && $audio_notification_cmd
-bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && $audio_notification_cmd
-bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+include ~/.config/sway/configs/*
