@@ -7,13 +7,15 @@ set $down j
 set $up k
 set $right l
 
-set $wallpaper /usr/share/backgrounds/default.png
+# set $wallpaper /usr/share/backgrounds/default.png
+set $wallpaper ~/Pictures/wallpapers/gruv_wall.jpg
 output * bg $wallpaper fill
 
 
 set $term alacritty
 
-set $menu wofi --show drun --show-icons
+# set $menu wofi -I -i --show drun 
+set $menu wofi -S drun -p Search -I -b -i
 
 
 bindsym $mod+Return exec $term
@@ -98,6 +100,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-
+include /etc/sway/config.d/*
 
 include ~/.config/sway/configs/*
