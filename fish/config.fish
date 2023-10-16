@@ -10,23 +10,33 @@ if status is-interactive
   alias la "exa -a"
   alias cat "bat"
 
-
-  set MOZ_ENABLE_WAYLAND 1
+  # GENERAL
   set EDITOR "nvim"
   set TERM "alacritty"
   set VISUAL "nvim"
   set BROWSER "firefox"
   set LANG "en_US.UTF-8"
+
+  # WAYLAND
+  set MOZ_ENABLE_WAYLAND 1
+
+  # SWAY
   set XDG_CURRENT_DESKTOP "sway"
   set XDG_SESSION_TYPE "wayland"
+
+  # Disable conda auto activate
+  set CONDA_AUTO_ACTIVATE_BASE false
 end
 
 
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /usr/bin/conda
-    eval /usr/bin/conda "shell.fish" "hook" $argv | source
-end
-# <<< conda initialize <<<
+# Initialize conda
+# WARN: DISABLED FOR BECOMING SLOW, ACTIVATE MANUALLY
+# if test -f /usr/bin/conda
+#     eval /usr/bin/conda "shell.fish" "hook" $argv | source
+# end
 
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
