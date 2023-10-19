@@ -6,6 +6,11 @@ M = {
     "ellisonleao/gruvbox.nvim",
   },
   event = "VeryLazy",
+  keys = {
+    { "<s-l>", "<cmd>bnext<CR>", desc = "Go next tab" },
+    { "<s-h>", "<cmd>bprevious<CR>", desc = "Go previous tab" },
+    { "<s-w>", "<cmd>bdelete<CR>", desc = "Close current tab" },
+  },
   config = function()
     require("bufferline").setup({
       options = {

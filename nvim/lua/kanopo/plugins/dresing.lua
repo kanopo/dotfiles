@@ -1,13 +1,9 @@
-
 local M = {}
 
 M = {
   "stevearc/dressing.nvim",
-  opts = {
-    input = {
-      enabled = true,
-    },
-  },
+  event = "VeryLazy"
 }
 
 return M
+

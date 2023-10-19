@@ -2,7 +2,15 @@ local M = {}
 
 M = {
   "numToStr/Comment.nvim",
-  opts = {}
-}
+  event = { "BufReadPre", "BufNewFile" },
+  config = function()
+    -- import comment plugin safely
+    local comment = require("Comment")
 
+
+    -- enable comment
+    comment.setup({
+    })
+  end,
+}
 return M

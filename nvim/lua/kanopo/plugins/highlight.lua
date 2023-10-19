@@ -6,6 +6,7 @@ M = {
     "nvim-treesitter/nvim-treesitter-textobjects",
     "nvim-treesitter/nvim-treesitter-context",
   },
+  event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
   config = function()
     require("nvim-treesitter.configs").setup({
@@ -22,14 +23,14 @@ M = {
           "python",
         },
       },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<c-space>",
-          node_incremental = "<c-space>",
-          node_decremental = "<c-s-space>"
-        },
-      },
+      -- incremental_selection = {
+      --   enable = true,
+      --   keymaps = {
+      --     init_selection = "<c-space>",
+      --     node_incremental = "<c-space>",
+      --     node_decremental = "<c-s-space>"
+      --   },
+      -- },
       -- textobjects = {
       --   move = {
       --     enable = true,
