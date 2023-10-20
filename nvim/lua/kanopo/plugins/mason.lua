@@ -27,6 +27,8 @@ M = {
       ensure_installed = {
         "tsserver",
         "lua_ls",
+        "texlab",
+
       },
       automatic_installation = true,
     })
