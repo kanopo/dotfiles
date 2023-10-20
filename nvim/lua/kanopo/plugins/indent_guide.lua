@@ -4,20 +4,21 @@ vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 
+local highlight = {
+    "CursorColumn",
+    "Whitespace",
+}
 
 M = {
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",
   opts = {
-  --   char = "┊",
-  --   show_trailing_blankline_indent = false,
-  --   enabled = true,
-  --   space_char_blankline = " ",
-  --   show_current_context = true,
-  --   show_current_context_start = true,
-  -- }
-
-
+    indent = { highlight = highlight, char = "" },
+    whitespace = {
+        highlight = highlight,
+        remove_blankline_trail = false,
+    },
+    scope = { enabled = false },
   }
 
 

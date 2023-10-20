@@ -1,9 +1,11 @@
 local M = {}
 
-
 M = {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
+  keys = {
+    {"<leader>fb", "<cmd>lua vim.lsp.buf.format()<cr>"}
+  },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },

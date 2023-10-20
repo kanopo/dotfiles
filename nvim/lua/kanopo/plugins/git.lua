@@ -5,6 +5,7 @@ M = {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
+  cmd = "Neogit",
   opts = {}
 }
 
