@@ -2,15 +2,19 @@ local M = {}
 
 M = {
   "zbirenbaum/copilot.lua",
-  opts = {
-    panel = {
-      enabled = false,
-      auto_refresh = false
-    },
-    suggestion = {
-      enabled = false
-    },
-  }
+  cmd = "Copilot",
+  event = "InsertEnter",
+  config = function()
+    require("copilot").setup({
+      panel = {
+        enabled = false,
+      },
+      suggestions = {
+        enabled = false,
+        auto_trigger = true,
+      },
+    })
+  end,
 }
 
 return M

@@ -12,5 +12,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
+local lazy_ok, lazy = pcall(require, "lazy")
+if not lazy_ok then
+	print("Error")
+else
+	lazy.setup("kanopo.plugins")
+end
 
-require("lazy").setup("kanopo.plugins")
+
+
