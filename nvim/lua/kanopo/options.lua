@@ -1,9 +1,11 @@
+-- remove unused stuff
+vim.g.loaded_netrw =  1
+vim.g.loaded_netrwPlugin =  1
+
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 
 
 vim.opt.backup = false
@@ -43,3 +45,20 @@ vim.opt.guifont = "monospace:h17"
 
 
 
+-- highlight on search
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
+
+
+-- foldings
+vim.opt.foldcolumn     = "1"
+vim.opt.foldlevel      = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable     = true

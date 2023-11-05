@@ -1,20 +1,12 @@
-local M = {}
-
-M = {
-  "zbirenbaum/copilot.lua",
-  cmd = "Copilot",
-  event = "InsertEnter",
-  config = function()
-    require("copilot").setup({
-      panel = {
-        enabled = false,
-      },
-      suggestions = {
-        enabled = false,
-        auto_trigger = true,
-      },
-    })
-  end,
+local M = {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    opts = {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+        ft_disable = { "markdown" },
+    },
 }
 
 return M
