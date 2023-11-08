@@ -1,5 +1,9 @@
 local M = {}
 
+local check_backspace = function()
+  local col = vim.fn.col('.') - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
 M = {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",

@@ -3,6 +3,6 @@
 	email = dmitri.ollari@protonmail.com
 	signingkey = BD311498DFD81FF4010415AC2B9D93F7A340CD99 
 [commit]
-	gpgsign = true
+	; gpgsign = true
 [gpg]
 	program = gpg2

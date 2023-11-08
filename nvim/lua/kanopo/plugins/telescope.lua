@@ -2,7 +2,8 @@ local M = {}
 
 M = {
     "nvim-telescope/telescope.nvim",
-	event = "BufReadPre",
+    lazy = false,
+	-- event = "BufReadPre",
 	dependencies = {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{ "nvim-telescope/telescope-ui-select.nvim" },

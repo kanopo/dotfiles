@@ -25,13 +25,11 @@ local servers = {
     },
   },
 
-  -- texlab = {
-  --   -- use custom path for texlab bin
-  -- },
   tsserver = {},
   tailwindcss = {},
-  rust_analyzer = {},
-  texlab = {}
+  texlab = {},
+  clangd = {},
+  -- vale = {},
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -48,7 +46,6 @@ M = {
     "folke/neodev.nvim",
   },
   config = function()
-    -- Setup neovim lua configuration
     require('neodev').setup()
     require("mason").setup({})
     local mason_lspconfig = require("mason-lspconfig")

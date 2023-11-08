@@ -27,17 +27,18 @@ if status is-interactive
   # GPG SIGNATURE
   set GPG_TTY (tty)
 
+
   # Disable conda auto activate
-  set CONDA_AUTO_ACTIVATE_BASE false
+  # set CONDA_AUTO_ACTIVATE_BASE false
 end
 
 
 
 # Initialize conda
 # WARN: DISABLED FOR BECOMING SLOW, ACTIVATE MANUALLY
-if test -f /usr/bin/conda
-    eval /usr/bin/conda "shell.fish" "hook" $argv | source
-end
+# if test -f /usr/bin/conda
+#     eval /usr/bin/conda "shell.fish" "hook" $argv | source
+# end
 # export DENO_INSTALL="/home/user/.deno"
 #   export PATH="$DENO_INSTALL/bin:$PATH"
 

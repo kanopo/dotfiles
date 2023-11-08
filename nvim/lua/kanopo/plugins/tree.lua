@@ -6,7 +6,7 @@ M = {
         'nvim-tree/nvim-web-devicons'
     },
     keys = {
-        { "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = 'Toggle File Explorer' },
+        { "<leader>fe", "<cmd>NvimTreeFindFileToggle<cr>", desc = 'Toggle File Explorer' },
     },
     opts = {},
 }
