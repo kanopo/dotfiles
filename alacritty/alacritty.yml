@@ -7,7 +7,7 @@ window:
   padding:
     x: 10
     y: 10
-  opacity: 0.95
+  opacity: 1.0
 # shell: 
 #   program: /bin/zsh 
 #   args:
@@ -19,19 +19,36 @@ window:
 #   program: /usr/bin/toolbox
 #   args:
 #     - enter
-font:
-  normal:
-    family: "JetBrainsMono Nerd Font"
-    style: Regular
-  bold:
-    family: "JetBrainsMono Nerd Font"
-    style: Bold
-  italic:
-    family: "JetBrainsMono Nerd Font"
-    style: Italic
-  bold_italic:
-    family: "JetBrainsMono Nerd Font"
-    style: Bold Italic
+# font:
+#   normal:
+#     family: "JetBrainsMono Nerd Font"
+#     style: Regular
+#   bold:
+#     family: "JetBrainsMono Nerd Font"
+#     style: Bold
+#   italic:
+#     family: "JetBrainsMono Nerd Font"
+#     style: Italic
+#   bold_italic:
+#     family: "JetBrainsMono Nerd Font"
+#     style: Bold Italic
+
+  font:
+    normal:
+      family: "Iosevka"
+      style: Regular
+
+    bold:
+      family: "Iosevka"
+      style: Bold
+
+    italic:
+      family: "Iosevka"
+      style: Italic
+
+    bold_italic:
+      family: "Iosevka"
+      style: Bold Italic
 
   size: 12
 cursor:

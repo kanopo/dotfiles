@@ -17,6 +17,7 @@ M = {
     "onsails/lspkind.nvim",         -- vs-code like pictograms
     "zbirenbaum/copilot.lua",
     "zbirenbaum/copilot-cmp",
+    "nvim-neorg/neorg",
   },
   config = function()
     local cmp = require('cmp')
@@ -56,6 +57,7 @@ M = {
               buffer = "BUFF",
               path = "PATH",
               copilot = "COP",
+              neorg = "Neorg"
             }
             item.menu = menu_icon[entry.source.name]
             return item

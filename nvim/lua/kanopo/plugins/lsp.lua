@@ -28,7 +28,8 @@ local servers = {
   tsserver = {},
   tailwindcss = {},
   texlab = {},
-  clangd = {},
+  html = {},
+
   -- vale = {},
 }
 
