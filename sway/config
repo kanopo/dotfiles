@@ -29,7 +29,8 @@ set $notification_time 100
 output * bg $wallpaper fill
 
 
-set $term alacritty
+# set $term alacritty
+set $term foot
 
 # set $menu wofi -I -i --show drun 
 set $menu wofi -S drun -p Search -I -b -i

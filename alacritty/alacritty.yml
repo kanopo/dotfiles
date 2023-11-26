@@ -19,20 +19,6 @@ window:
 #   program: /usr/bin/toolbox
 #   args:
 #     - enter
-# font:
-#   normal:
-#     family: "JetBrainsMono Nerd Font"
-#     style: Regular
-#   bold:
-#     family: "JetBrainsMono Nerd Font"
-#     style: Bold
-#   italic:
-#     family: "JetBrainsMono Nerd Font"
-#     style: Italic
-#   bold_italic:
-#     family: "JetBrainsMono Nerd Font"
-#     style: Bold Italic
-
   font:
     normal:
       family: "Iosevka"
@@ -50,6 +36,17 @@ window:
       family: "Iosevka"
       style: Bold Italic
 
+  bold:
+    family: "Iosevka Nerd Font"
+    style: Bold
+
+  italic:
+    family: "Iosevka Nerd Font"
+    style: Italic
+
+  bold_italic:
+    family: "Iosevka Nerd Font"
+    style: Bold Italic
   size: 12
 cursor:
   shape: Block
