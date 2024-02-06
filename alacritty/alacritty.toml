@@ -25,7 +25,11 @@ style = "Regular"
 
 [window]
 opacity = 1.0
+# <<<<<<< HEAD
+# # option_as_alt = "OnlyLeft"
+# =======
 # option_as_alt = "OnlyLeft"
+# >>>>>>> 197e2a9 (tmux nvim)
 startup_mode = "Maximized"
 title = "Terminal"
 

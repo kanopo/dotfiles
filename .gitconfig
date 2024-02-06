@@ -10,5 +10,5 @@
 	program = gpg2
 [pull]
   rebase = true
-[credential]
-	helper = cache
+[push]
+	autoSetupRemote = true
