@@ -2,7 +2,7 @@
 draw_bold_text_with_bright_colors = true
 
 [env]
-TERM = "alacritty"
+TERM = "xterm-256color"
 
 [font]
 size = 18
@@ -25,14 +25,14 @@ style = "Regular"
 
 [window]
 opacity = 1.0
-# <<<<<<< HEAD
-# # option_as_alt = "OnlyLeft"
-# =======
-# option_as_alt = "OnlyLeft"
-# >>>>>>> 197e2a9 (tmux nvim)
 startup_mode = "Maximized"
 title = "Terminal"
+option_as_alt = "Both"
 
 [window.padding]
 x = 5
 y = 5
+
+[shell]
+program = "/opt/homebrew/bin/tmux"
+args = ["-2", "new", "-A", "-s", "main"]
