@@ -1,5 +1,5 @@
 [user]
-	name = kanopo
+	name = Dmitri
 	email = dmitri.ollari@protonmail.com
     signingkey = CD7DE3797D1559A5D8E46B4A759ADD40E3132AC7
 [color]
@@ -12,3 +12,8 @@
   rebase = true
 [push]
 	autoSetupRemote = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
