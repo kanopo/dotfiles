@@ -33,6 +33,10 @@ option_as_alt = "Both"
 x = 5
 y = 5
 
+[shell]
+program = "/opt/homebrew/bin/zsh"
+args = ["-l", "-c", "tmux attach || tmux"]
+
 # [shell]
 # program = "tmux"
 # program = "/opt/local/bin/tmux"
