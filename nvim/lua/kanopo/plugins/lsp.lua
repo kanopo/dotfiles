@@ -1,17 +1,13 @@
 local servers = {
     "lua_ls",
-    "pyright",
+    "jedi_language_server",
     "ltex",
-    "clangd",
     "tsserver",
     "tailwindcss",
-    "gopls",
     "marksman",
     "html",
     "docker_compose_language_service",
     "dockerls",
-    "astro",
-    "java_language_server"
 }
 local tools = {
     "luacheck",
