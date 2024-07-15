@@ -1,5 +1,7 @@
 # My dotfiles
 
+W gruvbox :)
+
 ## NODE
 Usare un custom path per node globale:
 ```bash
