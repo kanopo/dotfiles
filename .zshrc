@@ -34,21 +34,6 @@ compinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
-
-# # Jump to first letter of previous word
-# bindkey '^[[1;5D' backward-word
-#
-# # Jump to first letter of next word or end of line
-# bindkey '^[[1;5C' forward-word
-# # Delete the following word
-# bindkey '^[[3;5~' kill-word
-
-
-
-
-
-
 # [Shift-Tab] - move through the completion menu backwards
 if [[ -n "${terminfo[kcbt]}" ]]; then
   bindkey -M emacs "${terminfo[kcbt]}" reverse-menu-complete

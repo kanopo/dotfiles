@@ -34,14 +34,5 @@ x = 5
 y = 5
 
 [shell]
-program = "/opt/homebrew/bin/zsh"
+program = "/bin/zsh"
 args = ["-l", "-c", "tmux attach || tmux"]
-
-# [shell]
-# program = "tmux"
-# program = "/opt/local/bin/tmux"
-# args = ["-2", "new", "-A", "-s", "main"]
-
-# [shell]
-# program = "/opt/homebrew/bin/tmux"
-# args = ["-2", "new", "-A", "-s", "main"]
