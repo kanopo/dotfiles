@@ -1,6 +1,10 @@
+
+set $wallpaper "~/Documents/wallpapers/gruv_wall.jpg"
+
+set $mode_system "What to do? (l) lock, (e) logout, (r) reboot, (Shift+s) shutdown"
+
 mode $mode_system {
-	# bindsym l exec swaylock -e -f -i $wallpaper; mode "default"
-	bindsym l exec swaylock -e -f; mode "default"
+	bindsym l exec swaylock -e -f -i $wallpaper; mode "default"
 	bindsym e exec swaymsg exit; mode "default"
 	bindsym r exec systemctl reboot; mode "default"
   # bindsym s exec systemctl suspend; mode "default"
@@ -10,6 +14,6 @@ mode $mode_system {
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
-# disable $mod+Shift+e if necessary
-# unbindsym $mod+Shift+e
+
+
 bindsym $mod+Escape mode $mode_system

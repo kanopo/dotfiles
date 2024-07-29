@@ -1,4 +1,12 @@
-# exec swayidle -w \
-#   timeout 300 'swaylock -e -f -i ' $wallpaper \
-#   timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#   before-sleep 'swaylock -e -f -i ' $wallpaper
+# set cloding lid to lock laptop
+set $laptop 'eDP-1'
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
+
+set $wallpaper "~/Documents/wallpapers/gruv_wall.jpg"
+
+exec swayidle -w \
+  timeout 300 'swaylock -e -f -i ' $wallpaper \
+  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -e -f -i ' $wallpaper
