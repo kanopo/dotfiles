@@ -1,0 +1,15 @@
+exec wlsunset -l 44.8 -L 10.3 -t 3500
+# exec dropbox
+# exec solaar --window=hide
+# exec flatpak run com.dropbox.Client
+# exec nextcloud
+# exec flatpak run org.keepassxc.KeePassXC
+exec mako
+exec blueman-applet
+exec nm-applet --indicator
+# exec_always --no-startup-id workstyle &> /tmp/workstyle.log
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+exec xss-lock -- swaylock -e -f
+exec wl-paste -t text --watch clipman store --no-persist
+exec dbus-update-activation-environment --systemd DISPLAY XAUTHORITY WAYLAND_DISPLAY SWAYSOCK
