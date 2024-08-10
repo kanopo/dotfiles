@@ -60,6 +60,11 @@ window#waybar {
 	padding: 0px 9px 0px 9px;
 }
 
+#custom-notification {
+	background-color: @background;
+	color: #b8b8b8;
+	padding: 0px 9px 0px 9px;
+}
 
 #workspaces {
 }
