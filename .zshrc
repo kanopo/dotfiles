@@ -8,14 +8,14 @@ fi
 export GPG_TTY=$(tty)
 export EDITOR="nvim"
 
+export XDG_CURRENT_DESKTOP=sway
+
 alias conservation-on="echo 1 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
 alias conservation-off="echo 0 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
 alias orphans="sudo pacman -Qtdq | sudo pacman -Rns -"
 alias v="nvim"
-alias rec_a='wf-recorder --audio -g "$(slurp)"'
-alias rec='wf-recorder -g "$(slurp)"'
-alias scrivania-on="wget -O /dev/null -q 'http://192.168.1.129/?=on'"
-alias scrivania-off="wget -O /dev/null -q 'http://192.168.1.129/?=off'"
+alias screen_recordeer='wf-recorder --audio -g "$(slurp)"'
+alias screen_recordeer_no_audio='wf-recorder -g "$(slurp)"'
 
 
 # Created by Zap installer
@@ -35,40 +35,11 @@ compinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# [Shift-Tab] - move through the completion menu backwards
-if [[ -n "${terminfo[kcbt]}" ]]; then
-  bindkey -M emacs "${terminfo[kcbt]}" reverse-menu-complete
-  bindkey -M viins "${terminfo[kcbt]}" reverse-menu-complete
-  bindkey -M vicmd "${terminfo[kcbt]}" reverse-menu-complete
-fi
-# [Backspace] - delete backward
-bindkey -M emacs '^?' backward-delete-char
-bindkey -M viins '^?' backward-delete-char
-bindkey -M vicmd '^?' backward-delete-char
-# [Delete] - delete forward
-if [[ -n "${terminfo[kdch1]}" ]]; then
-  bindkey -M emacs "${terminfo[kdch1]}" delete-char
-  bindkey -M viins "${terminfo[kdch1]}" delete-char
-  bindkey -M vicmd "${terminfo[kdch1]}" delete-char
-else
-  bindkey -M emacs "^[[3~" delete-char
-  bindkey -M viins "^[[3~" delete-char
-  bindkey -M vicmd "^[[3~" delete-char
 
-  bindkey -M emacs "^[3;5~" delete-char
-  bindkey -M viins "^[3;5~" delete-char
-  bindkey -M vicmd "^[3;5~" delete-char
-fi
-# [Ctrl-Delete] - delete whole forward-word
-bindkey -M emacs '^[[3;5~' kill-word
-bindkey -M viins '^[[3;5~' kill-word
-bindkey -M vicmd '^[[3;5~' kill-word
-
-# [Ctrl-RightArrow] - move forward one word
-bindkey -M emacs '^[[1;5C' forward-word
-bindkey -M viins '^[[1;5C' forward-word
-bindkey -M vicmd '^[[1;5C' forward-word
-# [Ctrl-LeftArrow] - move backward one word
-bindkey -M emacs '^[[1;5D' backward-word
-bindkey -M viins '^[[1;5D' backward-word
-bindkey -M vicmd '^[[1;5D' backward-word
+# pnpm
+export PNPM_HOME="/home/user/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

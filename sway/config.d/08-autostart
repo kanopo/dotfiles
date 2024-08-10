@@ -1,9 +1,7 @@
-exec wlsunset -l 44.8 -L 10.3 -t 3500
-# exec dropbox
-# exec solaar --window=hide
-# exec flatpak run com.dropbox.Client
-# exec nextcloud
-# exec flatpak run org.keepassxc.KeePassXC
+exec wlsunset
+exec flatpak run io.github.pwr_solaar.solaar
+exec flatpak run org.keepassxc.KeePassXC
+exec flatpak run com.nextcloud.desktopclient.nextcloud
 exec mako
 exec blueman-applet
 exec nm-applet --indicator
@@ -12,4 +10,9 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec xss-lock -- swaylock -e -f -i ~/Documents/wallpapers/gruv_wall.jpg
 exec wl-paste -t text --watch clipman store --no-persist
-exec dbus-update-activation-environment --systemd DISPLAY XAUTHORITY WAYLAND_DISPLAY SWAYSOCK
+# exec dbus-update-activation-environment --systemd DISPLAY XAUTHORITY WAYLAND_DISPLAY SWAYSOCK
+
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_CURRENT_DESKTOP=sway

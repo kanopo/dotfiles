@@ -1,14 +1,14 @@
 set $screenshot_notification_cmd  command -v notify-send >/dev/null && \
         notify-send -t $notification_time "Screenshot copied to clipboard " 
 
-bindsym {
-    # Capture the currently active output
-    Print       exec grimshot copy output && $screenshot_notification_cmd
-    # Capture the currently active window
-    Shift+Print   exec grimshot copy active && $screenshot_notification_cmd
-    # Select and capture a custom rectangular area
-    Ctrl+Print  exec grimshot copy area && $screenshot_notification_cmd
-}
+# bindsym {
+#     # Capture the currently active output
+#     Print       exec grimshot copy output && $screenshot_notification_cmd
+#     # Capture the currently active window
+#     Shift+Print   exec grimshot copy active && $screenshot_notification_cmd
+#     # Select and capture a custom rectangular area
+#     Ctrl+Print  exec grimshot copy area && $screenshot_notification_cmd
+# }
 
 bindsym {
     # Capture the currently active output
