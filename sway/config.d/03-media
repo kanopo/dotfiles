@@ -1,4 +1,4 @@
-set $notification_time 100
+set $notification_time 1000
 
 # Audio
 set $audio_notification_cmd command -v notify-send >/dev/null && \

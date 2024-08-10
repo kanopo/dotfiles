@@ -1,5 +1,4 @@
-set $notification_time 100
-
+set $notification_time 1000
 
 # Brightness
 

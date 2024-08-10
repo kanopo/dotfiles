@@ -7,6 +7,7 @@ fi
 
 export GPG_TTY=$(tty)
 export EDITOR="nvim"
+export XDG_SCREENSHOTS_DIR="~/Pictures/Screenshots"
 
 export XDG_CURRENT_DESKTOP=sway
 
