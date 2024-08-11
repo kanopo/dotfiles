@@ -46,12 +46,12 @@ return {
         require("luasnip/loaders/from_vscode").lazy_load()
         local lspkind = require("lspkind")
 
-        require("copilot").setup({
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-        })
-
-        require("copilot_cmp").setup()
+        -- require("copilot").setup({
+        --     suggestion = { enabled = false },
+        --     panel = { enabled = false },
+        -- })
+        --
+        -- require("copilot_cmp").setup()
 
         local check_backspace = function()
             local col = vim.fn.col(".") - 1
@@ -64,7 +64,19 @@ return {
                     luasnip.lsp_expand(args.body) -- For `luasnip` users.
                 end,
             },
+            -- mapping = cmp.mapping.preset.insert({
+            --     ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+            --     ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+            --     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+            --     ["<C-e>"] = cmp.mapping({
+            --         i = cmp.mapping.abort(),
+            --         c = cmp.mapping.close(),
+            --     }),
+            --     ["<CR>"] = cmp.mapping.confirm({ select = true }),
+            -- }),
             mapping = cmp.mapping.preset.insert({
+                -- ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+                -- ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
                 ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
                 ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
                 ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
@@ -118,7 +130,7 @@ return {
                 }),
             },
             sources = {
-                { name = "copilot" },
+                -- { name = "copilot" },
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
                 { name = "buffer" },
