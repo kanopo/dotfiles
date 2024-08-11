@@ -1,26 +1,16 @@
 {
 	"layer": "top",	
 	"position": "top",
-    "height": 27,
+    "height": 30,
 
-
-    "modules-left": ["wlr/workspaces", "sway/workspaces", "custom/scratch", "sway/mode", "sway/window"],
-    "modules-center": [],
-    "modules-right": ["idle_inhibitor", "temperature", "backlight", "pulseaudio", "battery", "clock", "tray", "custom/notification"],
-
-
-    "wlr/workspaces": {
-     "format": "{icon}",
-     "on-scroll-up": "hyprctl dispatch workspace e+1",
-     "on-scroll-down": "hyprctl dispatch workspace e-1"
-    },
-
+    "modules-left": ["sway/workspaces", "custom/scratch", "sway/mode", "sway/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["idle_inhibitor", "temperature", "pulseaudio", "battery", "tray", "custom/notification"],
 
 	"sway/window": {
-    	"format": "{}",
+        "format": "{title} - {app_id}",
     	"max-length": 150
-},
-
+    },
 
 	"custom/scratch": {
    		"interval": 3,
@@ -28,13 +18,13 @@
    		"format": "^{}", 
    		"on-click": "swaymsg 'scratchpad show'",
    		"on-click-right": "swaymsg 'move scratchpad'"
-},
-
+    },
 
     "tray": {
         "icon-size": 18,
-        "spacing": 15
-},
+        "spacing": 15,
+        "padding": 5,
+    },
 
     "idle_inhibitor": {
         "format": "{icon}",
@@ -44,14 +34,12 @@
         }
     },
 
-
      "clock": {
          "interval": 60,
-         "format": "{:%H:%M}",
+         "format": "{:%a %d %b %H:%M}",
          "max-length": 25,
          "timezone": "Europe/Rome",
      },
-
     
     "battery": {
         "bat": "BAT1",
@@ -61,21 +49,21 @@
               "normal": 98,
               "warning": 20,
               "critical": 20
-},
+        },
 
         "format": "{icon}   {capacity}%",
         "format-good": "{icon}   {capacity}%", 
         "format-full": "   {capacity}%",
         "format-icons": ["", "", "", "", ""],
         "interval": 30
-},
+    },
 
 
     "network": {
         "format-wifi": "   WiFi-On",
         "format-disconnected": "睊   Disconnected",
         "interval": 60
-},
+    },
 
 
     "temperature": {
@@ -96,31 +84,28 @@
 
         "format-icons": {
         "default": [""]
-},
-            
+        },
         "on-click": "pavucontrol",
-
-
-},
-  "custom/notification": {
-    "tooltip": false,
-    "format": "{icon}",
-    "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
-      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-inhibited-none": ""
     },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
-  },
 
-}
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+          "notification": "<span foreground='red'><sup></sup></span>",
+          "none": "",
+          "dnd-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-none": "",
+          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "inhibited-none": "",
+          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-inhibited-none": ""
+        },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "swaync-client -t -sw",
+            "on-click-right": "swaync-client -d -sw",
+            "escape": true
+        },
+    }
