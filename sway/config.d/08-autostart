@@ -1,7 +1,8 @@
 exec wlsunset
-exec flatpak run io.github.pwr_solaar.solaar
+# exec flatpak run io.github.pwr_solaar.solaar
 exec flatpak run org.keepassxc.KeePassXC
-exec flatpak run com.nextcloud.desktopclient.nextcloud
+# exec flatpak run com.nextcloud.desktopclient.nextcloud
+exec nextcloud
 # exec mako
 exec swaync
 exec blueman-applet

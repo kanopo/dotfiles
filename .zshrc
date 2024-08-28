@@ -8,8 +8,8 @@ fi
 export GPG_TTY=$(tty)
 export EDITOR="nvim"
 export XDG_SCREENSHOTS_DIR="~/Pictures/Screenshots"
-
 export XDG_CURRENT_DESKTOP=sway
+export MOZ_ENABLE_WAYLAND=0
 
 alias conservation-on="echo 1 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
 alias conservation-off="echo 0 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
