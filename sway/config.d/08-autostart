@@ -1,18 +1,14 @@
 exec wlsunset
-# exec flatpak run io.github.pwr_solaar.solaar
+exec solaar
 exec flatpak run org.keepassxc.KeePassXC
-# exec flatpak run com.nextcloud.desktopclient.nextcloud
 exec nextcloud
-# exec mako
 exec swaync
 exec blueman-applet
 exec nm-applet --indicator
-# exec_always --no-startup-id workstyle &> /tmp/workstyle.log
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec xss-lock -- swaylock -e -f -i ~/Documents/wallpapers/gruv_wall.jpg
 exec wl-paste -t text --watch clipman store --no-persist
-# exec dbus-update-activation-environment --systemd DISPLAY XAUTHORITY WAYLAND_DISPLAY SWAYSOCK
 
 
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
