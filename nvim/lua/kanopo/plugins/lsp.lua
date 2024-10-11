@@ -1,8 +1,9 @@
 local servers = {
     "lua_ls",
-    "jedi_language_server",
-    "ltex",
-    "tsserver",
+    -- "jedi_language_server",
+    -- "ltex",
+    -- "tsserver",
+    "ts_ls",
     "tailwindcss",
     "marksman",
     "html",
@@ -10,11 +11,11 @@ local servers = {
     "dockerls",
 }
 local tools = {
-    "luacheck",
+    -- "luacheck",
     "stylua",
-    "flake8",
-    "black",
-    "latexindent",
+    -- "flake8",
+    -- "black",
+    -- "latexindent",
     "eslint_d",
 }
 
@@ -101,68 +102,68 @@ return {
                         },
                     },
                 })
-            elseif server == "pyright" then
-                require("lspconfig")[server].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                    settings = {
-                        -- ltex = {
-                        --     enabled = true,
-                        --     formatter = "latexindent",
-                        --     formatter_options = {
-                        --         indent = 2,
-                        --     },
-                        --     language = "en, it",
-                        -- },
-                        -- lspconfig.pyright.setup({
-                        --     on_attach = on_attach,
-                        --     settings = {
-                        --         pyright = { autoImportCompletion = true },
-                        --         python = {
-                        --             analysis = {
-                        --                 autoSearchPaths = true,
-                        --                 diagnosticMode = "openFilesOnly",
-                        --                 useLibraryCodeForTypes = true,
-                        --                 typeCheckingMode = "off",
-                        --             },
-                        --         },
-                        --     },
-                        -- }),
-
-                        pyright = {
-                            autoImportCompletion = true,
-                        },
-                        python = {
-                            analysis = {
-                                autoSearchPaths = true,
-                                diagnosticMode = "openFilesOnly",
-                                useLibraryCodeForTypes = true,
-                                typeCheckingMode = false,
-                            },
-                        },
-                    },
-                })
-            elseif server == "ltex" then
-                require("lspconfig")[server].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                    settings = {
-                        ltex = {
-                            enabled = true,
-                            formatter = "latexindent",
-                            formatter_options = {
-                                indent = 2,
-                            },
-                            language = "en, it",
-                        },
-                    },
-                })
-            elseif server == "clangd" then
-                require("lspconfig")[server].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                    cmd = { "clangd", "--background-index", "--offset-encoding=utf-16" },
-                })
+            -- elseif server == "pyright" then
+            --     require("lspconfig")[server].setup({
+            --         on_attach = on_attach,
+            --         capabilities = capabilities,
+            --         settings = {
+            --             -- ltex = {
+            --             --     enabled = true,
+            --             --     formatter = "latexindent",
+            --             --     formatter_options = {
+            --             --         indent = 2,
+            --             --     },
+            --             --     language = "en, it",
+            --             -- },
+            --             -- lspconfig.pyright.setup({
+            --             --     on_attach = on_attach,
+            --             --     settings = {
+            --             --         pyright = { autoImportCompletion = true },
+            --             --         python = {
+            --             --             analysis = {
+            --             --                 autoSearchPaths = true,
+            --             --                 diagnosticMode = "openFilesOnly",
+            --             --                 useLibraryCodeForTypes = true,
+            --             --                 typeCheckingMode = "off",
+            --             --             },
+            --             --         },
+            --             --     },
+            --             -- }),
+            --
+            --             pyright = {
+            --                 autoImportCompletion = true,
+            --             },
+            --             python = {
+            --                 analysis = {
+            --                     autoSearchPaths = true,
+            --                     diagnosticMode = "openFilesOnly",
+            --                     useLibraryCodeForTypes = true,
+            --                     typeCheckingMode = false,
+            --                 },
+            --             },
+            --         },
+            --     })
+            -- elseif server == "ltex" then
+            --     require("lspconfig")[server].setup({
+            --         on_attach = on_attach,
+            --         capabilities = capabilities,
+            --         settings = {
+            --             ltex = {
+            --                 enabled = true,
+            --                 formatter = "latexindent",
+            --                 formatter_options = {
+            --                     indent = 2,
+            --                 },
+            --                 language = "en, it",
+            --             },
+            --         },
+            --     })
+            -- elseif server == "clangd" then
+            --     require("lspconfig")[server].setup({
+            --         on_attach = on_attach,
+            --         capabilities = capabilities,
+            --         cmd = { "clangd", "--background-index", "--offset-encoding=utf-16" },
+            --     })
             else
                 require("lspconfig")[server].setup({
                     on_attach = on_attach,
