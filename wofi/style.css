@@ -1,0 +1,45 @@
+
+@import "./gruvbox.css";
+
+
+window {
+    margin: 0px;
+    background-color: #282828;
+    border: 3px solid #d65d0e;
+}
+
+#input {
+    margin: 5px;
+    border: none;
+    color: #ebdbb2;
+    background-color: #282828;
+}
+
+#inner-box {
+    margin: 5px;
+    border: none;
+    background-color: #282828;
+}
+
+#outer-box {
+    margin: 5px;
+    border: none;
+    background-color: #282828;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    color: #ebdbb2;
+} 
+
+#entry:selected {
+    background-color: #458588;
+}
+
+#entry:selected * {
+    background-color: #458588;
+}

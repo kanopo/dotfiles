@@ -2,6 +2,7 @@ local servers = {
     "lua_ls",
     "jedi_language_server",
     "ltex",
+    "texlab",
     "tsserver",
     "tailwindcss",
     "marksman",
@@ -154,6 +155,40 @@ return {
                                 indent = 2,
                             },
                             language = "en, it",
+                        },
+                        texlab = {
+                            auxDirectory = ".",
+                            bibtexFormatter = "texlab",
+                            build = {
+                                args = { "--synctex", "--keep-logs", "--keep-intermediates", "%f" },
+                                executable = "latexmk",
+                                forwardSearchAfter = false,
+                                onSave = false,
+                            },
+                            chktex = {
+                                onEdit = false,
+                                onOpenAndSave = true,
+                            },
+                            diagnosticsDelay = 300,
+                            formatterLineLength = 80,
+                            forwardSearch = {
+                                args = {},
+                                executable = "okular",
+                                onSave = false,
+                            },
+                            latexFormatter = "latexindent",
+                            latexindent = {
+                                modifyLineBreaks = false,
+                            },
+                            linters = {
+                                chktex = {
+                                    onEdit = false,
+                                    onOpenAndSave = true,
+                                },
+                                lacheck = false,
+                            },
+                            maxLogLineLength = 200,
+                            rootDirectory = nil,
                         },
                     },
                 })

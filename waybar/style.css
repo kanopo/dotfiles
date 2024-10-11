@@ -1,0 +1,130 @@
+
+* {
+    font-family: "UbuntuMono Nerd Font";
+    font-size: 16px;
+
+    border: none;
+    border-radius: 0;
+    /* font-family: JetBrains Mono, monospace; */
+    /* font-size: 13px; */
+    min-height: 0;
+}
+
+
+@define-color background #282828;
+@define-color foreground #ebdbb2;
+@define-color black #282828;
+@define-color red   #cc241d;
+@define-color green #98971a;
+@define-color yellow #d79921;
+@define-color blue  #458588;
+@define-color magenta #b16286;
+@define-color cyan  #689d6a;
+@define-color white #a89984;
+@define-color aqua  #689d6a;
+@define-color orange #d65d0e;
+
+@define-color magenta_b #d3869b;
+@define-color cyan_b   #8ec07c;
+@define-color yellow_b #fabd2f;
+@define-color white_b  #ebdbb2;
+@define-color black_b  #928374;
+@define-color red_b    #fb4934;
+@define-color green_b  #b8bb26;
+@define-color blue_b   #83a598;
+@define-color aqua_b   #8ec07c;
+@define-color orange_b #fe8010;
+
+
+window#waybar { 
+    background-color: @background;
+    color: @foreground;
+}
+
+
+.modules-left {
+	background-color: @background;
+	padding: 0px 0px 0px 0px;
+}
+
+
+.modules-right {
+	background-color: @background;
+	padding: 0px 5px 0px 0px;
+}
+
+
+#custom-scratch {
+	background-color: @background;
+	color: #b8b8b8;
+	padding: 0px 9px 0px 9px;
+}
+
+#custom-notification {
+	background-color: @background;
+	color: #b8b8b8;
+	padding: 0px 9px 0px 9px;
+}
+
+#workspaces {
+}
+
+
+#workspaces button {
+	padding: 0px 11px 0px 11px; 
+ 	min-width: 1px;
+	color: @foreground;
+}
+
+
+#workspaces button.focused { 
+	padding: 0px 11px 0px 11px; 
+	background-color: @orange;
+	color: @foreground;
+}
+
+
+#mode { 
+	 background-color: #900000;
+	 color: @foreground;
+     padding: 0px 5px 0px 5px;
+     border: 1px solid #2f343a;
+}
+
+
+#window {
+	 color: #ffffff;
+	 background-color: @background;
+     padding: 0px 10px 0px 10px;
+}
+
+
+window#waybar.empty #window {
+	background-color: transparent;
+	color: transparent;
+}
+
+
+window#waybar.empty {
+	background-color: #323232;
+}
+
+#network, #temperature, #backlight, #pulseudio, #battery, #clock, #tray, #memory, #cpu {
+    /* padding: 0px 15px 0px 15px; */
+    margin: 0px 15px 0px 15px;
+}
+    
+#battery.critical {
+   color: @red;
+}
+
+#battery.charging {
+  color: @green_b;
+}
+
+
+#network.disconnected {
+   color: @red;
+}
+
+
