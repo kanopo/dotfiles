@@ -4,7 +4,7 @@ bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
 
-set $wallpaper "~/Documents/wallpapers/gruv_wall.jpg"
+set $wallpaper "~/Nextcloud/wallpapers/laptop/hiroishi_nagasai.png"
 
 exec swayidle -w \
   timeout 300 'swaylock -e -f -i ' $wallpaper \
