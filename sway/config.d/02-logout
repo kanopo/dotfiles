@@ -1,5 +1,5 @@
 
-set $wallpaper "~/Documents/wallpapers/gruv_wall.jpg"
+set $wallpaper "~/Nextcloud/wallpapers/laptop/hiroishi_nagasai.png"
 
 set $mode_system "What to do? (l) lock, (e) logout, (r) reboot, (Shift+s) shutdown"
 

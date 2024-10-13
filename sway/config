@@ -6,7 +6,7 @@ set $right l
 set $term alacritty
 set $menu wofi -S drun -p Search -I -b -i
 
-output * bg ~/Documents/wallpapers/gruv_wall.jpg fill
+output * bg ~/Nextcloud/wallpapers/laptop/hiroishi_nagasai.png fill
 
 bindsym $mod+Return exec $term
 
