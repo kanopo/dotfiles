@@ -28,8 +28,8 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         -- Close buffer with 'q' in these specific filetypes
         vim.cmd([[
-            nnoremap <silent> <buffer> q :close<CR>
-            set nobuflisted
+                nnoremap <silent> <buffer> q :close<CR>
+                set nobuflisted
         ]])
     end,
 })
@@ -54,3 +54,12 @@ vim.api.nvim_create_autocmd("BufReadPost", {
         end
     end,
 })
+
+
+-- Step 1: Define the fallback Format command that is always present
+vim.api.nvim_create_user_command("Format", function()
+    -- Fallback formatting: convert to Unix line endings and re-indent
+    vim.bo.fileformat = "dos"
+    -- vim.cmd("normal! gg=G") -- Optional: re-indent the entire file
+    print("Fallback: Converted to Unix line endings and formatted")
+end, { desc = "Fallback format: Convert to Unix format and re-indent" })

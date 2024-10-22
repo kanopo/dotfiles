@@ -1,19 +1,23 @@
+[init]
+	defaultBranch = main
+[core]
+	autocrlf = input
+	editor = nvim
 [user]
-	name = Dmitri
-	email = dmitri.ollari@protonmail.com
-    signingkey = CD7DE3797D1559A5D8E46B4A759ADD40E3132AC7
+	name = Dmitri Ollari
+	email = dmitri.ollariischimji@zucchetti.it
+	signingkey = BEDD33DF91CE7B6EEFB6F99FB389C6F530257302
+[gpg]
+	program = /usr/bin/gpg
 [color]
-  ui = auto
+	ui = auto
 [commit]
 	gpgsign = true
-[gpg]
-	program = gpg
-[pull]
-  rebase = true
-[push]
-	autoSetupRemote = true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+
+[alias]
+	adg = log --all --decorate --graph
+	adog = log --all --decorate --graph --oneline
+[color "decorate"]
+    HEAD   = blink bold italic 196
+    branch = 214
+    tag    = bold 222
