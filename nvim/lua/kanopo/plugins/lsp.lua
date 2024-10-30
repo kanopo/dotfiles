@@ -19,6 +19,7 @@ local tools = {
     -- "black",
     -- "latexindent",
     "eslint_d",
+    "google-java-format"
 }
 
 return {
