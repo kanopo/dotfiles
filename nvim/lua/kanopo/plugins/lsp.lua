@@ -2,7 +2,7 @@ local servers = {
     "lua_ls",
     "jedi_language_server",
     "ltex",
-    "tsserver",
+    "ts_ls",
     "tailwindcss",
     "marksman",
     "html",
