@@ -7,20 +7,21 @@ fi
 
 export GPG_TTY=$(tty)
 
-alias conservation-on="echo 1 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
-alias conservation-off="echo 0 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
+# alias conservation-on="echo 1 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
+# alias conservation-off="echo 0 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
 alias orphans="sudo pacman -Qtdq | sudo pacman -Rns -"
 alias v="nvim"
-alias rec_a='wf-recorder --audio -g "$(slurp)"'
-alias rec='wf-recorder -g "$(slurp)"'
-alias scrivania-on="wget -O /dev/null -q 'http://192.168.1.129/?=on'"
-alias scrivania-off="wget -O /dev/null -q 'http://192.168.1.129/?=off'"
+# alias rec_a='wf-recorder --audio -g "$(slurp)"'
+# alias rec='wf-recorder -g "$(slurp)"'
+# alias scrivania-on="wget -O /dev/null -q 'http://192.168.1.129/?=on'"
+# alias scrivania-off="wget -O /dev/null -q 'http://192.168.1.129/?=off'"
 
 
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
+plug "zap-zsh/nvm"
 plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-history-substring-search"
 # plug "zap-zsh/exa"
@@ -86,4 +87,6 @@ bindkey -M vicmd '^[[1;5C' forward-word
 bindkey -M emacs '^[[1;5D' backward-word
 bindkey -M viins '^[[1;5D' backward-word
 bindkey -M vicmd '^[[1;5D' backward-word
+
+
 source /usr/share/nvm/init-nvm.sh

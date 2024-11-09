@@ -25,16 +25,16 @@ return {
             },
         },
         -- BUG: removed copilot because make me a worst developer :(
-        -- {
-        --     "zbirenbaum/copilot-cmp",
-        --     event = "InsertEnter",
-        --     dependencies = {
-        --         {
-        --             "zbirenbaum/copilot.lua",
-        --             event = "InsertEnter",
-        --         },
-        --     },
-        -- },
+        {
+            "zbirenbaum/copilot-cmp",
+            event = "InsertEnter",
+            dependencies = {
+                {
+                    "zbirenbaum/copilot.lua",
+                    event = "InsertEnter",
+                },
+            },
+        },
         {
             "onsails/lspkind-nvim",
             event = "InsertEnter",
@@ -46,12 +46,14 @@ return {
         require("luasnip/loaders/from_vscode").lazy_load()
         local lspkind = require("lspkind")
 
-        -- require("copilot").setup({
-        --     suggestion = { enabled = false },
-        --     panel = { enabled = false },
-        -- })
-        --
-        -- require("copilot_cmp").setup()
+        require("copilot").setup({
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+        })
+
+        require("copilot_cmp").setup({
+            enabled = false
+        })
 
         local check_backspace = function()
             local col = vim.fn.col(".") - 1
