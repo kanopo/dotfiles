@@ -1,0 +1,10 @@
+# This code is for screenshots
+bindsym {
+    $mod+p       exec grimshot --notify copy output 
+    $mod+Ctrl+p  exec grimshot --notify copy area
+}
+
+# # This code is for screen recording
+# bindsym {
+#     $mod+Shift+r    exec wf-recorder --audio -g "$(slurp)"
+# }

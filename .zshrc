@@ -6,15 +6,20 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export GPG_TTY=$(tty)
+export EDITOR="nvim"
+export XDG_SCREENSHOTS_DIR="~/Pictures/Screenshots"
+export XDG_CURRENT_DESKTOP=sway
+export MOZ_ENABLE_WAYLAND=0
+export GTK_THEME="adw-gtk3-dark"
+
+export JAVA_HOME="/usr/lib/jvm/java-22-openjdk"
 
 alias conservation-on="echo 1 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
 alias conservation-off="echo 0 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
 alias orphans="sudo pacman -Qtdq | sudo pacman -Rns -"
 alias v="nvim"
-alias rec_a='wf-recorder --audio -g "$(slurp)"'
-alias rec='wf-recorder -g "$(slurp)"'
-alias scrivania-on="wget -O /dev/null -q 'http://192.168.1.129/?=on'"
-alias scrivania-off="wget -O /dev/null -q 'http://192.168.1.129/?=off'"
+alias screen_recordeer='wf-recorder --audio -g "$(slurp)"'
+alias screen_recordeer_no_audio='wf-recorder -g "$(slurp)"'
 
 
 # Created by Zap installer
@@ -35,54 +40,30 @@ compinit
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
+# pnpm
+export PNPM_HOME="/home/user/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
-# # Jump to first letter of previous word
-# bindkey '^[[1;5D' backward-word
-#
-# # Jump to first letter of next word or end of line
-# bindkey '^[[1;5C' forward-word
-# # Delete the following word
-# bindkey '^[[3;5~' kill-word
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
-
-
-
-
-# [Shift-Tab] - move through the completion menu backwards
-if [[ -n "${terminfo[kcbt]}" ]]; then
-  bindkey -M emacs "${terminfo[kcbt]}" reverse-menu-complete
-  bindkey -M viins "${terminfo[kcbt]}" reverse-menu-complete
-  bindkey -M vicmd "${terminfo[kcbt]}" reverse-menu-complete
-fi
-# [Backspace] - delete backward
-bindkey -M emacs '^?' backward-delete-char
-bindkey -M viins '^?' backward-delete-char
-bindkey -M vicmd '^?' backward-delete-char
-# [Delete] - delete forward
-if [[ -n "${terminfo[kdch1]}" ]]; then
-  bindkey -M emacs "${terminfo[kdch1]}" delete-char
-  bindkey -M viins "${terminfo[kdch1]}" delete-char
-  bindkey -M vicmd "${terminfo[kdch1]}" delete-char
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/user/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
 else
-  bindkey -M emacs "^[[3~" delete-char
-  bindkey -M viins "^[[3~" delete-char
-  bindkey -M vicmd "^[[3~" delete-char
-
-  bindkey -M emacs "^[3;5~" delete-char
-  bindkey -M viins "^[3;5~" delete-char
-  bindkey -M vicmd "^[3;5~" delete-char
+    if [ -f "/home/user/.miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/user/.miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/user/.miniconda3/bin:$PATH"
+    fi
 fi
-# [Ctrl-Delete] - delete whole forward-word
-bindkey -M emacs '^[[3;5~' kill-word
-bindkey -M viins '^[[3;5~' kill-word
-bindkey -M vicmd '^[[3;5~' kill-word
+unset __conda_setup
+# <<< conda initialize <<<
 
-# [Ctrl-RightArrow] - move forward one word
-bindkey -M emacs '^[[1;5C' forward-word
-bindkey -M viins '^[[1;5C' forward-word
-bindkey -M vicmd '^[[1;5C' forward-word
-# [Ctrl-LeftArrow] - move backward one word
-bindkey -M emacs '^[[1;5D' backward-word
-bindkey -M viins '^[[1;5D' backward-word
-bindkey -M vicmd '^[[1;5D' backward-word
