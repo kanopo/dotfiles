@@ -52,7 +52,7 @@ return {
         })
 
         require("copilot_cmp").setup({
-            enabled = false
+            enabled = false,
         })
 
         local check_backspace = function()
@@ -132,7 +132,7 @@ return {
                 }),
             },
             sources = {
-                -- { name = "copilot" },
+                { name = "copilot" },
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
                 { name = "buffer" },

@@ -11,6 +11,8 @@ export GPG_TTY=$(tty)
 # alias conservation-off="echo 0 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
 alias orphans="sudo pacman -Qtdq | sudo pacman -Rns -"
 alias v="nvim"
+alias conservation-on="sudo ectool chargecontrol normal 80 80"
+alias conservation-off="sudo ectool chargecontrol normal"
 # alias rec_a='wf-recorder --audio -g "$(slurp)"'
 # alias rec='wf-recorder -g "$(slurp)"'
 # alias scrivania-on="wget -O /dev/null -q 'http://192.168.1.129/?=on'"
