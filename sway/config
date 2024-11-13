@@ -3,7 +3,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term wezterm
+set $term alacritty
 set $menu wofi -S drun -p Search -I -b -i 
 
 output * bg ~/Nextcloud/wallpapers/laptop/hiroishi_nagasai.png fill

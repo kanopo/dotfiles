@@ -110,7 +110,7 @@ window#waybar.empty {
 	background-color: #323232;
 }
 
-#network, #temperature, #backlight, #pulseudio, #battery, #clock, #tray, #memory, #cpu {
+#network, #temperature, #backlight, #pulseudio, #battery, #clock, #tray, #memory, #cpu, #power-profiles-daemon {
     /* padding: 0px 15px 0px 15px; */
     margin: 0px 15px 0px 15px;
 }
