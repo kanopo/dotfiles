@@ -10,7 +10,9 @@ local servers = {
     "docker_compose_language_service",
     "dockerls",
     "jdtls",
-    "cssls"
+    "cssls",
+    "sqlls",
+    "lemminx",
 }
 local tools = {
     -- "luacheck",
@@ -19,7 +21,8 @@ local tools = {
     -- "black",
     -- "latexindent",
     "eslint_d",
-    "google-java-format"
+    "google-java-format",
+    "sql-formatter",
 }
 
 return {

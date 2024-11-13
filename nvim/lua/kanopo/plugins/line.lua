@@ -1,20 +1,20 @@
-return {
-    "nvim-lualine/lualine.nvim",
-    dependencies = {
-        "ellisonleao/gruvbox.nvim",
-    },
-    config = function()
-        local theme = require("gruvbox")
-        require("lualine").setup({
-            theme = theme,
-        })
-    end,
-}
-
 -- return {
---     "tjdevries/express_line.nvim",
+--     "nvim-lualine/lualine.nvim",
 --     dependencies = {
---         "nvim-lua/plenary.nvim"
+--         "ellisonleao/gruvbox.nvim",
 --     },
---     config = true,
+--     config = function()
+--         local theme = require("gruvbox")
+--         require("lualine").setup({
+--             theme = theme,
+--         })
+--     end,
 -- }
+
+return {
+    "tjdevries/express_line.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim"
+    },
+    config = true,
+}

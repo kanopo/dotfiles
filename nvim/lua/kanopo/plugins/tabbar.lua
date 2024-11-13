@@ -14,9 +14,9 @@ return {
             desc = "Move to next buffer",
         })
 
-        vim.keymap.set("n", "<C-w>", "<cmd>BufferClose<CR>", {
-            desc = "Close tab",
-        })
+        -- vim.keymap.set("n", "<C-w>", "<cmd>BufferClose<CR>", {
+        --     desc = "Close tab",
+        -- })
     end,
     version = "^1.0.0",
 }
