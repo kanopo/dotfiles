@@ -1,47 +1,12 @@
-[colors]
-draw_bold_text_with_bright_colors = true
-
-[env]
-TERM = "xterm-256color"
-
 [font]
-size = 18
+normal = { family = "Iosevka NF", style = "Medium" }
+#bold = { family = "<string>", style = "<string>" }
+#italic = { family = "<string>", style = "<string>" }
+#bold_italic = { family = "<string>", style = "<string>" }
+size = 12
+#offset = { x = 0, y = 0 }
+# glyph_offset = { x = <integer>, y = <integer> }
+# builtin_box_drawing = true | false
 
-[font.bold]
-family = "Iosevka NFP"
-style = "Bold"
-
-[font.bold_italic]
-family = "Iosevka NFP"
-style = "Bold Italic"
-
-[font.italic]
-family = "Iosevka NFP"
-style = "Italic"
-
-[font.normal]
-family = "Iosevka NFP"
-style = "Regular"
-
-[window]
-opacity = 1.0
-startup_mode = "Maximized"
-title = "Terminal"
-option_as_alt = "Both"
-
-[window.padding]
-x = 5
-y = 5
-
-[shell]
-program = "/opt/homebrew/bin/zsh"
-args = ["-l", "-c", "tmux attach || tmux"]
-
-# [shell]
-# program = "tmux"
-# program = "/opt/local/bin/tmux"
-# args = ["-2", "new", "-A", "-s", "main"]
-
-# [shell]
-# program = "/opt/homebrew/bin/tmux"
-# args = ["-2", "new", "-A", "-s", "main"]
+[terminal.shell]
+program = "wsl ~"

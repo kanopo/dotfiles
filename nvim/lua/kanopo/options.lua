@@ -29,9 +29,7 @@ vim.opt.splitbelow = true
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
---
---
---
+
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
@@ -55,3 +53,5 @@ vim.opt.undofile = true -- persistent undo
 vim.opt.wrap = false -- don't wrap lines
 
 vim.opt.conceallevel = 2
+
+vim.opt.fileformat = "dos"
