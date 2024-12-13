@@ -22,7 +22,7 @@ return {
                     theme = "dropdown",
                 },
                 buffers = {
-                	theme = "dropdown",
+                    theme = "dropdown",
                 },
             },
             extensions = {
@@ -30,7 +30,7 @@ return {
                     fuzzy = true,
                     override_generic_sorter = true,
                     override_file_sorter = true,
-                    case_mode = "smart_case",
+                    case_mode = "ignore",
                 },
             },
         })
@@ -38,5 +38,6 @@ return {
         vim.keymap.set("n", "<leader>sf", builtin.find_files, { silent = true, desc = "[S]earch [F]iles" })
         vim.keymap.set("n", "<leader>sg", builtin.live_grep, { silent = true, desc = "[S]earch [G]rep" })
         vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { silent = true, desc = "[S]earch [D]iagnostics" })
+        vim.keymap.set("n", "<leader>sh", builtin.help_tags, { silent = true, desc = "[S]earch [H]elp" })
     end,
 }
