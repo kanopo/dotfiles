@@ -26,7 +26,16 @@ return {
         "neovim/nvim-lspconfig",
         "hrsh7th/cmp-nvim-lsp",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
-        "folke/neodev.nvim",
+        -- "folke/neodev.nvim",
+        {
+            "folke/lazydev.nvim",
+            ft = "lua",
+            opts = {
+                library = {
+                    { path = "${3rd}/luv/library", words = {"vim%.uv"} },
+                },
+            },
+        },
         "nvim-telescope/telescope.nvim",
     },
     config = function()
@@ -47,7 +56,7 @@ return {
             automatic_installation = true,
         })
 
-        require("neodev").setup({})
+        -- require("neodev").setup({})
 
         local function on_attach(_, bufnr)
             local map = function(keys, func, desc)
@@ -65,7 +74,7 @@ return {
             map("K", vim.lsp.buf.hover, "Hover")
             map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-            -- Create a command `:Format` local to the LSP buffer
+            -- -- Create a command `:Format` local to the LSP buffer
             vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
                 vim.lsp.buf.format()
             end, { desc = "Format current buffer with LSP" })
@@ -104,21 +113,21 @@ return {
                         },
                     },
                 })
-            -- elseif server == "ltex" then
-            --     require("lspconfig")[server].setup({
-            --         on_attach = on_attach,
-            --         capabilities = capabilities,
-            --         settings = {
-            --             ltex = {
-            --                 enabled = true,
-            --                 formatter = "latexindent",
-            --                 formatter_options = {
-            --                     indent = 4,
-            --                 },
-            --                 language = "en, it",
-            --             },
-            --         },
-            --     })
+                -- elseif server == "ltex" then
+                --     require("lspconfig")[server].setup({
+                --         on_attach = on_attach,
+                --         capabilities = capabilities,
+                --         settings = {
+                --             ltex = {
+                --                 enabled = true,
+                --                 formatter = "latexindent",
+                --                 formatter_options = {
+                --                     indent = 4,
+                --                 },
+                --                 language = "en, it",
+                --             },
+                --         },
+                --     })
             elseif server == "clangd" then
                 require("lspconfig")[server].setup({
                     on_attach = on_attach,
