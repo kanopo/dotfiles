@@ -13,6 +13,7 @@ local servers = {
     "cssls",
     "sqlls",
     "lemminx",
+    "rust_analyzer",
 }
 local tools = {
     -- "luacheck",
@@ -53,7 +54,7 @@ return {
             automatic_installation = true,
         })
 
-        require("neodev").setup({})
+        -- require("neodev").setup({})
 
         local function on_attach(_, bufnr)
             local map = function(keys, func, desc)
