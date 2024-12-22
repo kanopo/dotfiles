@@ -32,5 +32,8 @@ alias orphans="sudo pacman -Qtdq | sudo pacman -Rns -"
 # Enable GPG support
 export GPG_TTY=$(tty)
 
+set -o vi
+bindkey "^A" vi-beginning-of-line
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

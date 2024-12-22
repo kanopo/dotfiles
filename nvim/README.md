@@ -1,3 +1,5 @@
-# neovim
+# NVIM
 
-My personal neovim configuration
+My basic config made with sweat, blood and spit.
+
+Kanopo

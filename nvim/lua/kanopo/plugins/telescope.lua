@@ -1,43 +1,40 @@
 return {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.5",
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
     dependencies = {
-        "nvim-lua/plenary.nvim",
+        'nvim-lua/plenary.nvim',
         {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            build = "make",
-            lazy = true,
-        },
+            'nvim-telescope/telescope-fzf-native.nvim',
+            build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+        }
     },
     config = function()
-        require("telescope").setup({
+        require('telescope').setup {
             pickers = {
-                live_grep = {
-                    theme = "dropdown",
-                },
-                grep_string = {
-                    theme = "dropdown",
-                },
                 find_files = {
-                    theme = "dropdown",
+                    hidden = true,
+                    prompt_prefix = "🔍 ",
                 },
-                buffers = {
-                    theme = "dropdown",
+                live_grep = {
+                    hidden = true,
+                    prompt_prefix = "🔍 ",
                 },
             },
             extensions = {
-                fxf = {
+                fzf = {
                     fuzzy = true,
                     override_generic_sorter = true,
                     override_file_sorter = true,
-                    case_mode = "ignore",
-                },
-            },
-        })
-        local builtin = require("telescope.builtin")
-        vim.keymap.set("n", "<leader>sf", builtin.find_files, { silent = true, desc = "[S]earch [F]iles" })
-        vim.keymap.set("n", "<leader>sg", builtin.live_grep, { silent = true, desc = "[S]earch [G]rep" })
-        vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { silent = true, desc = "[S]earch [D]iagnostics" })
-        vim.keymap.set("n", "<leader>sh", builtin.help_tags, { silent = true, desc = "[S]earch [H]elp" })
+                    case_mode = "ignore_case",
+                }
+            }
+        }
+        require('telescope').load_extension('fzf')
     end,
+    keys = {
+        { "<leader>ff", "<cmd>Telescope find_files<cr>",  desc = "[F]ind [F]iles" },
+        { "<leader>fh", "<cmd>Telescope help_tags<cr>",   desc = "[F]ind [H]elp" },
+        { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "[F]ind [D]iadgnostics" },
+        { "<leader>fg", "<cmd>Telescope live_grep<cr>",   desc = "[F]ind [G]rep" },
+    }
 }

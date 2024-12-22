@@ -29,10 +29,6 @@ output $laptop color_profile icc ~/Documents/kanopo/dotfiles/BOE_CQ_______NE135F
 output $laptop resolution 2256x1504 position 0,0
 output $laptop scale 1.45
 
-# Bind actions to the lid state (close/open lid)
-# bindswitch --locked lid:on 'swaylock -f -i $wallpaper; output $laptop disable'
-# bindswitch --locked lid:on 'output $laptop disable'
-# bindswitch --locked lid:off 'output $laptop enable' 
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 

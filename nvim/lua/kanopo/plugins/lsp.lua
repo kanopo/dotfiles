@@ -1,23 +1,33 @@
-local servers = {
+local lsp_servers = {
     "lua_ls",
-    "jedi_language_server",
-    "texlab",
+    -- "ltex",
     "ts_ls",
-    "tailwindcss",
+    "gopls",
+    "texlab",
     "marksman",
-    "html",
-    "docker_compose_language_service",
-    "dockerls",
-    "rust_analyzer",
 }
+
 local tools = {
     "luacheck",
-    "stylua",
-    "flake8",
-    "black",
-    "latexindent",
-    "eslint_d",
+    "latexindent"
 }
+
+local dap_tools = {}
+
+local on_attach = function(_, bufnr)
+    local map = function(key, func, desc)
+        vim.keymap.set("n", key, func, { noremap = true, silent = true, desc = desc })
+    end
+
+    local telescope = require("telescope.builtin")
+
+    map("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", "[R]ename Symbol")
+    map("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", "[C]ode [A]ction")
+    map("K", "<cmd>lua vim.lsp.buf.hover()<CR>", "[K] Hover")
+    map("gd", telescope.lsp_definitions, "[G]o [D]efinition")
+    map("gr", telescope.lsp_references, "[G]o [R]eferences")
+    map("gI", telescope.lsp_implementations, "[G]o [I]mplementations")
+end
 
 return {
     "williamboman/mason.nvim",
@@ -25,121 +35,47 @@ return {
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
         "hrsh7th/cmp-nvim-lsp",
+        'nvim-telescope/telescope.nvim',
         "WhoIsSethDaniel/mason-tool-installer.nvim",
-        -- "folke/neodev.nvim",
+        "mfussenegger/nvim-dap",
+        "jay-babu/mason-nvim-dap.nvim",
         {
             "folke/lazydev.nvim",
             ft = "lua",
             opts = {
                 library = {
-                    { path = "${3rd}/luv/library", words = {"vim%.uv"} },
+                    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
                 },
             },
         },
-        "nvim-telescope/telescope.nvim",
     },
     config = function()
-        require("mason").setup({
-            ui = {
-                icons = {
-                    package_installed = "✓",
-                    package_pending = "➜",
-                    package_uninstalled = "✗",
-                },
-            },
-        })
+        require("mason").setup()
         require("mason-tool-installer").setup({
             ensure_installed = tools,
+            automatic_installation = true
+        })
+        require("mason-nvim-dap").setup({
+            ensure_installed = dap_tools,
+            automatic_installation = true,
+            handlers = {
+                function(config)
+                    -- defaults
+                    require("mason-nvim-dap").default_setup(config)
+                end,
+                -- add here custom handlers when needed
+            }
         })
         require("mason-lspconfig").setup({
-            ensure_installed = servers,
-            automatic_installation = true,
+            ensure_installed = lsp_servers,
+            automatic_installation = true
         })
-
-        -- require("neodev").setup({})
-
-        local function on_attach(_, bufnr)
-            local map = function(keys, func, desc)
-                vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
-            end
-
-            local telescope_builtin = require("telescope.builtin")
-
-            map("<leader>rn", vim.lsp.buf.rename, "[R]e[N]ame")
-            map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
-            map("gd", telescope_builtin.lsp_definitions, "[G]oto [D]efinition")
-            map("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences")
-            map("gI", telescope_builtin.lsp_implementations, "[G]oto [I]mplementations")
-            map("K", vim.lsp.buf.hover, "Hover")
-            map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-
-            -- -- Create a command `:Format` local to the LSP buffer
-            vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-                vim.lsp.buf.format()
-            end, { desc = "Format current buffer with LSP" })
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        for _, lsp_server in pairs(lsp_servers) do
+            require("lspconfig")[lsp_server].setup({
+                on_attach = on_attach,
+                capabilities = capabilities
+            })
         end
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
-        for _, server in pairs(servers) do
-            if server == "lua_ls" then
-                require("lspconfig")[server].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { "vim" },
-                            },
-                        },
-                    },
-                })
-            elseif server == "pyright" then
-                require("lspconfig")[server].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                    settings = {
-                        pyright = {
-                            autoImportCompletion = true,
-                        },
-                        python = {
-                            analysis = {
-                                autoSearchPaths = true,
-                                diagnosticMode = "openFilesOnly",
-                                useLibraryCodeForTypes = true,
-                                typeCheckingMode = false,
-                            },
-                        },
-                    },
-                })
-                -- elseif server == "ltex" then
-                --     require("lspconfig")[server].setup({
-                --         on_attach = on_attach,
-                --         capabilities = capabilities,
-                --         settings = {
-                --             ltex = {
-                --                 enabled = true,
-                --                 formatter = "latexindent",
-                --                 formatter_options = {
-                --                     indent = 4,
-                --                 },
-                --                 language = "en, it",
-                --             },
-                --         },
-                --     })
-            elseif server == "clangd" then
-                require("lspconfig")[server].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                    cmd = { "clangd", "--background-index", "--offset-encoding=utf-16" },
-                })
-            else
-                require("lspconfig")[server].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                })
-            end
-        end
-    end,
+    end
 }

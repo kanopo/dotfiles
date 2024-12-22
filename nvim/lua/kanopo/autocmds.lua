@@ -1,5 +1,24 @@
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
+-- autoformat on save file
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if not client then return end
+
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = args.buf,
+                callback = function()
+                    vim.lsp.buf.format({
+                        bufnr = args.buf,
+                        id = client.id
+                    })
+                end
+            })
+        end
+    end
+})
+
+-- Highlight yanked text
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
@@ -9,40 +28,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
 })
 
--- Custom mappings and settings for specific file types
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = {
-        "netrw",
-        "Jaq",
-        "qf",
-        "git",
-        "help",
-        "man",
-        "lspinfo",
-        "spectre_panel",
-        "lir",
-        "DressingSelect",
-        "tsplayground",
-        "",
-    },
-    callback = function()
-        -- Close buffer with 'q' in these specific filetypes
-        vim.cmd([[
-            nnoremap <silent> <buffer> q :close<CR>
-            set nobuflisted
-        ]])
-    end,
-})
 
--- Remove certain format options when entering a buffer window
-vim.api.nvim_create_autocmd("BufWinEnter", {
-    callback = function()
-        -- Removes 'c', 'r', and 'o' from formatoptions
-        -- 'c' - auto-wrap comments, 'r' - continue comments, 'o' - O command auto-comments
-        vim.cmd("set formatoptions-=cro")
-    end,
-})
-
+-- Go to last cursor position when opening a file
 vim.api.nvim_create_autocmd("BufReadPost", {
     callback = function()
         local ft = vim.bo.filetype

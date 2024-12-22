@@ -1,4 +1,3 @@
--- require("kanopo.options")
--- require("kanopo.keymaps")
--- require("kanopo.autocmds")
--- require("kanopo.lazy")
+require("kanopo.options")
+require("kanopo.lazy")
+require("kanopo.autocmds")

@@ -1,5 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dependencies = {
         {
             "hrsh7th/cmp-nvim-lsp",
@@ -24,7 +25,6 @@ return {
                 "rafamadriz/friendly-snippets",
             },
         },
-        -- BUG: removed copilot because make me a worst developer :(
         {
             "zbirenbaum/copilot-cmp",
             event = "InsertEnter",
@@ -51,9 +51,7 @@ return {
             panel = { enabled = false },
         })
 
-        require("copilot_cmp").setup({
-            enabled = false,
-        })
+        require("copilot_cmp").setup()
 
         local check_backspace = function()
             local col = vim.fn.col(".") - 1
@@ -61,16 +59,18 @@ return {
         end
 
         cmp.setup({
+            performance = {
+                debounce = 10,
+                throttle = 10
+            },
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body) -- For `luasnip` users.
                 end,
             },
             mapping = cmp.mapping.preset.insert({
-                ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-                ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-                ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-                ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+                ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+                ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
                 ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
                 ["<C-c>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
                 ["<C-e>"] = cmp.mapping({
@@ -127,20 +127,6 @@ return {
             confirm_opts = {
                 behavior = cmp.ConfirmBehavior.Replace,
                 select = false,
-            },
-            window = {
-                completion = {
-                    border = "rounded",
-                    winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:FloatBorder,Search:None",
-                    col_offset = -3,
-                    side_padding = 1,
-                    scrollbar = false,
-                    scrolloff = 8,
-                },
-                documentation = {
-                    border = "rounded",
-                    winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
-                },
             },
         })
     end,
