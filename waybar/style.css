@@ -17,18 +17,6 @@
 @define-color aqua  #689d6a;
 @define-color orange #d65d0e;
 
-/*@define-color magenta_b #d3869b;*/
-/*@define-color cyan_b   #8ec07c;*/
-/*@define-color yellow_b #fabd2f;*/
-/*@define-color white_b  #ebdbb2;*/
-/*@define-color black_b  #928374;*/
-/*@define-color red_b    #fb4934;*/
-/*@define-color green_b  #b8bb26;*/
-/*@define-color blue_b   #83a598;*/
-/*@define-color aqua_b   #8ec07c;*/
-/*@define-color orange_b #fe8010;*/
-
-
 window#waybar { 
     background-color: @background;
     color: @foreground;
@@ -66,9 +54,12 @@ window#waybar {
 	padding: 0 10px;
 }
 
-#tray, #idle_inhibitor, #network, #temperature, #backlight, #pulseaudio, #battery, #clock, #tray, #memory, #cpu, #power-profiles-daemon {
+#scratchpad, #tray, #idle_inhibitor, #network, #temperature, #backlight, #pulseaudio, #battery, #clock, #tray, #memory, #cpu, #power-profiles-daemon {
 	padding: 0 15px;
 }
+
+
+
 #battery.critical {
    color: @red;
 }
@@ -81,4 +72,3 @@ window#waybar {
 #network.disconnected {
    color: @red;
 }
-/**/
