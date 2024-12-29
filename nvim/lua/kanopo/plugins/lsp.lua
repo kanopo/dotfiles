@@ -55,17 +55,17 @@ return {
             ensure_installed = tools,
             automatic_installation = true
         })
-        require("mason-nvim-dap").setup({
-            ensure_installed = dap_tools,
-            automatic_installation = true,
-            handlers = {
-                function(config)
-                    -- defaults
-                    require("mason-nvim-dap").default_setup(config)
-                end,
-                -- add here custom handlers when needed
-            }
-        })
+        -- require("mason-nvim-dap").setup({
+        --     ensure_installed = dap_tools,
+        --     automatic_installation = true,
+        --     handlers = {
+        --         function(config)
+        --             -- defaults
+        --             require("mason-nvim-dap").default_setup(config)
+        --         end,
+        --         -- add here custom handlers when needed
+        --     }
+        -- })
         require("mason-lspconfig").setup({
             ensure_installed = lsp_servers,
             automatic_installation = true
