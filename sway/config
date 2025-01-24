@@ -191,19 +191,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-#
-# Utilities:
-#
-    # # Special keys to adjust volume via PulseAudio
-    # bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    # bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    # bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-    # bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-    # # Special keys to adjust brightness via brightnessctl
-    # bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    # bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # # Special key to take a screenshot with grim
-    # bindsym Print exec grim
 
 # Set notification time duration
 set $notification_time 1000
@@ -297,13 +284,17 @@ bar {
 # Borders and Gaps
 default_border pixel
 smart_gaps on
-gaps outer 5
-gaps inner 3
+gaps outer 3
+gaps inner 5
 
 # Window Focus Colors
-client.focused $gruvbox_bg_dark $gruvbox_blue $gruvbox_fg_dark $gruvbox_blue
-client.unfocused $gruvbox_bg_dark $gruvbox_bg_dark $gruvbox_fg_light $gruvbox_bg_light
-client.urgent $gruvbox_bg_dark $gruvbox_red $gruvbox_fg_dark $gruvbox_red
+#client.<class>         <border>  <background>    <text>      <indicator>   <child_border> 
+client.focused $gruvbox_orange $gruvbox_orange $gruvbox_bg_dark $gruvbox_orange
+
+hide_edge_borders smart
+# client.focused $gruvbox_bg_dark $gruvbox_blue $gruvbox_fg_dark $gruvbox_orange
+# client.unfocused $gruvbox_bg_dark $gruvbox_bg_dark $gruvbox_fg_light $gruvbox_bg_light
+# client.urgent $gruvbox_bg_dark $gruvbox_red $gruvbox_fg_dark $gruvbox_red
 
 # GTK Settings for Dark Theme
 exec_always {

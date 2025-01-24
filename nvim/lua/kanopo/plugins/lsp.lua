@@ -5,11 +5,16 @@ local lsp_servers = {
     "gopls",
     "texlab",
     "marksman",
+    "clangd",
+    "jdtls",
+    "docker_compose_language_service",
+    "dockerls"
 }
 
 local tools = {
     "luacheck",
-    "latexindent"
+    "latexindent",
+    "google-java-format"
 }
 
 local dap_tools = {}
