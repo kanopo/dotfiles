@@ -26,10 +26,6 @@ return {
             },
         },
         {
-            'tzachar/cmp-ai',
-            event = "InsertEnter"
-        },
-        {
             "onsails/lspkind-nvim",
             event = "InsertEnter",
         },
@@ -105,7 +101,6 @@ return {
                 }),
             },
             sources = {
-                { name = "cmp_ai" },
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
                 { name = "buffer" },
