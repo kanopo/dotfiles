@@ -2,7 +2,7 @@ local lsp_servers = {
     "lua_ls",
     -- "ltex",
     "ts_ls",
-    "gopls",
+    -- "gopls",
     "texlab",
     "marksman",
     "clangd",

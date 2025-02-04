@@ -26,12 +26,19 @@ return {
             },
         },
         {
-            'tzachar/cmp-ai',
-            event = "InsertEnter"
-        },
-        {
             "onsails/lspkind-nvim",
             event = "InsertEnter",
+        },
+        -- BUG: removed copilot because make me a worst developer :(
+        {
+            "zbirenbaum/copilot-cmp",
+            event = "InsertEnter",
+            dependencies = {
+                {
+                    "zbirenbaum/copilot.lua",
+                    event = "InsertEnter",
+                },
+            },
         },
     },
     config = function()
@@ -39,6 +46,16 @@ return {
         local luasnip = require("luasnip")
         require("luasnip/loaders/from_vscode").lazy_load()
         local lspkind = require("lspkind")
+
+        require("copilot").setup({
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+        })
+
+        require("copilot_cmp").setup({
+            event = { "InsertEnter", "LspAttach" },
+            fix_pairs = true,
+        })
 
         local check_backspace = function()
             local col = vim.fn.col(".") - 1
@@ -105,7 +122,7 @@ return {
                 }),
             },
             sources = {
-                { name = "cmp_ai" },
+                { name = "copilot", group_index = 2 },
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
                 { name = "buffer" },
