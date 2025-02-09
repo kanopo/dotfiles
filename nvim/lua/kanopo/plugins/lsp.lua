@@ -2,13 +2,16 @@ local lsp_servers = {
     "lua_ls",
     -- "ltex",
     "ts_ls",
-    "gopls",
+    -- "gopls",
     "texlab",
     "marksman",
     "clangd",
     "jdtls",
     "docker_compose_language_service",
-    "dockerls"
+    "dockerls",
+    "tailwindcss",
+    "jedi_language_server",
+    "cssls"
 }
 
 local tools = {

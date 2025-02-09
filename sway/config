@@ -27,7 +27,7 @@ output * bg $wallpaper fill
 # "BOE 0x0BCA Unknown"
 output $laptop color_profile icc ~/Documents/kanopo/dotfiles/BOE_CQ_______NE135FBM_N41_03.icm
 output $laptop resolution 2256x1504 position 0,0
-output $laptop scale 1.45
+output $laptop scale 1.3
 
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
@@ -306,7 +306,8 @@ exec_always {
 
 # Example Sway autostart setup
 
-exec flatpak run org.keepassxc.KeePassXC
+# exec flatpak run org.keepassxc.KeePassXC
+exec keepassxc
 exec nextcloud
 exec wlsunset -S 08:00 -s 18:00
 exec blueman-applet

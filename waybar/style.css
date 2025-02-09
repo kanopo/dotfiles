@@ -7,19 +7,19 @@
 @define-color background #282828;
 @define-color foreground #ebdbb2;
 @define-color black #282828;
-@define-color red   #cc241d;
+@define-color red #cc241d;
 @define-color green #98971a;
 @define-color yellow #d79921;
-@define-color blue  #458588;
+@define-color blue #458588;
 @define-color magenta #b16286;
-@define-color cyan  #689d6a;
+@define-color cyan #689d6a;
 @define-color white #a89984;
-@define-color aqua  #689d6a;
+@define-color aqua #689d6a;
 @define-color orange #d65d0e;
 
-window#waybar { 
-    background-color: @background;
-    color: @foreground;
+window#waybar {
+	background-color: @background;
+	color: @foreground;
 }
 
 
@@ -43,32 +43,44 @@ window#waybar {
 }
 
 
-#workspaces button.focused { 
+#workspaces button.focused {
 	background-color: @orange;
 	color: @foreground;
 }
 
-#mode { 
+#mode {
 	background-color: @red;
 	color: @foreground;
 	padding: 0 10px;
 }
 
-#scratchpad, #tray, #idle_inhibitor, #network, #temperature, #backlight, #pulseaudio, #battery, #clock, #tray, #memory, #cpu, #power-profiles-daemon {
-	padding: 0 15px;
+#scratchpad,
+#tray,
+#idle_inhibitor,
+#network,
+#temperature,
+#backlight,
+#pulseaudio,
+#battery,
+#clock,
+#tray,
+#memory,
+#cpu,
+#power-profiles-daemon {
+	padding: 0 20px;
 }
 
 
 
 #battery.critical {
-   color: @red;
+	color: @red;
 }
 
 #battery.charging {
-  color: @green;
+	color: @green;
 }
 
 
 #network.disconnected {
-   color: @red;
+	color: @red;
 }
