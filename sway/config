@@ -1,16 +1,18 @@
+# Variabili di base
 set $mod Mod4
 set $left h
 set $down j
 set $up k
 set $right l
 set $term kitty
-# set $menu wmenu-run
+# Launcher: wofi (sostituisce wmenu-run)
 set $menu wofi -S drun -p Search -I -b -i
 
+# Wallpaper e output
 set $wallpaper ~/Nextcloud/wallpapers/laptop/hiroishi_nagasai.png
 set $laptop eDP-1
 
-# Color Scheme
+# Color Scheme (Gruvbox)
 set $gruvbox_bg_dark #282828
 set $gruvbox_bg_light #504945
 set $gruvbox_fg_dark #ebdbb2
@@ -23,19 +25,23 @@ set $gruvbox_purple #b16286
 set $gruvbox_aqua #689d6a
 set $gruvbox_orange #d65d0e
 
+# Impostazione del wallpaper e configurazione output
 output * bg $wallpaper fill
-# "BOE 0x0BCA Unknown"
+# Imposta il profilo ICC, risoluzione, posizione e scala per il display laptop
 output $laptop color_profile icc ~/Documents/kanopo/dotfiles/BOE_CQ_______NE135FBM_N41_03.icm
 output $laptop resolution 2256x1504 position 0,0
 output $laptop scale 1.3
 
+# Gestione degli eventi del coperchio
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-# Configure idle behavior
+# Configurazione dell'inattività: lock e DPMS
 exec swayidle -w \
-    timeout 300 'swaylock -f -i '$wallpaper timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f -i '$wallpaper
+    timeout 300 "swaylock -f -i $wallpaper" \
+    timeout 600 "swaymsg 'output * dpms off'" \
+    resume "swaymsg 'output * dpms on'" \
+    before-sleep "swaylock -f -i $wallpaper"
 
 input type:touchpad {
     dwt enabled # Disable while typing
@@ -51,175 +57,135 @@ input type:pointer {
     pointer_accel 0.3
 }
 
-# Bind swipe gestures to switch workspaces
+# Gestione dei gesti: swipe per cambiare workspace
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
-### Key bindings
-#
-# Basics:
-#
-    # Start a terminal
-    bindsym $mod+Return exec $term
 
-    # Kill focused window
-    bindsym $mod+Shift+q kill
+### Key Bindings di base
+# Avvio terminale
+bindsym $mod+Return exec $term
 
-    # Start your launcher
-    bindsym $mod+d exec $menu
+# Chiudi finestra focalizzata
+bindsym $mod+Shift+q kill
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
+# Avvia il launcher
+bindsym $mod+d exec $menu
 
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
+# Modalità floating: trascina finestre con $mod + mouse
+floating_modifier $mod normal
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
-# Moving around:
-#
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+# Ricarica la configurazione
+bindsym $mod+Shift+c reload
 
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
-#
-# Workspaces:
-#
-    # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+# Esci da Sway (con conferma tramite swaynag)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Hai premuto la scorciatoia per uscire. Vuoi davvero uscire da Sway?' -B 'Sì, esci' 'swaymsg exit'
 
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+### Navigazione e spostamento tra finestre
+# Sposta il focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+# Sposta la finestra focalizzata
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+### Gestione dei Workspaces
+# Cambio workspace (1-10)
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+# Sposta la finestra corrente nel workspace desiderato
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
+### Gestione del Layout
+# Split orizzontale e verticale
+bindsym $mod+b splith
+bindsym $mod+v splitv
 
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+# Cambio layout: stacking, tabbed e toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
+# Modalità fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle tra modalità tiling e floating
+bindsym $mod+Shift+space floating toggle
+
+# Passa dal tiling alla sezione floating
+bindsym $mod+space focus mode_toggle
+
+# Sposta il focus al contenitore padre
+bindsym $mod+a focus parent
+
+### Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+### Modalità "resize" per ridimensionare le finestre
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
     bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
     bindsym Right resize grow width 10px
-
-    # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
-# Set notification time duration
+### Notifiche e Controlli Audio/Luminosità
 set $notification_time 1000
 
-# Audio volume notification command
+# Comandi per le notifiche (volume, mute, mic, luminosità)
 set $audio_notification_cmd command -v notify-send >/dev/null && \
   VALUE=$(pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}') && \
   notify-send -e -h string:x-canonical-private-synchronous:audio \
   -h "int:value:$VALUE" -t $notification_time "Volume: ${VALUE}%"
 
-# Mute notification command
 set $mute_notification_cmd command -v notify-send >/dev/null && \
   VALUE=$(pactl get-sink-mute @DEFAULT_SINK@ | head -n 1 | awk '{print $2}') && \
   notify-send -e -h string:x-canonical-private-synchronous:audio \
   -h "string:x-canonical-private-synchronous:audio" -t $notification_time "Mute: ${VALUE}"
 
-# Mic mute notification command
 set $mute_mic_notification_cmd command -v notify-send >/dev/null && \
   VALUE=$(pactl get-source-mute @DEFAULT_SOURCE@ | head -n 1 | awk '{print $2}') && \
   notify-send -e -h string:x-canonical-private-synchronous:audio \
   -h "string:x-canonical-private-synchronous:audio" -t $notification_time "Mic Mute: ${VALUE}"
 
-# Audio key bindings
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle; exec $mute_notification_cmd
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && $audio_notification_cmd
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && $audio_notification_cmd
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $mute_mic_notification_cmd
-
-# Brightness notification command
 set $brightness_notification_cmd command -v notify-send >/dev/null && \
   VALUE=$(brightnessctl get) && \
   MAX=255 && \
@@ -227,20 +193,23 @@ set $brightness_notification_cmd command -v notify-send >/dev/null && \
   notify-send -e -h string:x-canonical-private-synchronous:brightness \
   -h "int:value:$PERCENT" -t $notification_time "Brightness: ${PERCENT}%"
 
-# Brightness key bindings
+# Key bindings per audio e luminosità
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle; exec $mute_notification_cmd
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && $audio_notification_cmd
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && $audio_notification_cmd
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $mute_mic_notification_cmd
 bindsym XF86MonBrightnessDown exec brightnessctl s 10%- && $brightness_notification_cmd
 bindsym XF86MonBrightnessUp exec brightnessctl s 10%+ && $brightness_notification_cmd
 
-# Media controls (Play, Next, Previous)
+# Controlli multimediali
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# Screenshot bindings (Grim or Grimshot)
+### Screenshot e Registrazione Schermo
 bindsym Print exec grimshot --notify copy output 
 bindsym $mod+Print exec grimshot --notify copy area
 
-# Screen recording with wf-recorder
 bindsym $mod+XF86AudioMedia exec --no-startup-id \
     (pgrep -x wf-recorder > /dev/null && killall -s SIGINT wf-recorder && notify-send "Recording Stopped") || \
     (notify-send "Recording Started + Audio." && wf-recorder --audio --file ~/Videos/$(date +'%Y-%m-%d-%H-%M-%S').mp4)
@@ -249,54 +218,35 @@ bindsym XF86AudioMedia exec --no-startup-id \
     (pgrep -x wf-recorder > /dev/null && killall -s SIGINT wf-recorder && notify-send "Recording Stopped") || \
     (notify-send "Recording Started" && wf-recorder --file ~/Videos/$(date +'%Y-%m-%d-%H-%M-%S').mp4)
 
-
-# Mode for system actions (lock, logout, reboot, etc.)
+### Modalità per azioni di sistema (lock, logout, reboot, suspend, shutdown)
 set $mode_system "What to do? (l) lock, (e) logout, (r) reboot, (Shift+s) shutdown"
-
 mode $mode_system {
-    # Lock screen with wallpaper
     bindsym l exec swaylock -f -i $wallpaper; mode "default"
-    
-    # Logout from Sway
     bindsym e exec swaymsg exit; mode "default"
-    
-    # Reboot the system
     bindsym r exec systemctl reboot; mode "default"
-    
-    # Suspend the system
     bindsym s exec systemctl suspend; mode "default"
-    
-    # Shutdown the system
     bindsym Shift+s exec systemctl poweroff; mode "default"
-
-    # Back to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
-# Bind to invoke system mode with Mod+Escape
 bindsym $mod+Escape mode $mode_system
 
+### Barra di stato (Waybar)
 bar {
-      swaybar_command waybar
+    swaybar_command waybar
 }
 
-# Borders and Gaps
+### Borders e Gaps
 default_border pixel
 smart_gaps on
 gaps outer 3
 gaps inner 5
 
-# Window Focus Colors
-#client.<class>         <border>  <background>    <text>      <indicator>   <child_border> 
+# Impostazioni dei colori per il focus delle finestre
 client.focused $gruvbox_orange $gruvbox_orange $gruvbox_bg_dark $gruvbox_orange
-
 hide_edge_borders smart
-# client.focused $gruvbox_bg_dark $gruvbox_blue $gruvbox_fg_dark $gruvbox_orange
-# client.unfocused $gruvbox_bg_dark $gruvbox_bg_dark $gruvbox_fg_light $gruvbox_bg_light
-# client.urgent $gruvbox_bg_dark $gruvbox_red $gruvbox_fg_dark $gruvbox_red
 
-# GTK Settings for Dark Theme
+### Impostazioni GTK per tema scuro
 exec_always {
     gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
     gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
@@ -304,9 +254,7 @@ exec_always {
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 }
 
-# Example Sway autostart setup
-
-# exec flatpak run org.keepassxc.KeePassXC
+### Applicazioni in autostart
 exec keepassxc
 exec nextcloud
 exec wlsunset -S 08:00 -s 18:00
@@ -314,31 +262,27 @@ exec blueman-applet
 exec xss-lock -- swaylock -f -i $wallpaper
 exec --no-startup-id easyeffects --gapplication-service
 
+# Avvio del polkit agent GNOME
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-# exec hash dbus-update-activation-environment 2>/dev/null && \
-#      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_CURRENT_DESKTOP=sway
-# exec systemctl —user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# (Se preferisci il KDE agent, commenta la riga sopra e decommenta quella sottostante)
+exec "/usr/lib/polkit-kde-authentication-agent-1"
 
+# Importa variabili ambiente per DBus e il desktop corrente
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 
-
-# Desktop notifications
+### Notifiche Desktop e Clip History
 exec mako
-
-# cliphist
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
-# Network Applet
+### Applet di rete
 exec nm-applet --indicator
 
-
-# Custom windowing rules
+### Regole personalizzate per le finestre
 for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
 for_window [app_id="org.keepassxc.KeePassXC"] floating enable,  resize set width 70 ppt height 60 ppt
-for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt
+for_window [app_id="pavucontrol"] floating enable, resize set width 40 ppt height 30 ppt
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -352,4 +296,5 @@ for_window [title="Picture in picture"] floating enable, sticky enable
 for_window [title="Save File"] floating enable
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
 
+# Includi eventuali configurazioni aggiuntive
 include /etc/sway/config.d/*
