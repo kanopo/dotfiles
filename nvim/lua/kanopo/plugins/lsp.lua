@@ -17,7 +17,8 @@ local lsp_servers = {
 local tools = {
     "luacheck",
     "latexindent",
-    "google-java-format"
+    "google-java-format",
+    "ruff"
 }
 
 local dap_tools = {}
@@ -29,12 +30,14 @@ local on_attach = function(_, bufnr)
 
     local telescope = require("telescope.builtin")
 
+    -- LSP actions
     map("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", "[R]ename Symbol")
     map("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", "[C]ode [A]ction")
     map("K", "<cmd>lua vim.lsp.buf.hover()<CR>", "[K] Hover")
     map("gd", telescope.lsp_definitions, "[G]o [D]efinition")
     map("gr", telescope.lsp_references, "[G]o [R]eferences")
     map("gI", telescope.lsp_implementations, "[G]o [I]mplementations")
+    map("gD", telescope.diagnostics, "Diagnostics")
 end
 
 return {
