@@ -29,6 +29,26 @@ return {
             "onsails/lspkind-nvim",
             event = "InsertEnter",
         },
+        {
+            "zbirenbaum/copilot.lua",
+            cmd = "Copilot",
+            event = "InsertEnter",
+            config = function()
+                require("copilot").setup({
+                    suggestion = { enabled = false },
+                    panel = { enabled = false },
+                })
+            end,
+        },
+        {
+            "zbirenbaum/copilot-cmp",
+            config = function()
+                require("copilot_cmp").setup({
+                    event = { "InsertEnter", "LspAttach" },
+                    fix_pairs = true,
+                })
+            end
+        }
     },
     config = function()
         local cmp = require("cmp")
@@ -98,9 +118,11 @@ return {
                     maxwidth = 50,
                     ellipsis = "...",
                     show_labelDetails = true,
+                    symbol_map = { Copilot = "" }
                 }),
             },
             sources = {
+                { name = "copilot", group_index = 2 },
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
                 { name = "buffer" },
